@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
@@ -17,8 +18,8 @@ class UsersTableSeeder extends Seeder
         $role = Defender::findRole('admin');
         $user = factory(\App\User::class)->create([
             'name' => 'Admin Sisgera',
-            'rg' => 0000000000,
-            'cpf' => 0000000000,
+            'rg' => 0101010101,
+            'cpf' => 0101010101,
             'telefone' => 1122334455,
             'email' => 'admin@sisgera.com',
             'password' => bcrypt('sisgera##'),
@@ -38,6 +39,11 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('coordsisgera##'),
         ]);
          $user->attachRole($role);
+        factory(User::class, 5)
+            ->create()
+            ->each(function (User $user) use ($role) {
+                $user->attachRole($role);
+            });
     }
 
     public function createUserUsers()
@@ -53,6 +59,11 @@ class UsersTableSeeder extends Seeder
         ]);
         $user->attachRole($role);
 
+        factory(User::class, 10)
+            ->create()
+            ->each(function (User $user) use ($role) {
+                $user->attachRole($role);
+            });
     }
 
 }
