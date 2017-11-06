@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Sisgera;
 
 use Artesaos\Defender\Traits\HasDefender;
 use Illuminate\Notifications\Notifiable;
@@ -12,7 +12,13 @@ class User extends Authenticatable
 
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'rg',
+        'cpf',
+        'telefone',
+        'email',
+        'password',
     ];
 
 
