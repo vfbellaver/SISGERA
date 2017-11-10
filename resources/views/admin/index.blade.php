@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    TESTESTE
+   <users-list></users-list>
 @endsection

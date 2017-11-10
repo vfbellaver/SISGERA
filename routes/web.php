@@ -21,3 +21,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //routes-admin
 Route::resource('admin', 'AdminController');
+Route::get('coordenadores','Api\AdminController@getCoordenadores')->name('admin.coordenadores');
+
+
+
+//REQUERIMENTOS
+Route::resource('requerimento', 'Web\RequerimentoController',
+    ['except' => ['destroy','store','update']]);

@@ -11,16 +11,11 @@
 @import "theme/variables";
 @import "theme/typography";
 @import "theme/top_navigation";
-@import "theme/buttons";
 @import "theme/badges_labels";
 @import "theme/elements";
-@import "theme/sidebar";
 @import "theme/base";
 @import "theme/pages";
-@import "theme/map";
-//@import "chat";
-@import "theme/metismenu";
-@import "theme/spinners";
+@import "theme/style";
 // INSPINIA Skins
 @import "theme/skins";
 // Cards
@@ -30,3 +25,4 @@
 // components
 @import "components/side-nav";
 @import "components/nav-header";
+@import "components/header-content";

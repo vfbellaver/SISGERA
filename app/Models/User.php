@@ -4,12 +4,14 @@ namespace Sisgera;
 
 use Artesaos\Defender\Role;
 use Artesaos\Defender\Traits\HasDefender;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
    use Notifiable, HasDefender;
+    use SoftDeletes;
 
     const ADMIN = 'admin';
     const COORDENADOR = 'coordenador';
@@ -25,6 +27,7 @@ class User extends Authenticatable
         'password',
     ];
 
+    protected $dates = ['deleted_at'];
 
     protected $hidden = [
         'password', 'remember_token',
@@ -33,6 +36,12 @@ class User extends Authenticatable
     public function getRoleAttribute()
     {
         return $this->roles()->first();
+    }
+
+
+    public function usersRole()
+    {
+        return $this->belongsToMany(User::class,'role_user','role_id','');
     }
 
 }

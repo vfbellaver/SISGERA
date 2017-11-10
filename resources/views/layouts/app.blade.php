@@ -61,7 +61,9 @@
         <menu-admin></menu-admin>
         @endguest
         <div class="col-md-10">
+            <div class="content">
             @yield('content')
+            </div>
         </div>
 </div>
 

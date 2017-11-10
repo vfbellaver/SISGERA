@@ -1,7 +1,7 @@
 <?php
 
-use App\User;
 use Illuminate\Database\Seeder;
+use Sisgera\User;
 
 class UsersTableSeeder extends Seeder
 {
@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
     private function createAdminUsers()
     {
         $role = Defender::findRole('admin');
-        $user = factory(\App\User::class)->create([
+        $user = factory(User::class)->create([
             'name' => 'Admin Sisgera',
             'rg' => 0101010101,
             'cpf' => 0101010101,
@@ -30,7 +30,7 @@ class UsersTableSeeder extends Seeder
     public function createCoordernadorCoordenadores()
     {
         $role = Defender::findRole('coordernador');
-        $user = factory(\App\User::class)->create([
+        $user = factory(User::class)->create([
             'name' => 'Coordenador Curso',
             'rg' => 1111111111,
             'cpf' => 111111111,
@@ -39,7 +39,7 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('coordsisgera##'),
         ]);
          $user->attachRole($role);
-        factory(User::class, 5)
+        factory(User::class, 7)
             ->create()
             ->each(function (User $user) use ($role) {
                 $user->attachRole($role);
@@ -49,7 +49,7 @@ class UsersTableSeeder extends Seeder
     public function createUserUsers()
     {
         $role = Defender::findRole('usuario');
-        $user = factory(\App\User::class)->create([
+        $user = factory(User::class)->create([
             'name' => 'Aluno Fulano',
             'rg' => 44444444,
             'cpf' => 555555555,
