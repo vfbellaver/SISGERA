@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="card">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
                 <h5>Lista de  Alunos</h5>
@@ -65,6 +65,7 @@
                     .then((response) => {
                         this.alunos = response.data;
                         this.pagination = response;
+                        swal( "Requerimento Enviado" ,  "Em breve ele será recebido!" ,  "success" );
                     });
             },
         }

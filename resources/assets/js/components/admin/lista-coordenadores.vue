@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="card">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
                 <h5>Lista de  Coordenadores</h5>

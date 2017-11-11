@@ -1,25 +1,23 @@
 <template>
     <div>
-        <div class="col-md-2 row">
-            <div class="side-nav">
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="#" class="active">
-                                <span><i class="fa fa-user"></i></span>
-                                <span>Usuarios</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a :href="novoRequerimento">
-                                <span><i class="fa fa-user"></i></span>
-                                <span>Novo Requerimento</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
+        <aside class="main-sidebar hidden-print">
+            <section class="sidebar">
+                <ul class="sidebar-menu">
+                    <li>
+                        <a href="#" class="active">
+                            <span><i class="fa fa-user"></i></span>
+                            <span>Usuarios</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a :href="novoRequerimento">
+                            <span><i class="fa fa-user"></i></span>
+                            <span>Novo Requerimento</span>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </aside>
     </div>
 </template>
 <script>
