@@ -22,6 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 //routes-admin
 Route::resource('admin', 'AdminController');
 Route::get('coordenadores','Api\AdminController@getCoordenadores')->name('admin.coordenadores');
+Route::get('alunos','Api\AdminController@getAlunos')->name('admin.alunos');
 
 
 

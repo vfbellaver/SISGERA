@@ -12,3 +12,6 @@ Vue.component('alunos-list',require('./admin/lista-alunos'));
 //REQUERIMENTO
 Vue.component('requerimento-form',require('./requerimento/requerimento-form'));
 
+
+//OUTROS COMPONENTES
+Vue.component('pagination',require('./shared/pagination'));
