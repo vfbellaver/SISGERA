@@ -1,4 +1,5 @@
 require('./vendor');
+require('./main');
 
 import Laroute from './commons/laroute';
 import axios from 'axios';

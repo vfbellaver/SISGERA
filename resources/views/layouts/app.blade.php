@@ -13,7 +13,7 @@
 <div id="app">
     <div class="wrapper">
         <header class="main-header hidden-print">
-            <a class="navbar-brand">
+            <a class="navbar-brand" href="{{route('home')}}">
                 {{ config('app.name', env('APP_NAME')) }} <i class="fa fa-graduation-cap"></i>
 
             </a>
@@ -58,7 +58,17 @@
                             <ul class="dropdown-menu settings-menu">
                                 <li><a href="page-user.html"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
                                 <li><a href="page-user.html"><i class="fa fa-user fa-lg"></i> Profile</a></li>
-                                <li><a href="page-login.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+                                <li>
+                                    <a href="javascript:;"
+                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <i class="fa fa-sign-out fa-lg"></i>
+                                        Logout
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                              style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
@@ -115,7 +125,7 @@
     </div>
 </div>
 
-    <!-- Scripts -->
-    <script src="{{ mix('js/app.js') }}"></script>
+<!-- Scripts -->
+<script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>

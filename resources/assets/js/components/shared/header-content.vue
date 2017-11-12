@@ -1,8 +1,7 @@
 <template>
     <div class="page-title">
         <div class="div">
-            <h1><i class="fa fa-laptop"></i> {{data.title}}</h1>
-            <!--<p>Bootstrap Components</p>-->
+            <h1><i class="fa fa-users"></i> {{data.title}}</h1>
         </div>
         <div class="div">
             <ul class="breadcrumb">
@@ -10,7 +9,7 @@
                 <li v-for="item in data.breadcrumb">
                     <a :href="item.url">{{item.title}}</a>
                 </li>
-                <li class="active">
+                <li>
                     <strong>{{data.title}}</strong>
                 </li>
             </ul>
