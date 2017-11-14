@@ -10,12 +10,10 @@
 </head>
 
 <body class="sidebar-mini fixed">
-<div id="app">
-    <div class="wrapper">
+<div id="app"  class="wrapper">
         <header class="main-header hidden-print">
-            <a class="navbar-brand" href="{{route('home')}}">
+            <a class="logo" href="{{route('home')}}">
                 {{ config('app.name', env('APP_NAME')) }} <i class="fa fa-graduation-cap"></i>
-
             </a>
             <nav class="navbar navbar-static-top">
                 <a class="sidebar-toggle" href="#" data-toggle="offcanvas"></a>
@@ -24,7 +22,7 @@
                         <!--Notification Menu-->
                         <li class="dropdown notification-menu"><a class="dropdown-toggle" href="#"
                                                                   data-toggle="dropdown" aria-expanded="false"><i
-                                        class="fa fa-bell-o fa-lg"></i></a>
+                                        class="fa fa-envelope fa-lg"></i></a>
                             <ul class="dropdown-menu">
                                 <li class="not-head">You have 4 new notifications.</li>
                                 <li><a class="media" href="javascript:;"><span class="media-left media-icon"><span
@@ -123,7 +121,6 @@
 
         </div>
     </div>
-</div>
 
 <!-- Scripts -->
 <script src="{{ mix('js/app.js') }}"></script>

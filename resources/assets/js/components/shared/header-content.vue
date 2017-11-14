@@ -1,7 +1,7 @@
 <template>
     <div class="page-title">
         <div class="div">
-            <h1><i class="fa fa-users"></i> {{data.title}}</h1>
+            <h1><i :class="data.fa"></i> {{data.title}}</h1>
         </div>
         <div class="div">
             <ul class="breadcrumb">

@@ -1,30 +1,53 @@
 <template>
     <div>
-        <div class="ibox float-e-margins">
-            <div class="ibox-title">
-                <h5>Horizontal form</h5>
-            </div>
-            <div class="ibox-content">
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <label class="col-lg-2 control-label">Email</label>
-
-                        <div class="col-lg-10">
-                            <input type="email" placeholder="Email" class="form-control"> <span
-                                class="help-block m-b-none">Example block-level help text here.</span>
-                        </div>
+        <header-content v-if="pageHeading" :data="pageHeading"></header-content>
+        <div class="card">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="bs-component">
+                        <form class="form-horizontal">
+                            <fieldset class="col-md-12">
+                                <legend class="row">1) Dados Requerente
+                                    <small class="pull-right"><i class="fa fa-calendar"></i> 01/01/2016</small>
+                                </legend>
+                            </fieldset>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label class="control-label"><h4>Nome do Requerente:</h4></label>
+                                    Vagner Felipe Bellaver
+                                </div>
+                            </div>
+                            <br>
+                            <fieldset class="col-md-12">
+                                <legend class="row">2) Tipo de Requerimento</legend>
+                            </fieldset>
+                            <div class="col-md-12">
+                                <tipo-requerimento></tipo-requerimento>
+                            </div>
+                        </form>
                     </div>
-                    <div class="form-group"><label class="col-lg-2 control-label">Password</label>
-
-                        <div class="col-lg-10"><input type="password" placeholder="Password" class="form-control"></div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-lg-offset-2 col-lg-10">
-                            <button class="btn btn-sm btn-primary" type="submit">Enviar Requerimento</button>
-                        </div>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
 </template>
+<script>
+    import TipoRequerimento from './tipos-requerimentos';
+    export default {
+        components: {
+          TipoRequerimento,
+        },
+
+        data() {
+            return {
+                pageHeading: {
+                    title: 'Novo Requerimento',
+                    fa: 'fa fa-edit',
+                    breadcrumb: [
+                        {title: 'Home', url: laroute.route('home')}
+                    ]
+                },
+            }
+        },
+    }
+</script>

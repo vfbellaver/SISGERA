@@ -29,3 +29,7 @@ Route::get('alunos','Api\AdminController@getAlunos')->name('admin.alunos');
 //REQUERIMENTOS
 Route::resource('requerimento', 'Web\RequerimentoController',
     ['except' => ['destroy','store','update']]);
+
+//TIPOS REQUERIMENTOS
+Route::resource('tipos-requerimentos','Api\TipoRequerimentoController',
+    ['except'=> ['show','create']]);
