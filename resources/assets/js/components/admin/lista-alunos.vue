@@ -65,7 +65,7 @@
                     .then((response) => {
                         this.alunos = response.data;
                         this.pagination = response;
-                        swal( "Requerimento Enviado" ,  "Em breve ele será recebido!" ,  "success" );
+                        swal('Success!','Ok', "success");
                     });
             },
         }
