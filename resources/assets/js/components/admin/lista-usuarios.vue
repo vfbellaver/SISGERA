@@ -1,8 +1,6 @@
 <template>
     <div>
         <header-content v-if="pageHeading" :data="pageHeading"></header-content>
-        <coord-list></coord-list>
-        <alunos-list></alunos-list>
     </div>
 </template>
 <script>

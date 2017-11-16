@@ -1,36 +1,39 @@
 <template>
-    <div class="card">
-        <div class="ibox float-e-margins">
-            <div class="ibox-title">
-                <h5>Lista de  Coordenadores</h5>
-            </div>
-            <div class="ibox-content">
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Nome</th>
-                        <th>Email</th>
-                        <th>Função</th>
-                        <th>Ações</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr v-for="( coord, index ) in coordenadores">
-                        <td>{{ index + 1 }}</td>
-                        <td>{{coord.name}}</td>
-                        <td>{{coord.email}}</td>
-                        <td>Coordenador Curso</td>
-                        <td>
-                            <button class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></button>
-                            <button class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-               <div class="text-center">
-                   <pagination :source="pagination" @navigate="navigate"></pagination>
-               </div>
+    <div>
+        <header-content v-if="pageHeading" :data="pageHeading"></header-content>
+        <div class="card">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Lista de  Coordenadores</h5>
+                </div>
+                <div class="ibox-content">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Função</th>
+                            <th>Ações</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="( coord, index ) in coordenadores">
+                            <td>{{ index + 1 }}</td>
+                            <td>{{coord.name}}</td>
+                            <td>{{coord.email}}</td>
+                            <td>Coordenador Curso</td>
+                            <td>
+                                <button class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></button>
+                                <button class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-center">
+                        <pagination :source="pagination" @navigate="navigate"></pagination>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -44,7 +47,8 @@
                 coordenadores: [],
                 pagination: {},
                 pageHeading: {
-                    title: 'Lista de  Usuarios',
+                    title: 'Lista de  Coordenadores',
+                    fa:'fa fa-graduation-cap',
                     breadcrumb: [
                         {title: 'Home', url: laroute.route('home')}
                     ]
@@ -58,17 +62,18 @@
 
         methods: {
             load(){
-                Sgs.get(laroute.route('admin.coordenadores'))
+                Sgs.get(laroute.route('get-coordenadores'))
                     .then((response) => {
+                        debugger;
                         this.coordenadores = response.data;
-                        this.pagination  = response;
+                        this.pagination = response;
                     });
             },
             navigate(page){
-                Sgs.get(laroute.route('admin.coordenadores',{page:page}))
+                Sgs.get(laroute.route('get-coordenadores', {page: page}))
                     .then((response) => {
                         this.coordenadores = response.data;
-                        this.pagination  = response;
+                        this.pagination = response;
                     });
             },
             edit(){

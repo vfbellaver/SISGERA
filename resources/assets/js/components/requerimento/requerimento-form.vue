@@ -97,6 +97,9 @@
                             <fieldset class="col-md-12">
                                 <legend class="row">3) Detalhamento do pedido</legend>
                             </fieldset>
+                            <div class="col-md-12">
+                                <vue-editor v-model="detalhes"></vue-editor>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -111,13 +114,16 @@
 </style>
 <script>
     import TipoRequerimento from './tipos-requerimentos';
+    import { VueEditor } from 'vue2-editor';
     export default {
         components: {
             TipoRequerimento,
+            VueEditor,
         },
 
         data() {
             return {
+                detalhes: '<p>Detalhamento do seu Pedido</p>',
                 pageHeading: {
                     title: 'Novo Requerimento',
                     fa: 'fa fa-edit',

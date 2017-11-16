@@ -1,13 +1,11 @@
-// Fonts
+// FONTS
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
-// Variables
+// VARIABLES
 @import "variables";
 // ICONS
 @import "node_modules/font-awesome/scss/font-awesome";
-// Bootstrap
+// BOOTSTRAP
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
-//sweet alert
-
 
 // This files are essential for the theme
 @import '1-tools/fonts';
@@ -63,8 +61,4 @@
 @import '4-pages/mailbox';
 @import '4-pages/user-profile';
 
-//@import "page/page";
-//@import "components/side-nav";
-//@import "components/nav-header";
-//@import "components/header-content";
 @import "components/pagination";

@@ -6,8 +6,8 @@ import axios from 'axios';
 import Vue from 'vue';
 import Moment from 'moment';
 import swal from 'sweetalert';
-
 import Form from './vue/form';
+
 
 
 window.laroute = Laroute;

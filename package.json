@@ -22,7 +22,13 @@
     "animate-sass": "^0.6.6",
     "font-awesome": "^4.7.0",
     "moment": "^2.19.1",
+    "remove": "^0.1.5",
     "sweetalert": "^2.0.8",
-    "vue": "^2.5.3"
+    "vue": "^2.5.3",
+    "vue-compiler": "^2.0.0",
+    "vue-loader": "^13.5.0",
+    "vue-template-compiler": "^2.5.3",
+    "vue-trumbowyg": "^3.1.0",
+    "vue2-editor": "^2.3.11"
   }
 }

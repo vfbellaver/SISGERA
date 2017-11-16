@@ -19,17 +19,20 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//routes-admin
+//ADMIN
 Route::resource('admin', 'AdminController');
-Route::get('coordenadores','Api\AdminController@getCoordenadores')->name('admin.coordenadores');
-Route::get('alunos','Api\AdminController@getAlunos')->name('admin.alunos');
 
+//USERS
+Route::get('get/coord', 'UsuarioController@getCoordenadores')->name('get-coordenadores');
+Route::get('get/alunos', 'UsuarioController@getAlunos')->name('get-alunos');
+Route::get('get/cerel', 'UsuarioController@getCerel')->name('get-cerel');
+Route::get('get/civis', 'UsuarioController@getCivis')->name('get-civis');
 
+Route::get('usuarios/coordenadores', 'UsuarioController@listaCoordenadores')->name('lista-coordenadores');
+Route::get('usuarios/alunos', 'UsuarioController@listaAlunos')->name('lista-alunos');
+Route::get('usuarios/cerel', 'UsuarioController@listaCerel')->name('lista-cerel');
+Route::get('usuarios/externo', 'UsuarioController@listaCivis')->name('lista-civis');
 
-//REQUERIMENTOS
-Route::resource('requerimento', 'Web\RequerimentoController',
-    ['except' => ['destroy','store','update']]);
-
-//TIPOS REQUERIMENTOS
-Route::resource('tipos-requerimentos','Api\TipoRequerimentoController',
-    ['except'=> ['show','create']]);
+//REQUERIMENTO
+Route::resource('requerimento', 'RequerimentoController');
+Route::get('tipo/solicitacao', 'RequerimentoController@getTiposRequerimento')->name('tipos-requerimento');

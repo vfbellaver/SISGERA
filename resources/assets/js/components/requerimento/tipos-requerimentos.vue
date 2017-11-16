@@ -27,7 +27,7 @@
 
         methods: {
             load(){
-                Sgs.get(laroute.route('tipos-requerimentos.index'))
+                Sgs.get(laroute.route('tipos-requerimento'))
                     .then((response) => {
                         this.tpRequerimentos = response;
                     });
