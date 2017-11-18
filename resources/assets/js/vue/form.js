@@ -1,38 +1,19 @@
-class SgsForm {
+window.Form = function (data) {
+    var form = this;
 
-    /**
-     * Cria uma nova instancia da classe Form.
-     * @param data
-     */
-    constructor(data) {
-        this.originalData = data;
+    $.extend(this, data);
 
-        for (let field in data) {
+    this.errors = new FormErrors();
 
-            this[field] = data[field];
+    this.startProcessing = function () {
+        form.errors.forget();
+    };
 
-        }
+    this.resetStatus = function () {
+        form.errors.forget();
+    };
 
-        this.errors =  new Errors();
-    }
-
-    /**
-     * Obtem os dados para o formulário.
-     */
-    data(){
-        let data = Object.assign({},this);
-
-        delete data.originalData;
-        delete data.errors;
-    }
-
-    /**
-     * Limpa o formulário.
-     */
-    reset() {
-        for(let field in this.originalData){
-            this[field] = null;
-        }
-    }
-
-}
+    this.setErrors = function (errors) {
+        form.errors.set(errors);
+    };
+};

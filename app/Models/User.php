@@ -13,7 +13,7 @@ class User extends Authenticatable
    use Notifiable, HasDefender;
     use SoftDeletes;
 
-    const ADMIN = 'admin';
+    const ADMIN = 'usuario';
     const COORDENADOR = 'coordenador';
     const ALUNO = 'aluno';
 
@@ -23,6 +23,7 @@ class User extends Authenticatable
         'rg',
         'cpf',
         'telefone',
+        'celular',
         'email',
         'password',
     ];

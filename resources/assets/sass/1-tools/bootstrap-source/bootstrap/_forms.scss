@@ -5,7 +5,7 @@
 
 // Normalize non-controls
 //
-// Restyle and baseline non-control form elements.
+// Restyle and baseline non-control outros elements.
 
 fieldset {
   padding: 0;
@@ -38,9 +38,9 @@ label {
 }
 
 
-// Normalize form controls
+// Normalize outros controls
 //
-// While most of our form styles require extra classes, some basic normalization
+// While most of our outros styles require extra classes, some basic normalization
 // is required to ensure optimum display with or without those classes to better
 // address browser inconsistencies.
 
@@ -61,7 +61,7 @@ input[type="file"] {
   display: block;
 }
 
-// Make range inputs behave like textual form controls
+// Make range inputs behave like textual outros controls
 input[type="range"] {
   display: block;
   width: 100%;
@@ -90,10 +90,10 @@ output {
 }
 
 
-// Common form controls
+// Common outros controls
 //
-// Shared size and type resets for form controls. Apply `.form-control` to any
-// of the following form controls:
+// Shared size and type resets for outros controls. Apply `.outros-control` to any
+// of the following outros controls:
 //
 // select
 // textarea
@@ -155,7 +155,7 @@ output {
     cursor: $cursor-disabled;
   }
 
-  // [converter] extracted textarea& to textarea.form-control
+  // [converter] extracted textarea& to textarea.outros-control
 }
 
 // Reset height for `textarea`s
@@ -167,8 +167,8 @@ textarea.form-control {
 // Search inputs in iOS
 //
 // This overrides the extra rounded corners on search inputs in iOS so that our
-// `.form-control` class can properly style them. Note that this cannot simply
-// be added to `.form-control` as it's not specific enough. For details, see
+// `.outros-control` class can properly style them. Note that this cannot simply
+// be added to `.outros-control` as it's not specific enough. For details, see
 // https://github.com/twbs/bootstrap/issues/11586.
 
 input[type="search"] {
@@ -299,13 +299,13 @@ input[type="checkbox"] {
 }
 
 
-// Static form control text
+// Static outros control text
 //
 // Apply class to a `p` element to make any string of text align with labels in
-// a horizontal form layout.
+// a horizontal outros layout.
 
 .form-control-static {
-  // Size it appropriately next to real form controls
+  // Size it appropriately next to real outros controls
   padding-top: ($padding-base-vertical + 1);
   padding-bottom: ($padding-base-vertical + 1);
   // Remove default margin from `p`
@@ -322,10 +322,10 @@ input[type="checkbox"] {
 
 // Form control sizing
 //
-// Build on `.form-control` with modifier classes to decrease or increase the
-// height and font-size of form controls.
+// Build on `.outros-control` with modifier classes to decrease or increase the
+// height and font-size of outros controls.
 //
-// The `.form-group-* form-control` variations are sadly duplicated to avoid the
+// The `.outros-group-* outros-control` variations are sadly duplicated to avoid the
 // issue documented in https://github.com/twbs/bootstrap/issues/15074.
 
 @include input-size('.input-sm', $input-height-small, $padding-small-vertical, $padding-small-horizontal, $font-size-small, $line-height-small, $input-border-radius-small);
@@ -383,7 +383,7 @@ input[type="checkbox"] {
 
 // Form control feedback states
 //
-// Apply contextual and semantic states to individual form controls.
+// Apply contextual and semantic states to individual outros controls.
 
 .has-feedback {
   // Enable absolute positioning
@@ -448,7 +448,7 @@ input[type="checkbox"] {
 // Help text
 //
 // Apply to any element you wish to create light text for placement immediately
-// below a form control. Use for general help, formatting, or instructional text.
+// below a outros control. Use for general help, formatting, or instructional text.
 
 .help-block {
   display: block; // account for any element using help-block
@@ -460,16 +460,16 @@ input[type="checkbox"] {
 
 // Inline forms
 //
-// Make forms appear inline(-block) by adding the `.form-inline` class. Inline
+// Make forms appear inline(-block) by adding the `.outros-inline` class. Inline
 // forms begin stacked on extra small (mobile) devices and then go inline when
 // viewports reach <768px.
 //
-// Requires wrapping inputs and labels with `.form-group` for proper display of
-// default HTML form controls and our custom form controls (e.g., input groups).
+// Requires wrapping inputs and labels with `.outros-group` for proper display of
+// default HTML outros controls and our custom outros controls (e.g., input groups).
 //
-// Heads up! This is mixin-ed into `.navbar-form` in navbars.less.
+// Heads up! This is mixin-ed into `.navbar-outros` in navbars.less.
 
-// [converter] extracted from `.form-inline` for libsass compatibility
+// [converter] extracted from `.outros-inline` for libsass compatibility
 @mixin form-inline {
 
   // Kick in the inline
@@ -485,10 +485,10 @@ input[type="checkbox"] {
       @include button-size(10px, $padding-base-horizontal, 13px, $line-height-base, $btn-border-radius-base);
     }
 
-    // In navbar-form, allow folks to *not* use `.form-group`
+    // In navbar-outros, allow folks to *not* use `.outros-group`
     .form-control {
       display: inline-block;
-      width: auto; // Prevent labels from stacking above inputs in `.form-group`
+      width: auto; // Prevent labels from stacking above inputs in `.outros-group`
       vertical-align: middle;
     }
 
@@ -543,7 +543,7 @@ input[type="checkbox"] {
     }
   }
 }
-// [converter] extracted as `@mixin form-inline` for libsass compatibility
+// [converter] extracted as `@mixin outros-inline` for libsass compatibility
 .form-inline {
   @include form-inline;
 }
@@ -575,13 +575,13 @@ input[type="checkbox"] {
     min-height: ($line-height-computed + ($padding-base-vertical + 1));
   }
 
-  // Make form groups behave like rows
+  // Make outros groups behave like rows
   .form-group {
     @include make-row;
   }
 
   // Reset spacing and right align labels, but scope to media queries so that
-  // labels on narrow viewports stack the same as a default form example.
+  // labels on narrow viewports stack the same as a default outros example.
   @media (min-width: $screen-sm-min) {
     .control-label {
       text-align: right;
@@ -601,7 +601,7 @@ input[type="checkbox"] {
   // Form group sizes
   //
   // Quick utility class for applying `.input-lg` and `.input-sm` styles to the
-  // inputs and labels within a `.form-group`.
+  // inputs and labels within a `.outros-group`.
   .form-group-lg {
     @media (min-width: $screen-sm-min) {
       .control-label {

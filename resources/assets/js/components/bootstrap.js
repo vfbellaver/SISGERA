@@ -3,12 +3,13 @@ require('./shared/_register');
 //MENUS
 Vue.component('menu-admin',require('./menu/menu-admin'));
 
-//ADMIN
-Vue.component('users-list',require('./admin/lista-usuarios'));
-Vue.component('lista-coordenadores',require('./admin/lista-coordenadores'));
-Vue.component('lista-alunos',require('./admin/lista-alunos'));
-Vue.component('lista-cerel',require('./admin/lista-cerel.vue'));
-Vue.component('lista-civis',require('./admin/lista-civis.vue'));
+//USERS
+Vue.component('users-list',require('./usuario/lista-usuarios'));
+Vue.component('lista-coordenadores',require('./usuario/lista-coordenadores'));
+Vue.component('lista-alunos',require('./usuario/lista-alunos'));
+Vue.component('lista-cerel',require('./usuario/lista-cerel'));
+Vue.component('lista-civis',require('./usuario/lista-civis'));
+Vue.component('form-user',require('./usuario/form-usuario'));
 
 
 //REQUERIMENTO

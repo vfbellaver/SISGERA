@@ -1,63 +1,41 @@
-class Errors {
+window.FormErrors = function () {
+    this.errors = {};
 
-    /**
-     * Cria uma instância da classe de erros.
-     */
-    constructor() {
-        this.errors = {};
-    }
+    this.hasErrors = function () {
+        return ! _.isEmpty(this.errors);
+    };
 
+    this.has = function (field) {
+        return _.indexOf(_.keys(this.errors), field) > -1;
+    };
 
-    /**
-     * Determina se existe um erro no campo.
-     *
-     * @param {field}
-     */
-    has(field) {
-        return this.errors.hasOwnProperty(field);
-    }
+    this.all = function () {
+        return this.errors;
+    };
 
+    this.flatten = function () {
+        return _.flatten(_.toArray(this.errors));
+    };
 
-    /**
-     * Verifica se existe erros.
-     *
-     * @returns {boolean}
-     */
-    any() {
-        return Object.keys(this.errors).length > 0;
-    }
-
-
-    /**
-     * Retorna a mensagem de erro do campo.
-     * @param field
-     */
-    get(field) {
-        if (this.errors[field]) {
+    this.get = function (field) {
+        if (this.has(field)) {
             return this.errors[field][0];
         }
-    }
+    };
 
-    /**
-     * Guarda novos erros.
-     * @param errors
-     */
-    record(errors) {
-        this.errors = errors;
-    }
-
-
-    /**
-     * Limpa um ou todos os erros.
-     * @param field
-     */
-    clear(field) {
-        if (field) {
-            delete this.errors[field];
-
-            return;
+    this.set = function (errors) {
+        if (typeof errors === 'object') {
+            this.errors = errors;
+        } else {
+            this.errors = {'form': ['Something went wrong. Please try again or contact customer support.']};
         }
+    };
 
-        this.errors = {};
-    }
-}
+    this.forget = function (field) {
+        if (typeof field === 'undefined') {
+            this.errors = {};
+        } else {
+            Vue.delete(this.errors, field);
+        }
+    };
+};

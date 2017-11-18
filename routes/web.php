@@ -20,9 +20,12 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //ADMIN
-Route::resource('admin', 'AdminController');
+Route::resource('usuario', 'AdminController');
+Route::resource('user', 'Api\UsuarioController');
 
 //USERS
+Route::get('current/user','UsuarioController@getCurrentUser')->name('current.user');
+
 Route::get('get/coord', 'UsuarioController@getCoordenadores')->name('get-coordenadores');
 Route::get('get/alunos', 'UsuarioController@getAlunos')->name('get-alunos');
 Route::get('get/cerel', 'UsuarioController@getCerel')->name('get-cerel');

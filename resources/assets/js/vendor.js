@@ -1,7 +1,7 @@
 import _ from 'lodash';
-window._ = _;
-
 import jQUery from 'jquery';
+
+window._ = _;
 window.$ = window.jQuery = jQUery;
 
 window.axios = require('axios');

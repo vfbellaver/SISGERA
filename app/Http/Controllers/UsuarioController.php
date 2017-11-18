@@ -11,6 +11,11 @@ class UsuarioController extends Controller
         $this->middleware('needsRole:admin');
     }
 
+
+    public function getCurrentUser(){
+        return User::where('id',auth()->user()->id);
+    }
+
     public function getCoordenadores()
     {
 

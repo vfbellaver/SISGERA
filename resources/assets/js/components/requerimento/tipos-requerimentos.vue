@@ -14,6 +14,7 @@
     </div>
 </template>
 <script>
+
     export default {
         data() {
             return {
@@ -27,7 +28,7 @@
 
         methods: {
             load(){
-                Sgs.get(laroute.route('tipos-requerimento'))
+                Sg.get(laroute.route('tipos-requerimento'))
                     .then((response) => {
                         this.tpRequerimentos = response;
                     });

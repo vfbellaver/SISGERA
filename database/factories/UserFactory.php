@@ -12,6 +12,7 @@ $factory->define(Sisgera\User::class, function (Faker $faker) {
         'rg'=> $faker->randomNumber(7),
         'cpf' => $faker->randomNumber(7),
         'telefone' => $faker->phoneNumber,
+        'celular' => $faker->phoneNumber,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
     ];
