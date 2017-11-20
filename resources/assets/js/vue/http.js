@@ -58,8 +58,15 @@ export default   {
         return axios.post(uri, data, config);
     },
 
-    post(uri, form) {
-        return Sg.sendForm('post', uri, form);
+    post(api,form) {
+        form.id ?
+            this.put(laroute.route(api+'.update'),form)
+            : this.store(laroute.route(api+'.store'),form);
+
+    },
+
+    store(uri,form) {
+        return Sg.sendForm('post',uri, form);
     },
 
     put(uri, form) {
@@ -74,11 +81,11 @@ export default   {
         form.hasSwal = true;
         return new Promise((resolve, reject) => {
             swal({
-                title: "Are you sure?",
-                text: "This operation cannot be undone",
+                title: "Deseja realmente deletar?",
+                text: "Esta operação não pode ser desfeita",
                 type: "warning",
                 showCancelButton: true,
-                confirmButtonText: "Yes, proceed!",
+                confirmButtonText: "Sim, tenho!",
                 showLoaderOnConfirm: true,
                 closeOnConfirm: false
             }, () => {
@@ -89,6 +96,7 @@ export default   {
                     .catch(error => {
                         reject(error);
                     });
+
             });
         });
     },
@@ -98,16 +106,13 @@ export default   {
             form.startProcessing();
             axios[method](uri, JSON.parse(JSON.stringify(form)))
                 .then(response => {
-                    form.finishProcessing();
                     let data = response.data;
                     if (form.hasSwal) {
-                        swal('Success!', data.message, "success");
+                        swal('Pronto!', data.message, "success");
                         resolve(data);
                         return;
                     }
-                    if (data.message) {
-                        toastr.success('', data.message);
-                    }
+
                     if (_.has(data, 'data')) {
                         data.data.editForm = new Form({});
                         data.data.destroyForm = new Form({});
@@ -132,7 +137,7 @@ export default   {
                 window.location = '/';
             }
 
-            if (form.hasSwal) {
+            if (form.Swal) {
                 swal("Error occurred!", errors.response.data.message, "error");
                 return;
             } else {

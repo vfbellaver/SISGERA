@@ -18,12 +18,6 @@
             }
         },
 
-        mounted() {
-
-        },
-
-        methods: {}
-
     }
 
 </script>

@@ -24,7 +24,7 @@ class UsersTableSeeder extends Seeder
             'cpf' => 0101010101,
             'telefone' => 1122334455,
             'celular' => 1122334455,
-            'email' => 'usuario@sisgera.com',
+            'email' => 'admin@sisgera.com',
             'password' => bcrypt('sisgera##'),
         ]);
         $user->attachRole($role);

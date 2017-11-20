@@ -24,8 +24,8 @@
                             <td>{{coord.email}}</td>
                             <td>Coordenador Curso</td>
                             <td>
-                                <button class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></button>
-                                <button class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button>
+                                <button class="btn btn-xs btn-primary" @click="edit(coord)"><i class="fa fa-edit"></i></button>
+                                <button class="btn btn-xs btn-danger" @click="destroy(coord)"><i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
                         </tbody>
@@ -75,11 +75,26 @@
                         this.pagination = response;
                     });
             },
-            edit(){
-
+            edit(coord) {
+                window.location = laroute.route("user.edit", {user: coord.id});
             },
-            destroy(){
 
+            destroy(coord) {
+                const self = this;
+                debugger;
+                Sg.delete(laroute.route('user.destroy', {user: coord.id}),coord.destroyForm)
+                    .then(() => {
+                        self.removeCoord(coord)
+                    });
+            },
+            removeCoord(coord) {
+                this.coordenadores.splice(this.findIndex(coord), 1);
+            },
+
+            findIndex(coord) {
+                return this.coordenadores.findIndex((_coord) => {
+                    return _coord.id === coord.id;
+                });
             }
 
         }
