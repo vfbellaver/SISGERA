@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 use Sisgera\Http\Controllers\Controller;
 use Sisgera\Http\Requests\UserUpdateRequest;
 use Sisgera\Http\Requests\UsuarioCreateRequest;
-use Sisgera\User;
+use Sisgera\Models\User;
+
 
 class UsuarioController extends Controller
 {

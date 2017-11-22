@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Sisgera\User;
+use Sisgera\Models\User;
+
 
 class UsersTableSeeder extends Seeder
 {

@@ -3,7 +3,7 @@
 namespace Sisgera\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Sisgera\User;
+
 
 class Role extends Model
 {

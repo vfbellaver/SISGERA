@@ -2,7 +2,8 @@
 
 namespace Sisgera\Http\Controllers;
 
-use Sisgera\User;
+
+use Sisgera\Models\User;
 
 class UsuarioController extends Controller
 {

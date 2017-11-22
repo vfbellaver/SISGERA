@@ -4,7 +4,8 @@ namespace Sisgera\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Sisgera\User;
+use Sisgera\Models\User;
+
 
 class HomeController extends Controller
 {

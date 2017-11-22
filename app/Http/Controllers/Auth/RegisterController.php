@@ -2,10 +2,11 @@
 
 namespace Sisgera\Http\Controllers\Auth;
 
-use Sisgera\User;
+
 use Sisgera\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Sisgera\Models\User;
 
 class RegisterController extends Controller
 {
@@ -58,7 +59,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \Sisgera\User
+     * @return \Sisgera\Models\User
      */
     protected function create(array $data)
     {

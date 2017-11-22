@@ -1,6 +1,6 @@
 <?php
 
-namespace Sisgera;
+namespace Sisgera\Models;
 
 use Artesaos\Defender\Role;
 use Artesaos\Defender\Traits\HasDefender;

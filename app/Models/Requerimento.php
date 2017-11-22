@@ -4,7 +4,7 @@ namespace Sisgera\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Sisgera\User;
+
 
 class Requerimento extends Model
 {

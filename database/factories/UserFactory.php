@@ -1,9 +1,10 @@
 <?php
 
 use Faker\Generator as Faker;
+use Sisgera\Models\User;
 
 
-$factory->define(Sisgera\User::class, function (Faker $faker) {
+$factory->define(User::class, function (Faker $faker) {
     static $password;
 
     return [
