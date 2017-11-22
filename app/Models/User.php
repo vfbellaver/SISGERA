@@ -11,7 +11,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
    use Notifiable, HasDefender;
-    use SoftDeletes;
+   use SoftDeletes;
 
     const ADMIN = 'usuario';
     const COORDENADOR = 'coordenador';

@@ -9,4 +9,8 @@ class TipoRequerimento extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function requerimento(){
+        return $this->belongsToMany(Requerimento::class);
+    }
 }
