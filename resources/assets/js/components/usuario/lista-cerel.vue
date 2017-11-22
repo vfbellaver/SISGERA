@@ -18,13 +18,13 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="( aluno, index ) in alunos">
+                        <tr v-for="( cerel, index ) in cerel">
                             <td>{{ index + 1 }}</td>
-                            <td>{{aluno.name}}</td>
-                            <td>{{aluno.email}}</td>
+                            <td>{{cerel.name}}</td>
+                            <td>{{cerel.email}}</td>
                             <td>
-                                <button class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></button>
-                                <button class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button>
+                                <button class="btn btn-xs btn-primary" @click="edit(cerel)"><i class="fa fa-edit"></i></button>
+                                <button class="btn btn-xs btn-danger" @click="destroy(cerel)"><i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
                         </tbody>
@@ -43,7 +43,7 @@
         components: {},
         data() {
             return {
-                alunos: [],
+                cerel: [],
                 pagination: {},
                 pageHeading: {
                     title: 'Lista de Servidores Cerel',
@@ -64,7 +64,7 @@
                 Sg.get(laroute.route('get-cerel'))
                     .then((response) => {
 
-                        this.alunos = response.data;
+                        this.cerel = response.data;
                         this.pagination = response;
                     });
 
@@ -73,10 +73,30 @@
                 console.log(page);
                 Sg.get(laroute.route('get-cerel', {page: page}))
                     .then((response) => {
-                        this.alunos = response.data;
+                        this.cerel = response.data;
                         this.pagination = response;
                     });
             },
+            edit(coord) {
+                window.location = laroute.route("user.edit", {user: coord.id});
+            },
+
+            destroy(coord) {
+                const self = this;
+                Sg.delete(laroute.route('user.destroy', {user: coord.id}),coord.destroyForm)
+                    .then(() => {
+                        self.removeCoord(coord)
+                    });
+            },
+            removeCoord(coord) {
+                this.coordenadores.splice(this.findIndex(coord), 1);
+            },
+
+            findIndex(coord) {
+                return this.coordenadores.findIndex((_coord) => {
+                    return _coord.id === coord.id;
+                });
+            }
         }
 
     }

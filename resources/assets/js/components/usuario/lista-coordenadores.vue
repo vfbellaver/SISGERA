@@ -81,7 +81,6 @@
 
             destroy(coord) {
                 const self = this;
-                debugger;
                 Sg.delete(laroute.route('user.destroy', {user: coord.id}),coord.destroyForm)
                     .then(() => {
                         self.removeCoord(coord)

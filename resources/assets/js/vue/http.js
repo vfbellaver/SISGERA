@@ -58,15 +58,8 @@ export default   {
         return axios.post(uri, data, config);
     },
 
-    post(api,form) {
-        form.id ?
-            this.put(laroute.route(api+'.update'),form)
-            : this.store(laroute.route(api+'.store'),form);
-
-    },
-
-    store(uri,form) {
-        return Sg.sendForm('post',uri, form);
+    post(uri, form) {
+        return Sg.sendForm('post', uri, form);
     },
 
     put(uri, form) {
@@ -81,8 +74,8 @@ export default   {
         form.hasSwal = true;
         return new Promise((resolve, reject) => {
             swal({
-                title: "Deseja realmente deletar?",
-                text: "Esta operação não pode ser desfeita",
+                title: "Você tem Certeza?",
+                text: "Esta operacão não pode ser desfeita.",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonText: "Sim, tenho!",
@@ -96,7 +89,6 @@ export default   {
                     .catch(error => {
                         reject(error);
                     });
-
             });
         });
     },
@@ -108,7 +100,7 @@ export default   {
                 .then(response => {
                     let data = response.data;
                     if (form.hasSwal) {
-                        swal('Pronto!', data.message, "success");
+                        swal('Success!', data.message, "success");
                         resolve(data);
                         return;
                     }

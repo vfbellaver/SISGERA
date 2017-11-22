@@ -21,7 +21,7 @@ class UsuarioController extends Controller
 
         $data = User::whereHas('roles',
             function ($query) {
-                $query->where('name', '=', 'coordernador');
+                $query->where('name', '=', 'coordenador');
             })
             ->paginate(10);
 

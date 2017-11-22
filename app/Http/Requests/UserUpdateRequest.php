@@ -18,10 +18,10 @@ class UserUpdateRequest extends FormRequest
         $id = request('id');
         return [
             'name'=> 'required',
-            'email' => "required|email|min:5|unique:users,{$id}",
-            'rg' => 'required|unique:users',
+            'email' => "required|email|unique:users,id,{$id}",
+            'rg' => "required|unique:users,id,{$id}",
             'org_emissor' => 'required',
-            'cpf' => 'required|unique:users',
+            'cpf' => "required|unique:users,id,{$id}",
             'role' => 'required',
         ];
     }

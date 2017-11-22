@@ -32,7 +32,7 @@ class UsersTableSeeder extends Seeder
 
     public function createCoordernadorCoordenadores()
     {
-        $role = Defender::findRole('coordernador');
+        $role = Defender::findRole('coordenador');
         $user = factory(User::class)->create([
             'name' => 'Coordenador Curso',
             'rg' => 1111111111,

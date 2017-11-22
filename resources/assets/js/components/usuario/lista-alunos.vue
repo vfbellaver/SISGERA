@@ -23,8 +23,8 @@
                             <td>{{aluno.name}}</td>
                             <td>{{aluno.email}}</td>
                             <td>
-                                <button class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></button>
-                                <button class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button>
+                                <button class="btn btn-xs btn-primary" @click="edit(aluno)"><i class="fa fa-edit"></i></button>
+                                <button class="btn btn-xs btn-danger" @click="destroy(aluno)"><i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
                         </tbody>
@@ -77,6 +77,27 @@
                         this.pagination = response;
                     });
             },
+
+            edit(coord) {
+                window.location = laroute.route("user.edit", {user: coord.id});
+            },
+
+            destroy(coord) {
+                const self = this;
+                Sg.delete(laroute.route('user.destroy', {user: coord.id}),coord.destroyForm)
+                    .then(() => {
+                        self.removeCoord(coord)
+                    });
+            },
+            removeCoord(coord) {
+                this.coordenadores.splice(this.findIndex(coord), 1);
+            },
+
+            findIndex(coord) {
+                return this.coordenadores.findIndex((_coord) => {
+                    return _coord.id === coord.id;
+                });
+            }
         }
 
     }

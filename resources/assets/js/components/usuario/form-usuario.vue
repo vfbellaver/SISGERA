@@ -14,8 +14,9 @@
                                     <form-group :form="form" field="name">
                                         <label class="control-label" for="name"><h4>
                                             <strong>Nome:</strong></h4></label>
-                                        <input class="form-control" v-model="form.name" id="name" type="text" name="name"
-                                               placeholder="Nome Estudante" >
+                                        <input class="form-control" v-model="form.name" id="name" type="text"
+                                               name="name"
+                                               placeholder="Nome Estudante">
                                     </form-group>
                                 </column>
                                 <column size="6">
@@ -95,12 +96,12 @@
                                     <form-group :form="form" field="role">
                                         <label class="control-label" for="role"><h4>
                                             <strong>Tipo de Usuario:</strong></h4></label>
-                                       <select v-model="form.role" id="role" class="form-control">
-                                           <option value="" selected>Selecione um tipo de Usuário</option>
-                                           <option value="coordenador">Coordenador</option>
-                                           <option value="cerel">Cerel</option>
-                                           <option value="aluno">Aluno</option>
-                                       </select>
+                                        <select v-model="form.role" id="role" class="form-control">
+                                            <option value="" selected>Selecione um tipo de Usuário</option>
+                                            <option value="coordenador">Coordenador</option>
+                                            <option value="cerel">Cerel</option>
+                                            <option value="aluno">Aluno</option>
+                                        </select>
                                     </form-group>
                                 </column>
                             </row>
@@ -128,7 +129,7 @@
 <script>
     export default {
         props: {
-          user:{required: false},
+            user: {required: false},
         },
 
         data(){
@@ -146,7 +147,7 @@
                 this.form = new Form({
                     id: user ? user.id : null,
                     name: user ? user.name : null,
-                    email: user ? user.email :null,
+                    email: user ? user.email : null,
                     rg: user ? user.rg : null,
                     org_emissor: user ? user.org_emissor : null,
                     cpf: user ? user.cpf : null,
@@ -157,10 +158,22 @@
             },
 
             save(){
-                Sg.post('user',this.form).then((response) => {
-                    console.log('User Created',response.message);
-                    swal('Pronto',response.message,'success')
-                });
+                if (!this.form.id) {
+                    const uri = laroute.route('user.store');
+                    Sg.post(uri, this.form).then((response) => {
+                        console.log('User Created', response.message);
+                        swal('Pronto', response.message, 'success')
+                        this.load(response.data);
+                    });
+                }
+                else {
+                    const uri = laroute.route('user.update',{user: this.form.id});
+                    Sg.put(uri, this.form).then((response) => {
+                        console.log('User Updated', response.message);
+                        swal('Pronto', response.message, 'success')
+                        this.load(response.data);
+                    });
+                }
             },
         }
     }

@@ -2,8 +2,12 @@
 
 namespace Sisgera\Http\Controllers\Api;
 
+
+
+use Artesaos\Defender\Facades\Defender;
 use Illuminate\Http\Request;
 use Sisgera\Http\Controllers\Controller;
+use Sisgera\Http\Requests\UserUpdateRequest;
 use Sisgera\Http\Requests\UsuarioCreateRequest;
 use Sisgera\User;
 
@@ -27,12 +31,14 @@ class UsuarioController extends Controller
         $user->password = bcrypt($request->input('password'));
         $user->save();
 
+        $roleName = $request->input('role');
+        $role = Defender::findRole($roleName);
+        $user->attachRole($role);
+
         $data = [
             'message' => 'Usuário ' . $user->name . ' criado com Sucesso',
             'data' => $user
         ];
-        $role = \Defender::findRole($request->input('role'));
-        $user->attachRole($role);
 
         return $data;
     }
@@ -52,11 +58,18 @@ class UsuarioController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(UserUpdateRequest $request, $id)
     {
+        $user = User::query()->findOrFail($id);
         $data = $request->all();
+        $user->update($data);
 
-        return $data;
+        $response = [
+            'message' => 'Usuário atualizado.',
+            'data' => $data
+        ];
+
+        return $response;
     }
 
 
