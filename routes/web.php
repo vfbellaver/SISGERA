@@ -20,8 +20,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //INVITATION
-Route::post('register/invitation', 'Auth\RegisterController@registerInvitation')->name('register-invitation');
-Route::get('register/invitation/{token}', 'Auth\RegisterController@invitation')->name('invitation');
+Route::post('registro/cadastro', 'Auth\RegisterController@registerInvitation')->name('registro-cadastro');
+Route::get('registro/cadastro/{token}', 'Auth\RegisterController@invitation')->name('cadastro');
 
 //ADMIN
 Route::resource('usuario', 'AdminController');

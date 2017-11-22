@@ -28,13 +28,13 @@ class CadastroUsuario extends Notification
 
     public function toMail($notifiable)
     {
-        $route = route('invitation', ['token' => $this->user->invitation_token]);
+        $route = route('cadastro', ['token' => $this->user->cadastro_token]);
         $appName = config('app.name');
 
         return (new MailMessage)
                     ->subject("Cadastro de usuário {$appName}!")
                     ->greeting("Olá {$this->user->name}!")
-                    ->line("Você está pré cadastrado no  {$appName}!")
+                    ->line("Você está pré cadastrado no Sistema de Gerenciamento de Requerimentos Acadêmicos -  {$appName}!")
                     ->action('Cadastre sua senha', url('/'))
                     ->line('Obrigado!');
     }

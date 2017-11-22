@@ -73,8 +73,8 @@ class RegisterController extends Controller
         $user->password = bcrypt($request->input('password'));
         $user->remember_token = str_random(10);
         $user->save();
-        $role = Defender::findRole();
-        $user->attachRole($role);
+//        $role = Defender::findRole();
+//        $user->attachRole($role);
 
         return redirect()->route('home');
 

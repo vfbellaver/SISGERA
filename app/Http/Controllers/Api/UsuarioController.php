@@ -30,7 +30,7 @@ class UsuarioController extends Controller
     {
         $data = $request->all();
         $user = new User($data);
-        $user->invitation_token = str_random(128);
+        $user->cadastro_token = str_random(128);
         $user->save();
 
         $user->notify(new CadastroUsuario($user));
