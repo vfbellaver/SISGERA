@@ -10,6 +10,7 @@ use Sisgera\Http\Controllers\Controller;
 use Sisgera\Http\Requests\UserUpdateRequest;
 use Sisgera\Http\Requests\UsuarioCreateRequest;
 use Sisgera\Models\User;
+use Sisgera\Notifications\CadastroUsuario;
 
 
 class UsuarioController extends Controller
@@ -29,15 +30,17 @@ class UsuarioController extends Controller
     {
         $data = $request->all();
         $user = new User($data);
-        $user->password = bcrypt($request->input('password'));
+        $user->invitation_token = str_random(128);
         $user->save();
+
+        $user->notify(new CadastroUsuario($user));
 
         $roleName = $request->input('role');
         $role = Defender::findRole($roleName);
         $user->attachRole($role);
 
         $data = [
-            'message' => 'Usuário ' . $user->name . ' criado com Sucesso',
+            'message' => 'Usuário ' . $user->name . ' criado com Sucesso!',
             'data' => $user
         ];
 

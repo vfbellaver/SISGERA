@@ -3,6 +3,7 @@
 namespace Sisgera\Http\Controllers\Auth;
 
 
+use Artesaos\Defender\Facades\Defender;
 use Sisgera\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -23,29 +24,16 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
+
     protected $redirectTo = '/home';
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+
     public function __construct()
     {
         $this->middleware('guest');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
+
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -55,12 +43,7 @@ class RegisterController extends Controller
         ]);
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return \Sisgera\Models\User
-     */
+
     protected function create(array $data)
     {
         return User::create([
@@ -68,5 +51,32 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    public function invitation($token)
+    {
+        $isValid = false;
+        $user = User::query()->where('invitation_token', $token)->first();
+        if ($user) {
+            $isValid = true;
+        }
+        return view('auth.invitation', compact('isValid', 'token'));
+    }
+
+    public function registerInvitation(Request $request)
+    {
+
+        $user = User::where('invitation_token', $request->input('invitation_token'))->first();
+
+        $user->name = $request->input('name');
+        $user->invitation_token = null;
+        $user->password = bcrypt($request->input('password'));
+        $user->remember_token = str_random(10);
+        $user->save();
+        $role = Defender::findRole();
+        $user->attachRole($role);
+
+        return redirect()->route('home');
+
     }
 }

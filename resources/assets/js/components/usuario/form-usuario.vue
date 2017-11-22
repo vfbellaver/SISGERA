@@ -72,25 +72,8 @@
                                     </form-group>
                                 </column>
                             </row>
-                            <row>
-                                <column size="6">
-                                    <form-group :form="form" field="password">
-                                        <label class="control-label" for="password"><h4>
-                                            <strong>Password:</strong></h4></label>
-                                        <input class="form-control" id="password" type="password" name="password"
-                                               placeholder="Digite um password" v-model="form.password">
-                                    </form-group>
-                                </column>
-                                <column size="6">
-                                    <form-group :form="form" field="confirm_password">
-                                        <label class="control-label" for="confirm_password"><h4>
-                                            <strong>Confirmacão Password:</strong></h4></label>
-                                        <input class="form-control" id="confirm_password" type="password"
-                                               name="confirm_password"
-                                               placeholder="Confirme o password" v-model="form.confirm_password">
-                                    </form-group>
-                                </column>
-                            </row>
+
+
                             <row>
                                 <column size="6">
                                     <form-group :form="form" field="role">

@@ -21,8 +21,6 @@ class UsuarioCreateRequest extends FormRequest
             'rg' => 'required|unique:users',
             'org_emissor' => 'required',
             'cpf' => 'required|unique:users',
-            'password' => 'required|min:6',
-            'confirm_password' => 'required|same:password',
             'role' => 'required',
 
         ];
@@ -45,9 +43,6 @@ class UsuarioCreateRequest extends FormRequest
             'cpf.required' => 'Informe o número de CPF.',
             'cpf.unique' => 'Número de CPF existente.',
 
-            'password.required' => 'Informe uma senha.',
-            'confirm_password.required' => 'Confirme a senha.',
-            'confirm_password.same' => 'Confirmacão de senha diferente.',
 
             'role.required' => 'Selecione o tipo de usuário.',
 

@@ -19,6 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//INVITATION
+Route::post('register/invitation', 'Auth\RegisterController@registerInvitation')->name('register-invitation');
+Route::get('register/invitation/{token}', 'Auth\RegisterController@invitation')->name('invitation');
+
 //ADMIN
 Route::resource('usuario', 'AdminController');
 Route::resource('user', 'Api\UsuarioController');
