@@ -19,12 +19,18 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//INVITATION
+Route::post('registro/cadastro', 'Auth\RegisterController@registerInvitation')->name('registro-cadastro');
+Route::get('registro/cadastro/{token}', 'Auth\RegisterController@invitation')->name('cadastro');
+
 //ADMIN
 Route::resource('usuario', 'AdminController');
 Route::resource('user', 'Api\UsuarioController');
 
 //USERS
 Route::get('current/user','UsuarioController@getCurrentUser')->name('current.user');
+Route::get('configuracoes/perfil','UsuarioController@perfilUsuario')->name('perfil-usuario');
+Route::put('perfil/{user}/password', 'Api\UsuarioController@atualizaPassword')->name('atualiza.password');
 
 Route::get('get/coord', 'UsuarioController@getCoordenadores')->name('get-coordenadores');
 Route::get('get/alunos', 'UsuarioController@getAlunos')->name('get-alunos');

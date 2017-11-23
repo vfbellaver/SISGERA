@@ -2,7 +2,8 @@
 
 namespace Sisgera\Http\Controllers;
 
-use Sisgera\User;
+
+use Sisgera\Models\User;
 
 class UsuarioController extends Controller
 {
@@ -20,10 +21,7 @@ class UsuarioController extends Controller
     {
 
         $data = User::whereHas('roles',
-            function ($query) {
-                $query->where('name', '=', 'coordenador');
-            })
-            ->paginate(10);
+            function ($query) { $query->where('name', '=', 'coordenador');})->paginate(10);
 
         return $data;
 
@@ -32,28 +30,19 @@ class UsuarioController extends Controller
     public function getAlunos()
     {
         return User::whereHas('roles',
-            function ($query) {
-                $query->where('name', '=', 'aluno');
-            })
-            ->paginate(10);
+            function ($query) { $query->where('name', '=', 'aluno');})->paginate(10);
     }
 
     public function getCerel()
     {
         return User::whereHas('roles',
-            function ($query) {
-                $query->where('name', '=', 'cerel');
-            })
-            ->paginate(10);
+            function ($query) { $query->where('name', '=', 'cerel');})->paginate(10);
     }
 
     public function getCivis()
     {
         return User::whereHas('roles',
-            function ($query) {
-                $query->where('name', '=', 'civil');
-            })
-            ->paginate(10);
+            function ($query) { $query->where('name', '=', 'civil');})->paginate(10);
     }
 
     public function listaCoordenadores()
@@ -74,5 +63,10 @@ class UsuarioController extends Controller
     public function listaCivis()
     {
         return view('users.lista-civis');
+    }
+
+    public function perfilUsuario(){
+        $user = User::query()->findOrFail(auth()->user()->id);
+        return view('usuario.perfil',compact('user'));
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Sisgera;
+namespace Sisgera\Models;
 
 use Artesaos\Defender\Role;
 use Artesaos\Defender\Traits\HasDefender;
@@ -21,9 +21,11 @@ class User extends Authenticatable
         'name',
         'email',
         'rg',
+        'org_emissor',
         'cpf',
         'telefone',
         'celular',
+        'status',
         'email',
         'password',
     ];
@@ -31,7 +33,7 @@ class User extends Authenticatable
     protected $dates = ['deleted_at'];
 
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token','cadastro_token',
     ];
 
     public function getRoleAttribute()

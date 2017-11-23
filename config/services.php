@@ -30,7 +30,7 @@ return [
     ],
 
     'stripe' => [
-        'model' => Sisgera\User::class,
+        'model' => Sisgera\Models\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],

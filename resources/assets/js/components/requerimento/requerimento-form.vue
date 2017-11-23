@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="bs-component">
-                        <form class="form-horizontal" v-model="form" @submit="save" >
+                        <form class="form-horizontal" v-model="form" @submit="save">
                             <fieldset class="col-md-12">
                                 <legend class="row">1) Dados Requerente
                                     <small class="pull-right"><i class="fa fa-calendar"></i> 01/01/2016</small>
@@ -14,36 +14,36 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <label class="control-label">
-                                        <h4><strong>Nome do Requerente:</strong> &nbsp; Vagner Felipe Bellaver</h4>
+                                        <h4><strong>Nome do Requerente:</strong> &nbsp {{user.name}}</h4>
                                     </label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
                                     <label class="control-label">
-                                        <h4><strong>Email:</strong> &nbsp; vfbellaver@teste.com</h4>
+                                        <h4><strong>Email:</strong> &nbsp {{user.email}}</h4>
                                     </label>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="control-label">
-                                        <h4><strong>Rg:</strong> &nbsp; 1233123 SEJUSP/MS</h4>
+                                        <h4><strong>Rg:</strong> &nbsp {{user.rg}} &nbsp {{user.org_emissor}}</h4>
                                     </label>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="control-label">
-                                        <h4><strong>Cpf:</strong> &nbsp; 312.312.313-00</h4>
+                                        <h4><strong>Cpf:</strong> &nbsp {{user.cpf}}</h4>
                                     </label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
                                     <label class="control-label">
-                                        <h4><strong>Tel Fixo:</strong>&nbsp; (67) 3291-8766</h4>
+                                        <h4><strong>Tel Fixo:</strong>&nbsp {{user.telefone}} </h4>
                                     </label>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="control-label">
-                                        <h4><strong>Tel Celular:</strong>&nbsp; (67) 99900-8765</h4>
+                                        <h4><strong>Tel Celular:</strong>&nbsp {{user.celular}}</h4>
                                     </label>
                                 </div>
                             </div>
@@ -56,7 +56,7 @@
                                                placeholder="Nome Estudante" v-model="form.nome_estudante">
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox">O próprio usuário logado
+                                                <input type="checkbox" v-model="checked" @click="setEstudante">O próprio usuário logado
                                             </label>
                                         </div>
                                     </div>
@@ -72,8 +72,8 @@
                                 <div class="col-md-4">
                                     <label class="control-label" for="periodo"><h4>
                                         <strong>Periodo:</strong></h4></label>
-                                        <input class="form-control" id="periodo" type="text" name="periodo"
-                                               placeholder="Nome Estudante" v-model="form.periodo">
+                                    <input class="form-control" id="periodo" type="text" name="periodo"
+                                           placeholder="Nome Estudante" v-model="form.periodo">
                                 </div>
                                 <div class="col-md-4">
                                     <label class="control-label" for="turno"><h4>
@@ -114,17 +114,21 @@
 </style>
 <script>
     import TipoRequerimento from './tipos-requerimentos';
-    import { VueEditor } from 'vue2-editor';
+    import {VueEditor} from 'vue2-editor';
     export default {
         components: {
             TipoRequerimento,
             VueEditor,
         },
+        props: {
+            user: {required: true}
+        },
 
         data() {
             return {
                 detalhes: '<p>Detalhamento do seu Pedido</p>',
-                form:{},
+                form: {},
+                checked: false,
                 pageHeading: {
                     title: 'Novo Requerimento',
                     fa: 'fa fa-edit',
@@ -139,17 +143,27 @@
             this.form = this.createForm();
         },
 
-        methods:{
+        methods: {
             createForm(requerimento) {
                 return new Form({
                     id: requerimento ? requerimento.id : null,
                     nome_estudante: requerimento ? requerimento.nome_estudante : null,
+                    tipos_requerimento: [],
                     curso: requerimento ? requerimento.curso : null,
                     turno: requerimento ? requerimento.turno : null,
                     turma: requerimento ? requerimento.turma : null,
                     detalhamento: requerimento ? requerimento.detalhamento : null,
                 });
             },
+            setEstudante(){
+                this.checked = !this.checked;
+                if(this.checked){
+                    this.form.nome_estudante = this.user.name;
+                }else{
+                    this.form.nome_estudante = null;
+                }
+            },
+
             save(){
 
             },

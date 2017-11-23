@@ -18,7 +18,9 @@ class CreateUsersTable extends Migration
             $table->string('cpf',15)->unique();
             $table->string('telefone',24)->nullable();
             $table->string('celular',24)->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
+            $table->string('cadastro_token')->nullable();
+            $table->boolean('status')->default(1);
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

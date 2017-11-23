@@ -16,9 +16,9 @@ class CreateRequerimentoTipoRequerimentoTable extends Migration
 
             $table->foreign('requerimento_id')
                 ->references('id')->on('requerimentos')
-                ->onDelete('cascacde');
+                ->onDelete('cascade');
 
-            $table->foreign('tipo_requeriment_id')
+            $table->foreign('tipo_requerimento_id')
                 ->references('id')->on('tipo_requerimentos')
                 ->onDelete('cascade');
 
