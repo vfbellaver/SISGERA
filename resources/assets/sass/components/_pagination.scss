@@ -1,0 +1,14 @@
+.pagination {
+  .active {
+    a {
+      background-color: #3197d2;
+      border-color: #DDDDDD;
+      color: white;
+      cursor: pointer;
+      z-index: 2;
+      &:hover {
+        background: none;
+      }
+    }
+  }
+}

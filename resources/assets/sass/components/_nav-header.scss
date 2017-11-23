@@ -1,0 +1,36 @@
+
+
+.navbar-default {
+  background-color: #3c8dbc;
+  .navbar-nav{
+    .open{
+      a {
+        background: #ecf0f5;
+      }
+    }
+    li{
+      a {
+        font-size: 16px;
+        color: white;
+        font: bold;
+      }
+    }
+  }
+  .navbar-brand {
+    color: white;
+    padding-left: 20px;
+    padding-right: 5px;
+    padding-top: 20px;
+    padding-bottom: 0;
+
+
+    span{
+      font-size: 25px;
+    }
+
+    i{
+     margin-left: 15px;
+    }
+
+  }
+}

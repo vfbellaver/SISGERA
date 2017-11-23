@@ -1,22 +1,48 @@
+require('./vendor');
+require('./main');
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+import Laroute from './commons/laroute';
+import axios from 'axios';
+import Vue from 'vue';
+import Moment from 'moment';
+import swal from 'sweetalert';
+import Sisgera from './vue/http';
 
-require('./bootstrap');
+window.laroute = Laroute;
+window.moment = Moment;
+window.swal = swal;
+window.Vue = Vue;
+window.Sg = Sisgera;
 
-window.Vue = require('vue');
+require('./components/bootstrap');
+require('./vue/bootstrap');
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+window.EventBus = window.Bus = new Vue();
 
-Vue.component('example', require('./components/Example.vue'));
+window.App = new Vue({
+    el: '#app',
+    data() {
+        return {
+            user: 'Sg' in window ? Sg.user : null,
+        }
+    },
+    created() {
+        console.log("App Created");
+        let self = this;
 
-const app = new Vue({
-    el: '#app'
+        EventBus.$on(['loadCurrentUser', 'userUpdated'], () => {
+            axios.get(laroute.route('current.user '))
+                .then(response => {
+                    self.user = response.data;
+                });
+        });
+
+        EventBus.$on('settingsUpdated', () => {
+            axios.get(laroute.route('user.current.settings'))
+                .then(response => {
+                    debugger;
+                    self.user = response.data;
+                });
+        });
+    },
 });

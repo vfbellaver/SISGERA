@@ -172,12 +172,13 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        Sisgera\Providers\AppServiceProvider::class,
+        Sisgera\Providers\AuthServiceProvider::class,
+        // Sisgera\Providers\BroadcastServiceProvider::class,
+        Sisgera\Providers\EventServiceProvider::class,
+        Sisgera\Providers\RouteServiceProvider::class,
         Artesaos\Defender\Providers\DefenderServiceProvider::class,
+        Lord\Laroute\LarouteServiceProvider::class,
 
     ],
 

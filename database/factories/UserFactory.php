@@ -1,24 +1,19 @@
 <?php
 
 use Faker\Generator as Faker;
+use Sisgera\Models\User;
 
-/*
-|--------------------------------------------------------------------------
-| Model Factories
-|--------------------------------------------------------------------------
-|
-| This directory should contain each of the model factory definitions for
-| your application. Factories provide a convenient way to generate new
-| model instances for testing / seeding your application's database.
-|
-*/
 
-$factory->define(App\User::class, function (Faker $faker) {
+$factory->define(User::class, function (Faker $faker) {
     static $password;
 
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
+        'rg'=> $faker->randomNumber(7),
+        'cpf' => $faker->randomNumber(7),
+        'telefone' => $faker->phoneNumber,
+        'celular' => $faker->phoneNumber,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
     ];
