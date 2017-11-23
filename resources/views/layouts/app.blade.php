@@ -54,8 +54,7 @@
                                                 aria-haspopup="true" aria-expanded="false"><i
                                         class="fa fa-user fa-lg"></i></a>
                             <ul class="dropdown-menu settings-menu">
-                                <li><a href="page-user.html"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
-                                <li><a href="page-user.html"><i class="fa fa-user fa-lg"></i> Profile</a></li>
+                                <li><a href="{{route('perfil-usuario')}}"><i class="fa fa-user fa-lg"></i> Perfil</a></li>
                                 <li>
                                     <a href="javascript:;"
                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

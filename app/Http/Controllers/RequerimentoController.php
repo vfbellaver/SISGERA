@@ -4,6 +4,7 @@ namespace Sisgera\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Sisgera\Models\TipoRequerimento;
+use Sisgera\Models\User;
 
 class RequerimentoController extends Controller
 {
@@ -19,7 +20,8 @@ class RequerimentoController extends Controller
 
     public function create()
     {
-        return view('requerimento.create');
+        $user = User::query()->findOrFail(auth()->user()->id);
+        return view('requerimento.create',compact('user'));
     }
 
     public function store(Request $request)

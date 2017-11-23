@@ -3,10 +3,10 @@
 namespace Sisgera\Http\Controllers\Api;
 
 
-
 use Artesaos\Defender\Facades\Defender;
 use Illuminate\Http\Request;
 use Sisgera\Http\Controllers\Controller;
+use Sisgera\Http\Requests\PasswordUpdateRequest;
 use Sisgera\Http\Requests\UserUpdateRequest;
 use Sisgera\Http\Requests\UsuarioCreateRequest;
 use Sisgera\Models\User;
@@ -57,7 +57,7 @@ class UsuarioController extends Controller
     public function edit($id)
     {
         $user = User::query()->findOrFail($id);
-        return view('usuario.editar',compact('user'));
+        return view('usuario.editar', compact('user'));
 
     }
 
@@ -70,7 +70,7 @@ class UsuarioController extends Controller
 
         $response = [
             'message' => 'Usuário atualizado.',
-            'data' => $data
+            'data' => $user
         ];
 
         return $response;
@@ -85,6 +85,20 @@ class UsuarioController extends Controller
         return [
             'message' => $message
         ];
-
     }
+
+    public function atualizaPassword(PasswordUpdateRequest $request, User $user)
+    {
+        $data = $request->all();
+        $user->password = bcrypt($data['novo_password']);
+        $user->save();
+
+        $response = [
+            'message' => 'Senha atualizada.',
+            'data' => $user,
+        ];
+
+        return $response;
+    }
+
 }

@@ -22,7 +22,7 @@ class UserUpdateRequest extends FormRequest
             'rg' => "required|unique:users,id,{$id}",
             'org_emissor' => 'required',
             'cpf' => "required|unique:users,id,{$id}",
-            'role' => 'required',
+
         ];
     }
 
@@ -43,7 +43,6 @@ class UserUpdateRequest extends FormRequest
             'cpf.required' => 'Informe o número de CPF.',
             'cpf.unique' => 'Número de CPF existente.',
 
-            'role.required' => 'Selecione o tipo de usuário.',
 
         ];
     }

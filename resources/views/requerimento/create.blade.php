@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    <requerimento-form></requerimento-form>
+    <requerimento-form :user="{{$user}}"></requerimento-form>
 @endsection

@@ -12,6 +12,7 @@ Vue.component('lista-civis',require('./usuario/lista-civis'));
 Vue.component('form-user',require('./usuario/form-usuario'));
 Vue.component('editar-usuario',require('./usuario/edita-usuario'));
 Vue.component('criar-usuario',require('./usuario/criar-usuario'));
+Vue.component('perfil-usuario',require('./usuario/perfil-usuario'));
 
 
 //REQUERIMENTO
