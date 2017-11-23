@@ -32,7 +32,7 @@
                 @endif
             </div>
             <div class="form-group">
-                <label for="password" class="control-label">EMAIL</label>
+                <label for="password" class="control-label">SENHA</label>
                 <input id="password" type="password" class="form-control" name="password" required>
                 @if ($errors->has('password'    ))
                     <span class="help-block">

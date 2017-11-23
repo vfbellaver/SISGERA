@@ -4,12 +4,15 @@ require('./shared/_register');
 Vue.component('menu-admin',require('./menu/menu-admin'));
 
 //USERS
-Vue.component('users-list',require('./usuario/lista-usuarios'));
-Vue.component('lista-coordenadores',require('./usuario/lista-coordenadores'));
-Vue.component('lista-alunos',require('./usuario/lista-alunos'));
-Vue.component('lista-cerel',require('./usuario/lista-cerel'));
-Vue.component('lista-civis',require('./usuario/lista-civis'));
+Vue.component('users-list',require('./usuario/listas/lista-usuarios'));
+Vue.component('lista-coordenadores',require('./usuario/listas/lista-coordenadores'));
+Vue.component('lista-alunos',require('./usuario/listas/lista-alunos'));
+Vue.component('lista-cerel',require('./usuario/listas/lista-cerel'));
+Vue.component('lista-civis',require('./usuario/listas/lista-civis'));
+
+//FORMS
 Vue.component('form-user',require('./usuario/form-usuario'));
+Vue.component('form-password',require('./usuario/form-password'));
 Vue.component('editar-usuario',require('./usuario/edita-usuario'));
 Vue.component('criar-usuario',require('./usuario/criar-usuario'));
 Vue.component('perfil-usuario',require('./usuario/perfil-usuario'));
