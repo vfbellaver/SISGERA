@@ -136,7 +136,6 @@
                     cpf: user ? user.cpf : null,
                     telefone: user ? user.telefone : null,
                     celular: user ? user.celular : null,
-                    role: user ? user.role : null,
                 });
             },
 
@@ -153,8 +152,8 @@
                     const uri = laroute.route('user.update',{user: this.form.id});
                     Sg.put(uri, this.form).then((response) => {
                         console.log('User Updated', response.message);
-                        swal('Pronto', response.message, 'success')
-                        this.load(response.data);
+                        swal('Pronto', response.message, 'success');
+                       this.form = response.data;
                     });
                 }
             },

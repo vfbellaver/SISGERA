@@ -14,6 +14,7 @@
                             <th>Nome</th>
                             <th>Email</th>
                             <th>Função</th>
+                            <th>Status</th>
                             <th>Ações</th>
                         </tr>
                         </thead>
@@ -23,6 +24,7 @@
                             <td>{{coord.name}}</td>
                             <td>{{coord.email}}</td>
                             <td>Coordenador Curso</td>
+                            <td>{{coord.status ? 'Ativo' : 'Inativo'}}</td>
                             <td>
                                 <button class="btn btn-xs btn-primary" @click="edit(coord)"><i class="fa fa-edit"></i></button>
                                 <button class="btn btn-xs btn-danger" @click="destroy(coord)"><i class="fa fa-trash"></i></button>

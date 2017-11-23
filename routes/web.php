@@ -29,6 +29,7 @@ Route::resource('user', 'Api\UsuarioController');
 
 //USERS
 Route::get('current/user','UsuarioController@getCurrentUser')->name('current.user');
+Route::get('configuracoes/perfil','UsuarioController@perfilUsuario')->name('perfil-usuario');
 
 Route::get('get/coord', 'UsuarioController@getCoordenadores')->name('get-coordenadores');
 Route::get('get/alunos', 'UsuarioController@getAlunos')->name('get-alunos');

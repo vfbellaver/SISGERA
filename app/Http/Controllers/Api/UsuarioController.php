@@ -70,7 +70,7 @@ class UsuarioController extends Controller
 
         $response = [
             'message' => 'Usuário atualizado.',
-            'data' => $data
+            'data' => $user
         ];
 
         return $response;
