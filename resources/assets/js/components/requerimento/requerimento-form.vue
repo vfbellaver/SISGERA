@@ -8,7 +8,7 @@
                         <form class="form-horizontal" v-model="form" @submit="save">
                             <fieldset class="col-md-12">
                                 <legend class="row">1) Dados Requerente
-                                    <small class="pull-right"><i class="fa fa-calendar"></i> 01/01/2016</small>
+                                    <small class="pull-right"><i class="fa fa-calendar"></i> {{s}} </small>
                                 </legend>
                             </fieldset>
                             <div class="row">

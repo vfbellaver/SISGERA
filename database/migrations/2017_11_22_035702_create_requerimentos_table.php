@@ -15,6 +15,7 @@ class CreateRequerimentosTable extends Migration
             $table->dateTime('data_fechamento');
             $table->string('protocolo',10)->unique();
             $table->text('justificativa');
+            $table->text('resposta')->nullable();
             $table->string('situacao',30)->default('Em andamento');
 
             $table->unsignedInteger('user_id');
