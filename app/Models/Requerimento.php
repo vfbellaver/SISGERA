@@ -12,9 +12,11 @@ class Requerimento extends Model
 
     protected $fillable = [
         'data_criacao',
+        'data_fechamento',
         'protocolo',
         'tipo_solicitacao',
         'justificativa',
+        'resposta',
         'user_id',
         ];
 
@@ -22,10 +24,11 @@ class Requerimento extends Model
 
     public function user()
     {
-        return $this->belongsToMany(User::class);
+        return $this->hasOne(User::class);
     }
 
-    public function tipo_requerimento(){
+    public function TipoRequerimento()
+    {
         return $this->belongsToMany(TipoRequerimento::class);
     }
 

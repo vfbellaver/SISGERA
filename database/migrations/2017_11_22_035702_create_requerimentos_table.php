@@ -12,8 +12,8 @@ class CreateRequerimentosTable extends Migration
         Schema::create('requerimentos', function (Blueprint $table) {
             $table->increments('id');
             $table->dateTime('data_criacao');
-            $table->dateTime('data_fechamento');
-            $table->string('protocolo',10)->unique();
+            $table->dateTime('data_fechamento')->nullable();
+            $table->string('protocolo',15)->unique();
             $table->text('justificativa');
             $table->text('resposta')->nullable();
             $table->string('situacao',30)->default('Em andamento');

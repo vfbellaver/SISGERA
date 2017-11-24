@@ -10,7 +10,6 @@ class CreateRequerimentoTipoRequerimentoTable extends Migration
     public function up()
     {
         Schema::create('requerimento_tipo_requerimento', function (Blueprint $table) {
-            $table->increments('id');
             $table->unsignedInteger('requerimento_id');
             $table->unsignedInteger('tipo_requerimento_id');
 
@@ -21,8 +20,6 @@ class CreateRequerimentoTipoRequerimentoTable extends Migration
             $table->foreign('tipo_requerimento_id')
                 ->references('id')->on('tipo_requerimentos')
                 ->onDelete('cascade');
-
-            $table->timestamps();
         });
     }
 

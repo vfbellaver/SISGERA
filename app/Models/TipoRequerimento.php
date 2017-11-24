@@ -10,7 +10,7 @@ class TipoRequerimento extends Model
         'name',
     ];
 
-    public function requerimento(){
+    public function requerimentos(){
         return $this->belongsToMany(Requerimento::class);
     }
 }

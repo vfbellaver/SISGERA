@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 Auth::routes();
@@ -43,5 +43,5 @@ Route::get('usuarios/cerel', 'UsuarioController@listaCerel')->name('lista-cerel'
 Route::get('usuarios/externo', 'UsuarioController@listaCivis')->name('lista-civis');
 
 //REQUERIMENTO
-Route::resource('requerimento', 'RequerimentoController');
-Route::get('tipo/solicitacao', 'RequerimentoController@getTiposRequerimento')->name('tipos-requerimento');
+Route::resource('requerimento', 'Api\RequerimentoController');
+Route::get('tipo/solicitacao', 'Api\RequerimentoController@getTiposRequerimento')->name('tipos-requerimento');

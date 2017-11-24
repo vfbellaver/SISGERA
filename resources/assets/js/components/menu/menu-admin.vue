@@ -16,10 +16,10 @@
                     <li class="treeview"><a href="#"><i class="fa fa-edit"></i><span>Requerimentos</span><i
                             class="fa fa-angle-right"></i></a>
                         <ul class="treeview-menu">
-                            <li><a :href="novoRequerimento"><i class="fa fa-street-view"></i> Novo Requerimento</a></li>
-                            <li><a href=""><i class="fa fa-graduation-cap"></i> Em andamento</a></li>
-                            <li><a href=""><i class="fa fa-user-circle-o"></i> Deferidos</a></li>
-                            <li><a href=""><i class="fa fa-user-o"></i> Indeferidos</a></li>
+                            <li><a :href="novoRequerimento"><i class="fa fa-plus-circle"></i> Novo Requerimento</a></li>
+                            <li><a href=""><i class="fa fa-refresh"></i> Em andamento</a></li>
+                            <li><a href=""><i class="fa fa-thumbs-up"></i> Deferidos</a></li>
+                            <li><a href=""><i class="fa fa-thumbs-down"></i> Indeferidos</a></li>
                         </ul>
                     </li>
                 </ul>
