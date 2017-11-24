@@ -10,6 +10,11 @@ class Requerimento extends Model
 {
     use SoftDeletes;
 
+    const ENVIADO = 'Enviado';
+    const ANDAMENTO = 'Em andamento';
+    const DEFERIDO = 'Deferido';
+    const INDEFERIDO = 'Indeferido';
+
     protected $fillable = [
         'data_criacao',
         'data_fechamento',
