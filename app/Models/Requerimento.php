@@ -27,14 +27,19 @@ class Requerimento extends Model
 
     protected $dates = ['deleted_at'];
 
-    public function user()
+    public function usuario()
     {
-        return $this->hasOne(User::class);
+        return $this->hasOne(User::class,'id','usuario_id');
     }
 
     public function TipoRequerimento()
     {
-        return $this->belongsToMany(TipoRequerimento::class);
+        return $this->belongsToMany(TiposSolicitacao::class);
+    }
+
+    public function historico()
+    {
+        return $this->hasMany(HistoricoRequerimento::class);
     }
 
 }

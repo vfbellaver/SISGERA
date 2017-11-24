@@ -5,7 +5,7 @@ namespace Sisgera\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use Sisgera\Http\Controllers\Controller;
 use Sisgera\Http\Requests\CreateRequerimentoRequest;
-use Sisgera\Models\TipoRequerimento;
+use Sisgera\Models\TiposSolicitacao;
 use Sisgera\Models\User;
 
 class RequerimentoController extends Controller
@@ -16,7 +16,7 @@ class RequerimentoController extends Controller
     }
 
     public function getTiposRequerimento(){
-        return TipoRequerimento::all();
+        return TiposSolicitacao::all();
     }
 
     public function create()

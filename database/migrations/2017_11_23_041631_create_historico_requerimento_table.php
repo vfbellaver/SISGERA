@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Sisgera\Models\Requerimento;
 
 class CreateHistoricoRequerimentoTable extends Migration
 {
@@ -12,7 +13,7 @@ class CreateHistoricoRequerimentoTable extends Migration
         Schema::create('historico_requerimento', function (Blueprint $table) {
             $table->increments('id');
             $table->dateTime('data_movimentacao');
-            $table->string('movimentacao');
+            $table->string('movimentacao')->default(Requerimento::ENVIADO);
 
             $table->unsignedInteger('usuario_id');
             $table->foreign('usuario_id')->references('id')

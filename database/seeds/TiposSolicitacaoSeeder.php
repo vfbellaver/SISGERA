@@ -1,17 +1,17 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Sisgera\Models\TipoRequerimento;
+use Sisgera\Models\TiposSolicitacao;
 
-class TiposRequerimentosSeeder extends Seeder
+class TiposSolicitacaoSeeder extends Seeder
 {
 
     public function run()
     {
-        $this->createTiposRequerimento();
+        $this->createTiposSolicitacao();
     }
 
-    public function createTiposRequerimento(){
+    public function createTiposSolicitacao(){
         $array = [
             'Cancelamento de matricula',
             'Cancelamento de unidade curricular',
@@ -31,7 +31,7 @@ class TiposRequerimentosSeeder extends Seeder
             'Outros',
         ];
         foreach ($array as $rqr) {
-            $requerimento = factory(TipoRequerimento::class)->create([
+            $requerimento = factory(TiposSolicitacao::class)->create([
                 'name' => $rqr,
             ]);
         }

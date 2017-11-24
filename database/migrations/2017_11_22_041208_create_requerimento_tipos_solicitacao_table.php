@@ -4,21 +4,21 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRequerimentoTipoRequerimentoTable extends Migration
+class CreateRequerimentoTiposSolicitacaoTable extends Migration
 {
 
     public function up()
     {
-        Schema::create('requerimento_tipo_requerimento', function (Blueprint $table) {
+        Schema::create('requerimento_tipos_solicitacao', function (Blueprint $table) {
             $table->unsignedInteger('requerimento_id');
-            $table->unsignedInteger('tipo_requerimento_id');
+            $table->unsignedInteger('tipos_solicitacao_id');
 
             $table->foreign('requerimento_id')
                 ->references('id')->on('requerimentos')
                 ->onDelete('cascade');
 
-            $table->foreign('tipo_requerimento_id')
-                ->references('id')->on('tipo_requerimentos')
+            $table->foreign('tipos_solicitacao_id')
+                ->references('id')->on('tipos_solicitacao')
                 ->onDelete('cascade');
         });
     }
@@ -26,6 +26,6 @@ class CreateRequerimentoTipoRequerimentoTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('requerimento_tipo_requerimento');
+        Schema::dropIfExists('requerimento_tipos_solicitacao');
     }
 }
