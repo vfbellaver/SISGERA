@@ -116,8 +116,7 @@
                                             <legend class="row">2) Tipo de Requerimento</legend>
                                         </fieldset>
                                         <column size="12">
-                                            <tipo-requerimento
-                                                    v-model="formRequerimento.tipos_requerimento "></tipo-requerimento>
+                                            <tipo-solicitacao v-model="formRequerimento.tipos_requerimento "></tipo-solicitacao>
                                         </column>
                                     </form-group>
                                 </column>
@@ -166,11 +165,11 @@
     }
 </style>
 <script>
-    import TipoRequerimento from './tipos-requerimentos';
+    import TipoSolicitacao from './tipos/tipos-solicitacao';
     import {VueEditor} from 'vue2-editor';
     export default {
         components: {
-            TipoRequerimento,
+            TipoSolicitacao,
             VueEditor,
         },
         props: {

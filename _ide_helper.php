@@ -1572,7 +1572,7 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Set the callback to be used to resolve users.
+         * Set the callback to be used to resolve usuarios.
          *
          * @param \Closure $userResolver
          * @return $this 

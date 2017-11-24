@@ -42,6 +42,16 @@ Route::get('usuarios/alunos', 'UsuarioController@listaAlunos')->name('lista-alun
 Route::get('usuarios/cerel', 'UsuarioController@listaCerel')->name('lista-cerel');
 Route::get('usuarios/externo', 'UsuarioController@listaCivis')->name('lista-civis');
 
-//REQUERIMENTO
+//REQUERIMENTOS
 Route::resource('requerimento', 'Api\RequerimentoController');
-Route::get('tipo/solicitacao', 'Api\RequerimentoController@getTiposRequerimento')->name('tipos-requerimento');
+
+Route::get('get/enviados', 'RequerimentoController@getEnviados')->name('req-enviados');
+Route::get('get/recebidos', 'RequerimentoController@getRecebidos')->name('req-recebidos');
+Route::get('get/deferidos', 'RequerimentoController@getDeferidos')->name('req-deferidos');
+Route::get('get/indeferidos', 'RequerimentoController@getIndeferidos')->name('req-indeferidos');
+
+Route::get('tipo/solicitacao', 'RequerimentoController@requerimentosTiposRequerimento')->name('tipos-solicitacao');
+Route::get('req/enviados', 'RequerimentoController@requerimentosEnviados')->name('requerimentos-enviados');
+Route::get('requerimento/recebidos', 'RequerimentoController@requerimentosRecebidos')->name('requerimentos-recebidos');
+Route::get('requerimento/deferidos', 'RequerimentoController@requerimentosDeferidos')->name('requerimentos-deferidos');
+Route::get('requerimento/indeferidos', 'RequerimentoController@requerimentosIndeferidos')->name('requerimentos-indeferidos');

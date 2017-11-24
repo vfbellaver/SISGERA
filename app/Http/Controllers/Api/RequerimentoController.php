@@ -15,10 +15,6 @@ class RequerimentoController extends Controller
         //
     }
 
-    public function getTiposRequerimento(){
-        return TiposSolicitacao::all();
-    }
-
     public function create()
     {
         $user = User::query()->findOrFail(auth()->user()->id);
@@ -53,4 +49,6 @@ class RequerimentoController extends Controller
     {
         //
     }
+
+
 }
