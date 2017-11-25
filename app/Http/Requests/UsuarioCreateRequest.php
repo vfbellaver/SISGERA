@@ -17,10 +17,10 @@ class UsuarioCreateRequest extends FormRequest
     {
         return [
             'name'=> 'required',
-            'email' => 'required|email|min:5|unique:users,email',
-            'rg' => 'required|unique:users',
+            'email' => 'required|email|min:5|unique:usuarios,email',
+            'rg' => 'required|unique:usuarios',
             'org_emissor' => 'required',
-            'cpf' => 'required|unique:users',
+            'cpf' => 'required|unique:usuarios',
             'role' => 'required',
 
         ];

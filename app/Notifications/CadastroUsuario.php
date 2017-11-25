@@ -35,7 +35,7 @@ class CadastroUsuario extends Notification
                     ->subject("Cadastro de usuário {$appName}!")
                     ->greeting("Olá {$this->user->name}!")
                     ->line("Você está pré cadastrado no Sistema de Gerenciamento de Requerimentos Acadêmicos -  {$appName}!")
-                    ->action('Cadastre sua senha', url('/'))
+                    ->action('Cadastre sua senha', $route)
                     ->line('Obrigado!');
     }
 

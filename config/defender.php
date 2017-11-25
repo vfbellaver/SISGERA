@@ -44,7 +44,7 @@ return [
     'permission_key' => 'permission_id',
 
     /*
-     * Pivot table for roles and users
+     * Pivot table for roles and usuarios
      */
     'role_user_table' => 'role_user',
 
@@ -54,7 +54,7 @@ return [
     'permission_role_table' => 'permission_role',
 
     /*
-     * Pivot table for permissions and users
+     * Pivot table for permissions and usuarios
      */
     'permission_user_table' => 'permission_user',
 

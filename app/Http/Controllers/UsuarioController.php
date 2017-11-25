@@ -9,7 +9,7 @@ class UsuarioController extends Controller
 {
     function __construct()
     {
-        $this->middleware('needsRole:admin');
+        $this->middleware('needsRole:cerel|admin,true');
     }
 
 
@@ -47,22 +47,22 @@ class UsuarioController extends Controller
 
     public function listaCoordenadores()
     {
-        return view('users.lista-coordenadores');
+        return view('usuarios.lista-coordenadores');
     }
 
     public function listaAlunos()
     {
-        return view('users.lista-alunos');
+        return view('usuarios.lista-alunos');
     }
 
     public function listaCerel()
     {
-        return view('users.lista-cerel');
+        return view('usuarios.lista-cerel');
     }
 
     public function listaCivis()
     {
-        return view('users.lista-civis');
+        return view('usuarios.lista-civis');
     }
 
     public function perfilUsuario(){

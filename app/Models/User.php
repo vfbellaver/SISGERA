@@ -10,12 +10,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-   use Notifiable, HasDefender;
-   use SoftDeletes;
+    use Notifiable, HasDefender;
+    use SoftDeletes;
 
-    const ADMIN = 'usuario';
+    const ADMIN = 'admin';
     const COORDENADOR = 'coordenador';
+    const CEREL = 'cerel';
     const ALUNO = 'aluno';
+    const CIVIL = 'civil';
 
     protected $fillable = [
         'name',
@@ -33,7 +35,7 @@ class User extends Authenticatable
     protected $dates = ['deleted_at'];
 
     protected $hidden = [
-        'password', 'remember_token','cadastro_token',
+        'password', 'remember_token', 'cadastro_token',
     ];
 
     public function getRoleAttribute()
@@ -44,6 +46,48 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsToMany(Role::class);
+    }
+
+    public function requerimentos()
+    {
+        return $this->belongsToMany(Requerimento::class);
+    }
+
+    public function historicoRequerimento()
+    {
+        return $this->hasMany(HistoricoRequerimento::class);
+    }
+
+    public function toArray()
+    {
+        $role = [];
+
+        if ($this->role) {
+
+            $role = [
+
+                'id' => $this->role->id,
+                'name' => $this->role->name,
+
+            ];
+
+            return [
+
+                'id' => (int)$this->id,
+                'nome' => $this->nome,
+                'email' => $this->email,
+                'rg' => $this->rg,
+                'org_emissor' => $this->org_emissor,
+                'cpf' => $this->cpf,
+                'telefone' => $this->telefone,
+                'celular' => $this->celular,
+                'status' => $this->status,
+                'role' => $role,
+                'roles' => $this->roles->pluck('name')->all(),
+
+            ];
+
+        }
     }
 
 }

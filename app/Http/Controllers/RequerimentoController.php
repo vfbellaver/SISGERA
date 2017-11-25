@@ -3,53 +3,64 @@
 namespace Sisgera\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Sisgera\Models\TipoRequerimento;
-use Sisgera\Models\User;
+use Sisgera\Models\Requerimento;
+use Sisgera\Models\TiposSolicitacao;
 
 class RequerimentoController extends Controller
 {
+    // RETORNA TIPOS DE SOLICITACAO DO REQUERIMENTO
+    public function TiposdeSolicitacao(){
+        return TiposSolicitacao::all();
+    }
 
-    public function index()
+//---------------------------------------------------------------------------------------------
+    // RETORNAM REQUERIMENTOS REGISTRADOS
+    public function getEnviados()
     {
-        //
+        return Requerimento::query()->where('usuario_id',auth()->user()->id)
+            ->where('situacao','=',Requerimento::ENVIADO)->paginate(10);
     }
 
-    public function getTiposRequerimento(){
-        return TipoRequerimento::all();
-    }
-
-    public function create()
+    public function getRecebidos()
     {
-        $user = User::query()->findOrFail(auth()->user()->id);
-        return view('requerimento.create',compact('user'));
+        return Requerimento::query()->where('usuario_id',auth()->user()->id)
+            ->where('situacao','=',Requerimento::ANDAMENTO)->paginate(10);
     }
 
-    public function store(Request $request)
+    public function getDeferidos()
     {
-        //
+        return Requerimento::query()->where('usuario_id',auth()->user()->id)
+            ->where('situacao','=',Requerimento::DEFERIDO)->paginate(10);
     }
 
-
-    public function show($id)
+    public function getIndeferidos()
     {
-        //
+        return Requerimento::query()->where('usuario_id',auth()->user()->id)
+            ->where('situacao','=',Requerimento::INDEFERIDO)->paginate(10);
     }
-
-
-    public function edit($id)
+//---------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------
+    // FUNCOES ABAIXO RETORNAM VIEWS
+    public function requerimentosEnviados()
     {
-        //
+        $user = auth()->user();
+        return view('requerimento.enviados',compact('user'));
     }
 
-
-    public function update(Request $request, $id)
+    public function requerimentosRecebidos()
     {
-        //
+        $user = auth()->user();
+        return view('requerimento.recebidos',compact('user'));
     }
-
-
-    public function destroy($id)
+    public function requerimentosDeferidos()
     {
-        //
+        $user = auth()->user();
+        return view('requerimento.deferidos',compact('user'));
     }
+    public function requerimentosIndeferidos()
+    {
+        $user = auth()->user();
+        return view('requerimento.indeferidos',compact('user'));
+    }
+//---------------------------------------------------------------------------------------------
 }

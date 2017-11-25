@@ -14,6 +14,7 @@ window.swal = swal;
 window.Vue = Vue;
 window.Sg = Sisgera;
 
+require('./filtros/data');
 require('./components/bootstrap');
 require('./vue/bootstrap');
 
@@ -24,6 +25,7 @@ window.App = new Vue({
     data() {
         return {
             user: 'Sg' in window ? Sg.user : null,
+            regra: window.Sisgera.user.role.name,
         }
     },
     created() {

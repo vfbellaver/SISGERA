@@ -7,6 +7,7 @@ use Artesaos\Defender\Facades\Defender;
 use Sisgera\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Sisgera\Http\Requests\RegisterInvitationRequest;
 use Sisgera\Models\User;
 
 class RegisterController extends Controller
@@ -16,7 +17,7 @@ class RegisterController extends Controller
     | Register Controller
     |--------------------------------------------------------------------------
     |
-    | This controller handles the registration of new users as well as their
+    | This controller handles the registration of new usuarios as well as their
     | validation and creation. By default this controller uses a trait to
     | provide this functionality without requiring any additional code.
     |
@@ -38,7 +39,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:usuarios',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
@@ -56,27 +57,24 @@ class RegisterController extends Controller
     public function invitation($token)
     {
         $isValid = false;
-        $user = User::query()->where('invitation_token', $token)->first();
+        $user = User::query()->where('cadastro_token', $token)->first();
         if ($user) {
             $isValid = true;
         }
-        return view('auth.invitation', compact('isValid', 'token'));
+        return view('auth.invitation', compact('isValid', 'token','user'));
     }
 
-    public function registerInvitation(Request $request)
+    public function registerInvitation(RegisterInvitationRequest $request)
     {
 
-        $user = User::where('invitation_token', $request->input('invitation_token'))->first();
+        $user = User::where('cadastro_token', $request->input('cadastro_token'))->first();
 
-        $user->name = $request->input('name');
-        $user->invitation_token = null;
+        $user->cadastro_token = null;
         $user->password = bcrypt($request->input('password'));
         $user->remember_token = str_random(10);
         $user->save();
-//        $role = Defender::findRole();
-//        $user->attachRole($role);
 
-        return redirect()->route('home');
+        return redirect()->route('login');
 
     }
 }
