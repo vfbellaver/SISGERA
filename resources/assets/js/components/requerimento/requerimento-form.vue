@@ -116,7 +116,7 @@
                                             <legend class="row">2) Tipo de Requerimento</legend>
                                         </fieldset>
                                         <column size="12">
-                                            <tipo-solicitacao v-model="formRequerimento.tipos_requerimento "></tipo-solicitacao>
+                                            <tipo-solicitacao v-model="formRequerimento.tipos_solicitacao" @marqueiSolicitacao="tiposMarcados"></tipo-solicitacao>
                                         </column>
                                     </form-group>
                                 </column>
@@ -199,7 +199,7 @@
                 return new Form({
                     id: requerimento ? requerimento.id : null,
                     nome_estudante: requerimento ? requerimento.nome_estudante : null,
-                    tipos_requerimento: [],
+                    tipos_solicitacao: [],
                     curso: requerimento ? requerimento.curso : null,
                     turno: requerimento ? requerimento.turno : null,
                     turma: requerimento ? requerimento.turma : null,
@@ -223,6 +223,10 @@
                     this.load(response.data);
                 });
             },
+
+            tiposMarcados(){
+                console.log('to ouvindo');
+            }
         }
     }
 </script>

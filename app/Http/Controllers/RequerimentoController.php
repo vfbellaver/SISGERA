@@ -9,7 +9,7 @@ use Sisgera\Models\TiposSolicitacao;
 class RequerimentoController extends Controller
 {
     // RETORNA TIPOS DE SOLICITACAO DO REQUERIMENTO
-    public function getTiposRequerimento(){
+    public function TiposdeSolicitacao(){
         return TiposSolicitacao::all();
     }
 

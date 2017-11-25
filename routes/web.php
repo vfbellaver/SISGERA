@@ -50,7 +50,7 @@ Route::get('get/recebidos', 'RequerimentoController@getRecebidos')->name('req-re
 Route::get('get/deferidos', 'RequerimentoController@getDeferidos')->name('req-deferidos');
 Route::get('get/indeferidos', 'RequerimentoController@getIndeferidos')->name('req-indeferidos');
 
-Route::get('tipo/solicitacao', 'RequerimentoController@requerimentosTiposRequerimento')->name('tipos-solicitacao');
+Route::get('tipo/solicitacao', 'RequerimentoController@TiposdeSolicitacao')->name('tipos-solicitacao');
 Route::get('requerimentos/enviados', 'RequerimentoController@requerimentosEnviados')->name('requerimentos-enviados');
 Route::get('requerimentos/recebidos', 'RequerimentoController@requerimentosRecebidos')->name('requerimentos-recebidos');
 Route::get('requerimentos/deferidos', 'RequerimentoController@requerimentosDeferidos')->name('requerimentos-deferidos');

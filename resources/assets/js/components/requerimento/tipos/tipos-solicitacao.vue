@@ -4,7 +4,7 @@
             <div class="col-md-3" v-for="tipo in tpRequerimentos">
                 <div class="animated-checkbox">
                     <label>
-                        <input type="checkbox"><span class="label-text">{{tipo.name}}</span>
+                        <input type="checkbox"><span class="label-text" @click="marquei(tipo)">{{tipo.name}}</span>
                     </label>
                 </div>
             </div>
@@ -16,14 +16,23 @@
 <script>
 
     export default {
-            data() {
+        props: {
+            value: {required: true},
+        },
+
+        data() {
             return {
+                internalValue: null,
                 tpRequerimentos: [],
             }
         },
 
         mounted(){
-          this.load();
+            this.load();
+        },
+
+        created() {
+            this.internalValue = this.value;
         },
 
         methods: {
@@ -32,7 +41,11 @@
                     .then((response) => {
                         this.tpRequerimentos = response;
                     });
-            }
+            },
+
+            marquei(valor){
+                this.internalValue.push(valor);
+            },
         }
     }
 </script>
