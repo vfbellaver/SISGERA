@@ -10,6 +10,15 @@
 
 Sistema de Gerenciamento de Requerimentos Acadêmicos ou Sisgera é uma aplicação web desenvolvida utilizando framework PHP Laravel e a biblioteca de JavaScript Vue JS. O sistema nesta primeira versão realiza controle de requerimentos do IFMS Campus Coxim advindos dos acadêmicos, servidores e público civil, passando pela Central de Relacionamento do Campus Coxim e Coordenadores de Curso.
 
+## Sobre o Laravel
+<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+
+<p align="center">
+<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
+</p>
 
 ## Vulnerabilidades
 
