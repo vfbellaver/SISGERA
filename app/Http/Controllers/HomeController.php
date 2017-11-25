@@ -20,7 +20,21 @@ class HomeController extends Controller
         $role = Auth::user()->getRoleAttribute();
 
         if ($role->name == User::ADMIN) {
-            return redirect()->route('admin.index');
+
+            return view('dashboard.index');
+        }
+
+        if ($role->name == User::COORDENADOR) {
+
+            return view('dashboard.index');
+        }
+
+        if ($role->name == User::CEREL) {
+            return view('dashboard.index');
+        }
+
+        if ($role->name == User::CIVIL) {
+            return view('dashboard.index');
         }
 
         return redirect()->route('login');

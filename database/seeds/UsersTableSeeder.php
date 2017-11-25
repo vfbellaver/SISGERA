@@ -22,6 +22,7 @@ class UsersTableSeeder extends Seeder
         $user = factory(User::class)->create([
             'name' => 'Admin Sisgera',
             'rg' => 0101010101,
+            'org_emissor' => 'SSP-IFMS',
             'cpf' => 0101010101,
             'telefone' => 1122334455,
             'celular' => 1122334455,
@@ -37,6 +38,7 @@ class UsersTableSeeder extends Seeder
         $user = factory(User::class)->create([
             'name' => 'Coordenador Curso',
             'rg' => 1111111111,
+            'org_emissor' => 'SSP-IFMS',
             'cpf' => 111111111,
             'telefone' => 2211334455,
             'celular' => 2211334455,
@@ -57,6 +59,7 @@ class UsersTableSeeder extends Seeder
         $user = factory(User::class)->create([
             'name' => 'Cerel Sisgera',
             'rg' => 534543534,
+            'org_emissor' => 'SSP-IFMS',
             'cpf' => 5345345345,
             'telefone' => 3453534534,
             'celular' => 3453534534,
@@ -78,6 +81,7 @@ class UsersTableSeeder extends Seeder
         $user = factory(User::class)->create([
             'name' => 'Aluno Fulano',
             'rg' => 44444444,
+            'org_emissor' => 'SSP-IFMS',
             'cpf' => 555555555,
             'telefone' => 123123123,
             'celular' => 123123123,
@@ -99,6 +103,7 @@ class UsersTableSeeder extends Seeder
         $user = factory(User::class)->create([
             'name' => 'Civil Sisgera',
             'rg' => 534543543,
+            'org_emissor' => 'SSP-IFMS',
             'cpf' => 34534543,
             'telefone' => 3453534534,
             'celular' => 3453534534,

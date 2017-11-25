@@ -21,7 +21,7 @@ class CreateRequerimentosTable extends Migration
 
             $table->unsignedInteger('usuario_id');
             $table->foreign('usuario_id')->references('id')
-                        ->on('usuarios')->onDelete('cascade');
+                        ->on('users')->onDelete('cascade');
 
             $table->timestamps();
             $table->softDeletes();
