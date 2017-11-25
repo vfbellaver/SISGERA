@@ -22,7 +22,7 @@ class CreateRequerimentoRequest extends FormRequest
             'periodo' => 'required',
             'turno' => 'required',
             'tipos_solicitacao' => 'required',
-            'detalhamento' => 'required',
+            'justificativa' => 'required',
 
         ];
     }
@@ -37,7 +37,7 @@ class CreateRequerimentoRequest extends FormRequest
             'periodo.required' => 'Informe o periodo do estudante.',
             'turno.required' => 'Informe em qual turno o estudante estuda.',
             'tipos_solicitacao.required' => 'Selecione o tipo do solicitação.',
-            'detalhamento.required' => 'Informe o periodo do estudante.',
+            'justificativa.required' => 'Justifique sua solicitação.',
 
         ];
     }

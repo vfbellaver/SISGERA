@@ -26,17 +26,20 @@ class RequerimentoController extends Controller
     public function store(CreateRequerimentoRequest $request)
     {
         $data = $request->all();
-        $data['data_criacao'] = Carbon::now();
-        $data['protocolo'] = gerar_protocolo();
         $requerimento = new Requerimento($data);
+        $requerimento->data_criacao = Carbon::now();
+        $requerimento->protocolo = gerar_protocolo();
+        $requerimento->usuario_id = auth()->user()->id;
         $requerimento->save();
+
         foreach ($data['tipos_solicitacao'] as $solicitacao )
         {
-            $requerimento->TipoRequerimento()->attach($solicitacao);
+            $tp = TiposSolicitacao::query()->where('id',$solicitacao['id'])->get();
+            $requerimento->TipoRequerimento()->attach($tp);
         }
 
         $response = [
-            'message' => 'Requerimento enviado com Sucesso.',
+            'message' => 'Requerimento enviado com sucesso.',
             'data' => $requerimento,
         ];
 

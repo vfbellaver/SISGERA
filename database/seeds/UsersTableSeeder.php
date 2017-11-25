@@ -90,7 +90,7 @@ class UsersTableSeeder extends Seeder
         ]);
         $user->attachRole($role);
 
-        factory(User::class, 200)
+        factory(User::class, 50)
             ->create()
             ->each(function (User $user) use ($role) {
                 $user->attachRole($role);

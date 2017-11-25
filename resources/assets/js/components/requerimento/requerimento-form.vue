@@ -203,6 +203,7 @@
                     curso: requerimento ? requerimento.curso : null,
                     turno: requerimento ? requerimento.turno : null,
                     turma: requerimento ? requerimento.turma : null,
+                    periodo: requerimento ? requerimento.periodo : null,
                     justificativa: requerimento ? requerimento.justificativa : '<p>Detalhamento do seu Pedido</p>',
                 });
             },
@@ -219,8 +220,8 @@
                 const uri = laroute.route('requerimento.store');
                 Sg.post(uri, this.formRequerimento).then((response) => {
                     console.log('Requerimento criado', response.message);
-                    swal('Pronto', response.message, 'success')
-                    this.createForm();
+                    swal('Pronto', response.message, 'success');
+                    this.formRequerimento = new Form();
                 });
             },
 
