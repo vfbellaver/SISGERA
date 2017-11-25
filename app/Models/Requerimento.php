@@ -4,10 +4,12 @@ namespace Sisgera\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Notifications\Notifiable;
 
 
 class Requerimento extends Model
 {
+    use Notifiable;
     use SoftDeletes;
 
     const ENVIADO = 'Enviado';
@@ -27,14 +29,14 @@ class Requerimento extends Model
         'tipo_solicitacao',
         'justificativa',
         'resposta',
-        'user_id',
+        'usuario_id',
         ];
 
     protected $dates = ['deleted_at'];
 
     public function usuario()
     {
-        return $this->hasOne(User::class,'id','usuario_id');
+        return $this->belongsTo(User::class);
     }
 
     public function TipoRequerimento()
@@ -42,7 +44,7 @@ class Requerimento extends Model
         return $this->belongsToMany(TiposSolicitacao::class);
     }
 
-    public function historico()
+    public function historicos()
     {
         return $this->hasMany(HistoricoRequerimento::class);
     }

@@ -21,11 +21,11 @@ class HistoricoRequerimento extends Model
 
     public function requerimento()
     {
-        return $this->hasOne(Requerimento::class);
+        return $this->belongsTo(Requerimento::class);
     }
 
     public function usuario()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 }

@@ -50,12 +50,19 @@ class User extends Authenticatable
 
     public function requerimentos()
     {
-        return $this->belongsToMany(Requerimento::class);
+        return $this->hasMany(Requerimento::class);
     }
 
     public function historicoRequerimento()
     {
         return $this->hasMany(HistoricoRequerimento::class);
+    }
+
+    public function toArray()
+    {
+        return array_merge(parent::toArray(), [
+
+        ]);
     }
 
 }

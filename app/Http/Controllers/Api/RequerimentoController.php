@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Sisgera\Http\Controllers\Controller;
 use Sisgera\Http\Requests\CreateRequerimentoRequest;
+use Sisgera\Models\HistoricoRequerimento;
 use Sisgera\Models\Requerimento;
 use Sisgera\Models\TiposSolicitacao;
 use Sisgera\Models\User;
@@ -37,6 +38,16 @@ class RequerimentoController extends Controller
             $tp = TiposSolicitacao::query()->where('id',$solicitacao['id'])->get();
             $requerimento->TipoRequerimento()->attach($tp);
         }
+
+        //SALVANDO HISTORICO NA TABELA DE HISTORICO
+        $data = [
+            'data_movimentacao' => Carbon::now(),
+            'requerimento_id' => $requerimento->id,
+            'usuario_id' => auth()->user()->id,
+        ];
+
+        $historico = HistoricoRequerimento::query()->create($data);
+
 
         $response = [
             'message' => 'Requerimento enviado com sucesso.',

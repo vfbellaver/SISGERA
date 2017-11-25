@@ -12,7 +12,8 @@ class TiposSolicitacao extends Model
 
     protected $table = 'tipos_solicitacao';
 
-    public function requerimentos(){
+    public function requerimentos()
+    {
         return $this->belongsToMany(Requerimento::class);
     }
 }

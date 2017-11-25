@@ -5,6 +5,7 @@ namespace Sisgera\Http\Controllers;
 use Illuminate\Http\Request;
 use Sisgera\Models\Requerimento;
 use Sisgera\Models\TiposSolicitacao;
+use Sisgera\Models\User;
 
 class RequerimentoController extends Controller
 {
