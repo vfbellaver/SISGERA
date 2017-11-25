@@ -78,7 +78,7 @@
                 @guest
                 @else
                     <menu-admin></menu-admin>
-                    @endguest
+                @endguest
             </section>
         </aside>
 

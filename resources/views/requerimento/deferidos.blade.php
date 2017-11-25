@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    <lista-alunos></lista-alunos>
+    <requerimentos-deferidos></requerimentos-deferidos>
 @endsection

@@ -14,6 +14,7 @@ window.swal = swal;
 window.Vue = Vue;
 window.Sg = Sisgera;
 
+require('./filtros/data');
 require('./components/bootstrap');
 require('./vue/bootstrap');
 

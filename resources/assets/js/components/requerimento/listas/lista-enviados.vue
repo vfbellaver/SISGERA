@@ -4,28 +4,30 @@
         <div class="card">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Lista de  Alunos</h5>
+                    <fieldset class="col-md-12">
+                        <legend class="row"><i class="fa fa-list"></i>  Lista de Requerimentos
+                            <small class="pull-right">{{new Date | data('DD/M/Y')}} <i class="fa fa-calendar"></i></small>
+                        </legend>
+                    </fieldset>
                 </div>
                 <div class="ibox-content">
-
                     <table class="table">
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Nome</th>
-                            <th>Email</th>
-                            <th>Ações</th>
+                            <th>Protocolo</th>
+                            <th>Data Criacão</th>
+                            <th>Situacão</th>
+                            <th>Ultima movimentação</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="( aluno, index ) in alunos">
+                        <tr v-for="( req, index ) in reqenviados">
                             <td>{{ index + 1 }}</td>
-                            <td>{{aluno.name}}</td>
-                            <td>{{aluno.email}}</td>
-                            <td>
-                                <button class="btn btn-xs btn-primary" @click="edit(aluno)"><i class="fa fa-edit"></i></button>
-                                <button class="btn btn-xs btn-danger" @click="destroy(aluno)"><i class="fa fa-trash"></i></button>
-                            </td>
+                            <td>{{req.protocolo}}</td>
+                            <td>{{req.data_criacao | data('DD/M/Y')}}</td>
+                            <td>{{req.situacao}}</td>
+                            <td></td>
                         </tr>
                         </tbody>
                     </table>
@@ -43,7 +45,7 @@
         components: {},
         data() {
             return {
-                alunos: [],
+                reqenviados: [],
                 pagination: {},
                 pageHeading: {
                     title: 'Requerimentos Enviados',
@@ -61,19 +63,19 @@
 
         methods: {
             load(){
-                Sg.get(laroute.route('get-alunos'))
+                Sg.get(laroute.route('req-enviados'))
                     .then((response) => {
 
-                        this.alunos = response.data;
+                        this.reqenviados = response.data;
                         this.pagination = response;
                     });
 
             },
             navigate(page){
                 console.log(page);
-                Sg.get(laroute.route('get-alunos', {page: page}))
+                Sg.get(laroute.route('req-enviados', {page: page}))
                     .then((response) => {
-                        this.alunos = response.data;
+                        this.reqenviados = response.data;
                         this.pagination = response;
                     });
             },

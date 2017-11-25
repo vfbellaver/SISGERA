@@ -2,6 +2,7 @@ require('./shared/_register');
 
 //MENUS
 Vue.component('menu-admin',require('./menu/menu-admin'));
+Vue.component('menu-geral',require('./menu/menu-geral'));
 
 //USERS
 Vue.component('users-list',require('./usuario/listas/lista-usuarios'));

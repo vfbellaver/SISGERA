@@ -24,7 +24,7 @@ Route::post('registro/cadastro', 'Auth\RegisterController@registerInvitation')->
 Route::get('registro/cadastro/{token}', 'Auth\RegisterController@invitation')->name('cadastro');
 
 //ADMIN
-Route::resource('usuario', 'AdminController');
+Route::resource('admin', 'AdminController');
 Route::resource('user', 'Api\UsuarioController');
 
 //USERS
@@ -51,7 +51,7 @@ Route::get('get/deferidos', 'RequerimentoController@getDeferidos')->name('req-de
 Route::get('get/indeferidos', 'RequerimentoController@getIndeferidos')->name('req-indeferidos');
 
 Route::get('tipo/solicitacao', 'RequerimentoController@requerimentosTiposRequerimento')->name('tipos-solicitacao');
-Route::get('req/enviados', 'RequerimentoController@requerimentosEnviados')->name('requerimentos-enviados');
-Route::get('requerimento/recebidos', 'RequerimentoController@requerimentosRecebidos')->name('requerimentos-recebidos');
-Route::get('requerimento/deferidos', 'RequerimentoController@requerimentosDeferidos')->name('requerimentos-deferidos');
-Route::get('requerimento/indeferidos', 'RequerimentoController@requerimentosIndeferidos')->name('requerimentos-indeferidos');
+Route::get('requerimentos/enviados', 'RequerimentoController@requerimentosEnviados')->name('requerimentos-enviados');
+Route::get('requerimentos/recebidos', 'RequerimentoController@requerimentosRecebidos')->name('requerimentos-recebidos');
+Route::get('requerimentos/deferidos', 'RequerimentoController@requerimentosDeferidos')->name('requerimentos-deferidos');
+Route::get('requerimentos/indeferidos', 'RequerimentoController@requerimentosIndeferidos')->name('requerimentos-indeferidos');

@@ -9,7 +9,8 @@ class AdminController extends Controller
 
     public function index()
     {
-        return view('admin.index');
+        $menu = 'menu-admin';
+        return view('admin.index',compact('menu'));
     }
 
 
