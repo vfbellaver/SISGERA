@@ -2,7 +2,10 @@
     <div>
         <aside class="main-sidebar hidden-print">
             <section class="sidebar">
-                <menu-admin v-if="regra.name === 'admin'"></menu-admin>
+                <ul class="sidebar-menu">
+                    <menu-admin v-if="regra.name == 'admin'"></menu-admin>
+                    <menu-geral v-if="regra.name == 'aluno' || regra.name == 'civil'"></menu-geral>
+                </ul>
             </section>
         </aside>
     </div>
@@ -12,5 +15,6 @@
         props: {
             regra: {required: true},
         }
+
     }
 </script>
