@@ -8,18 +8,13 @@
 
 
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
+Sistema de Gerenciamento de Requerimentos Acadêmicos ou Sisgera é uma aplicação web desenvolvida utilizando framework PHP Laravel e a biblioteca de JavaScript Vue JS. O sistema nesta primeira versão realiza controle de requerimentos do IFMS Campus Coxim advindos dos acadêmicos, servidores e público civil, passando pela Central de Relacionamento do Campus Coxim e Coordenadores de Curso.
 
 
+## Vulnerabilidades
 
-## Contributing
+Se você descobrir uma vulnerabilidade de segurança dentro do Sisgera, envie um e-mail para Vagner Bellaver em vfbellaver@gmail.com. Todas as vulnerabilidades de segurança serão imediatamente abordadas.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+## Licença
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+O framework Laravel é um software de código aberto licenciado sob o [MIT license](http://opensource.org/licenses/MIT).
