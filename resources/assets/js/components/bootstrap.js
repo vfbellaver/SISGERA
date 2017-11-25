@@ -1,6 +1,7 @@
 require('./shared/_register');
 
 //MENUS
+Vue.component('menu-aside',require('./menu/menu'));
 Vue.component('menu-admin',require('./menu/menu-admin'));
 Vue.component('menu-geral',require('./menu/menu-geral'));
 
