@@ -21,7 +21,7 @@ class CreateRequerimentoRequest extends FormRequest
             'turma' => 'required|min:4',
             'periodo' => 'required',
             'turno' => 'required',
-            'tipos_requerimento' => 'required',
+            'tipos_solicitacao' => 'required',
             'detalhamento' => 'required',
 
         ];
@@ -36,7 +36,7 @@ class CreateRequerimentoRequest extends FormRequest
             'turma.required' => 'Informe a turma do estudante.',
             'periodo.required' => 'Informe o periodo do estudante.',
             'turno.required' => 'Informe em qual turno o estudante estuda.',
-            'tipos_requerimento.required' => 'Selecione o tipo do requerimento.',
+            'tipos_solicitacao.required' => 'Selecione o tipo do solicitação.',
             'detalhamento.required' => 'Informe o periodo do estudante.',
 
         ];

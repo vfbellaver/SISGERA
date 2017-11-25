@@ -2,9 +2,11 @@
 
 namespace Sisgera\Http\Controllers\Api;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Sisgera\Http\Controllers\Controller;
 use Sisgera\Http\Requests\CreateRequerimentoRequest;
+use Sisgera\Models\Requerimento;
 use Sisgera\Models\TiposSolicitacao;
 use Sisgera\Models\User;
 
@@ -23,7 +25,22 @@ class RequerimentoController extends Controller
 
     public function store(CreateRequerimentoRequest $request)
     {
-        //
+        $data = $request->all();
+        $data['data_criacao'] = Carbon::now();
+        $data['protocolo'] = gerar_protocolo();
+        $requerimento = new Requerimento($data);
+        $requerimento->save();
+        foreach ($data['tipos_solicitacao'] as $solicitacao )
+        {
+            $requerimento->TipoRequerimento()->attach($solicitacao);
+        }
+
+        $response = [
+            'message' => 'Requerimento enviado com Sucesso.',
+            'data' => $requerimento,
+        ];
+
+        return $response;
     }
 
 

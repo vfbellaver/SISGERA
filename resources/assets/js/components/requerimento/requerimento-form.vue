@@ -95,7 +95,7 @@
                                         <label class="control-label" for="periodo"><h4>
                                             <strong>Periodo:</strong></h4></label>
                                         <input class="form-control" id="periodo" type="text" name="periodo"
-                                               placeholder="Nome Estudante" v-model="formRequerimento.periodo">
+                                               placeholder="Informe o periodo" v-model="formRequerimento.periodo">
                                     </form-group>
                                 </column>
                                 <column size="6">
@@ -111,12 +111,12 @@
 
                             <row>
                                 <column size="12">
-                                    <form-group :form="formRequerimento" field="tipos_requerimento">
+                                    <form-group :form="formRequerimento" field="tipos_solicitacao">
                                         <fieldset class="col-md-12">
                                             <legend class="row">2) Tipo de Requerimento</legend>
                                         </fieldset>
                                         <column size="12">
-                                            <tipo-solicitacao v-model="formRequerimento.tipos_solicitacao" @marqueiSolicitacao="tiposMarcados"></tipo-solicitacao>
+                                            <tipo-solicitacao v-model="formRequerimento.tipos_solicitacao"></tipo-solicitacao>
                                         </column>
                                     </form-group>
                                 </column>
@@ -124,14 +124,14 @@
 
                             <row>
                                 <column size="12">
-                                    <form-group :form="formRequerimento" field="tipos_requerimento">
+                                    <form-group :form="formRequerimento" field="justificativa">
 
                                         <fieldset class="col-md-12">
                                             <legend class="row">3) Detalhamento do pedido</legend>
                                         </fieldset>
                                         <row>
                                             <column size="12">
-                                                <vue-editor v-model="formRequerimento.detalhamento"></vue-editor>
+                                                <vue-editor v-model="formRequerimento.justificativa"></vue-editor>
                                             </column>
                                         </row>
                                     </form-group>
@@ -203,7 +203,7 @@
                     curso: requerimento ? requerimento.curso : null,
                     turno: requerimento ? requerimento.turno : null,
                     turma: requerimento ? requerimento.turma : null,
-                    detalhamento: requerimento ? requerimento.detalhamento : '<p>Detalhamento do seu Pedido</p>',
+                    justificativa: requerimento ? requerimento.justificativa : '<p>Detalhamento do seu Pedido</p>',
                 });
             },
             setEstudante(){
@@ -218,15 +218,12 @@
             save(){
                 const uri = laroute.route('requerimento.store');
                 Sg.post(uri, this.formRequerimento).then((response) => {
-                    console.log('User Created', response.message);
+                    console.log('Requerimento criado', response.message);
                     swal('Pronto', response.message, 'success')
-                    this.load(response.data);
+                    this.createForm();
                 });
             },
 
-            tiposMarcados(){
-                console.log('to ouvindo');
-            }
         }
     }
 </script>
