@@ -131,7 +131,7 @@
                                         </fieldset>
                                         <row>
                                             <column size="12">
-                                                <vue-editor v-model="formRequerimento.justificativa"></vue-editor>
+                                                <vue-editor v-model="formRequerimento.justificativa" :editorToolbar="customToolbar"></vue-editor>
                                             </column>
                                         </row>
                                     </form-group>
@@ -180,6 +180,14 @@
             return {
                 formRequerimento: {},
                 checked: false,
+                customToolbar: [
+                    ['bold', 'italic', 'underline'],
+                    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                    [{ 'script': 'sub'}, { 'script': 'super' }],
+                    [{ 'indent': '-1'}, { 'indent': '+1' }],
+                    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                    [{ 'align': [] }],
+                ],
                 pageHeading: {
                     title: 'Novo Requerimento',
                     fa: 'fa fa-edit',

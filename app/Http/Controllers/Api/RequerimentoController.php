@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Sisgera\Http\Controllers\Controller;
 use Sisgera\Http\Requests\CreateRequerimentoRequest;
+use Sisgera\Http\Requests\UpdateRequerimentoRequest;
 use Sisgera\Models\HistoricoRequerimento;
 use Sisgera\Models\Requerimento;
 use Sisgera\Models\TiposSolicitacao;
@@ -77,9 +78,26 @@ class RequerimentoController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(UpdateRequerimentoRequest $request, $id)
     {
-        //
+        $requerimento = Requerimento::query()->findOrFail($id);
+        $data = $request->all();
+
+        $requerimento->update($data);
+
+        $movimentacao = [
+            'data_movimentacao' => Carbon::now(),
+            'requerimento_id' => $requerimento->id,
+            'user_id' => auth()->user()->id,
+        ];
+        $historico = HistoricoRequerimento::query()->create($movimentacao);
+
+        $response = [
+            'message' => 'Requerimento '.$requerimento->situacao.'.',
+            'data' => $requerimento
+        ];
+
+        return $response;
     }
 
 
