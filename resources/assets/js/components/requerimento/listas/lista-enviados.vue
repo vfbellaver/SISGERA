@@ -5,8 +5,9 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <fieldset class="col-md-12">
-                        <legend class="row"><i class="fa fa-list"></i>  Lista de Requerimentos
-                            <small class="pull-right">{{new Date | data('DD/M/Y')}} <i class="fa fa-calendar"></i></small>
+                        <legend class="row"><i class="fa fa-list"></i> Lista de Requerimentos
+                            <small class="pull-right">{{new Date | data('DD/M/Y')}} <i class="fa fa-calendar"></i>
+                            </small>
                         </legend>
                     </fieldset>
                 </div>
@@ -19,6 +20,8 @@
                             <th>Data Criacão</th>
                             <th>Situacão</th>
                             <th>Ultima movimentação</th>
+                            <th>Movimentação</th>
+                            <th>Ação</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -27,7 +30,13 @@
                             <td>{{req.protocolo}}</td>
                             <td>{{req.data_criacao | data('DD/M/Y')}}</td>
                             <td>{{req.situacao}}</td>
-                            <td></td>
+                            <td>{{req.historico[req.historico.length - 1].data_movimentacao.date | data('DD/M/Y')}}</td>
+                            <td>{{req.historico[req.historico.length - 1].movimentacao}}</td>
+                            <td>
+                                <button class="btn btn-xs btn-primary" @click="visualizarRequerimento(req)"><i
+                                        class="fa fa-edit"></i> Visualizar
+                                </button>
+                            </td>
                         </tr>
                         </tbody>
                     </table>
@@ -79,27 +88,9 @@
                         this.pagination = response;
                     });
             },
-
-            edit(coord) {
-                window.location = laroute.route("user.edit", {user: coord.id});
+            visualizarRequerimento(requerimento){
+                window.location = (laroute.route('requerimento.edit', {requerimento: requerimento.id}));
             },
-
-            destroy(coord) {
-                const self = this;
-                Sg.delete(laroute.route('user.destroy', {user: coord.id}),coord.destroyForm)
-                    .then(() => {
-                        self.removeCoord(coord)
-                    });
-            },
-            removeCoord(coord) {
-                this.coordenadores.splice(this.findIndex(coord), 1);
-            },
-
-            findIndex(coord) {
-                return this.coordenadores.findIndex((_coord) => {
-                    return _coord.id === coord.id;
-                });
-            }
         }
 
     }

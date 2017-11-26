@@ -19,6 +19,8 @@
                             <th>Data Criacão</th>
                             <th>Situacão</th>
                             <th>Ultima movimentação</th>
+                            <th>Movimentação</th>
+                            <th>Ação</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -27,7 +29,9 @@
                             <td>{{req.protocolo}}</td>
                             <td>{{req.data_criacao | data('DD/M/Y')}}</td>
                             <td>{{req.situacao}}</td>
-                            <td></td>
+                            <td>{{req.historico[req.historico.length - 1].data_movimentacao.date | data('DD/M/Y')}}</td>
+                            <td>{{req.historico[req.historico.length - 1].movimentacao}}</td>
+                            <td><button class="btn btn-xs btn-primary" @click="visualizarRequerimento(req)"><i class="fa fa-edit"></i> Visualizar</button></td>
                         </tr>
                         </tbody>
                     </table>
@@ -93,6 +97,9 @@
                         this.list = response.data;
                         this.pagination = response;
                     });
+            },
+            visualizarRequerimento(requerimento){
+                window.location = (laroute.route('requerimento.edit',{requerimento:requerimento.id}));
             },
         }
 
