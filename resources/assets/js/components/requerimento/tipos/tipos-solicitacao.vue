@@ -4,7 +4,7 @@
             <div class="col-md-3" v-for="tipo in tpRequerimentos">
                 <div class="animated-checkbox">
                     <label>
-                        <input type="checkbox"><span class="label-text" @click="marquei(tipo)">{{tipo.name}}</span>
+                        <input type="checkbox"><span class="label-text" @click="setType(tipo)">{{tipo.name}}</span>
                     </label>
                 </div>
             </div>
@@ -43,8 +43,21 @@
                     });
             },
 
-            marquei(valor){
-                this.internalValue.push(valor);
+            setType(valor){
+                if (this.internalValue.length === 0) {
+                    console.log('novo');
+                    this.internalValue.push(valor);
+                }
+            },
+
+            findIndex(tipo) {
+                return this.internalValue.findIndex((_tipo) => {
+                    return _tipo.id === tipo.id;
+                });
+            },
+
+            removeType(valor) {
+                this.clients.splice(this.findIndex(client), 1);
             },
         }
     }

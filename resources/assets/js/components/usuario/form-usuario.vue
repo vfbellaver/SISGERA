@@ -34,7 +34,7 @@
                                         <label class="control-label" for="rg"><h4>
                                             <strong>Registro Geral:</strong></h4></label>
                                         <input class="form-control" id="rg" type="text" name="rg"
-                                               placeholder="Rg" v-model="form.rg">
+                                               placeholder="Rg" v-model="form.rg" v-rg>
                                     </form-group>
                                 </column>
                                 <column size="2">
@@ -50,7 +50,7 @@
                                         <label class="control-label" for="cpf"><h4>
                                             <strong>Cpf:</strong></h4></label>
                                         <input class="form-control" id="cpf" type="text" name="cpf"
-                                               placeholder="Cpf" v-model="form.cpf">
+                                               placeholder="Cpf" v-model="form.cpf" v-cpf>
                                     </form-group>
                                 </column>
                             </row>
