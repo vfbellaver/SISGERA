@@ -11,9 +11,22 @@
 |
 */
 
+
+use Sisgera\Sisgera;
+
 Route::get('/', function () {
     return redirect()->route('login');
 });
+
+// Sisgera
+Route::get('sisgera.js', function () {
+    $json = json_encode(array_merge(Sisgera::scriptVariables(), []));
+    $js = <<<js
+    window.Sisgera = {$json};
+js;
+    return response($js)->header('Content-Type', 'text/javascript');
+})->name('sisgera.js');
+
 
 Auth::routes();
 
@@ -28,10 +41,11 @@ Route::resource('admin', 'AdminController');
 Route::resource('user', 'Api\UsuarioController');
 
 //USERS
-Route::get('current/user','UsuarioController@getCurrentUser')->name('current.user');
-Route::get('configuracoes/perfil','UsuarioController@perfilUsuario')->name('perfil-usuario');
+Route::get('current/user', 'UsuarioController@getCurrentUser')->name('current.user');
+Route::get('configuracoes/perfil', 'UsuarioController@perfilUsuario')->name('perfil-usuario');
 Route::put('perfil/{user}/password', 'Api\UsuarioController@atualizaPassword')->name('atualiza.password');
 
+//get Userts
 Route::get('get/coord', 'UsuarioController@getCoordenadores')->name('get-coordenadores');
 Route::get('get/alunos', 'UsuarioController@getAlunos')->name('get-alunos');
 Route::get('get/cerel', 'UsuarioController@getCerel')->name('get-cerel');
@@ -45,13 +59,20 @@ Route::get('usuarios/externo', 'UsuarioController@listaCivis')->name('lista-civi
 //REQUERIMENTOS
 Route::resource('requerimento', 'Api\RequerimentoController');
 
-Route::get('get/enviados', 'RequerimentoController@getEnviados')->name('req-enviados');
-Route::get('get/recebidos', 'RequerimentoController@getRecebidos')->name('req-recebidos');
-Route::get('get/deferidos', 'RequerimentoController@getDeferidos')->name('req-deferidos');
-Route::get('get/indeferidos', 'RequerimentoController@getIndeferidos')->name('req-indeferidos');
+Route::get('get/enviados', 'MeusRequerimentosController@getEnviados')->name('meus-req-enviados');
+Route::get('get/recebidos', 'MeusRequerimentosController@getRecebidos')->name('meus-req-recebidos');
+Route::get('get/deferidos', 'MeusRequerimentosController@getDeferidos')->name('meus-req-deferidos');
+Route::get('get/indeferidos', 'MeusRequerimentosController@getIndeferidos')->name('meus-req-indeferidos');
 
-Route::get('tipo/solicitacao', 'RequerimentoController@TiposdeSolicitacao')->name('tipos-solicitacao');
-Route::get('requerimentos/enviados', 'RequerimentoController@requerimentosEnviados')->name('requerimentos-enviados');
-Route::get('requerimentos/recebidos', 'RequerimentoController@requerimentosRecebidos')->name('requerimentos-recebidos');
-Route::get('requerimentos/deferidos', 'RequerimentoController@requerimentosDeferidos')->name('requerimentos-deferidos');
-Route::get('requerimentos/indeferidos', 'RequerimentoController@requerimentosIndeferidos')->name('requerimentos-indeferidos');
+Route::get('tipo/solicitacao', 'MeusRequerimentosController@TiposdeSolicitacao')->name('tipos-solicitacao');
+Route::get('meus/requerimentos/enviados', 'MeusRequerimentosController@requerimentosEnviados')->name('meus-requerimentos-enviados');
+Route::get('meus/requerimentos/recebidos', 'MeusRequerimentosController@requerimentosRecebidos')->name('meus-requerimentos-recebidos');
+Route::get('meus/requerimentos/deferidos', 'MeusRequerimentosController@requerimentosDeferidos')->name('meus-requerimentos-deferidos');
+Route::get('meus/requerimentos/indeferidos', 'MeusRequerimentosController@requerimentosIndeferidos')->name('meus-requerimentos-indeferidos');
+
+
+//Cerel Requerimentos
+Route::get('get/cerel-recebidos','CerelRequerimentosController@getRecebidos')->name('get-cerel-req-recebidos');
+Route::get('requerimentos/recebidos','CerelRequerimentosController@requerimentosRecebidos')->name('view-cerel-req-recebidos');
+Route::get('get/cerel-req-list','CerelRequerimentosController@getAll')->name('get-cerel-req-list');
+Route::get('requerimentos/todos','CerelRequerimentosController@requerimentosList')->name('view-cerel-req-list');

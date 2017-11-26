@@ -8,7 +8,7 @@ class HistoricoRequerimento extends Model
 {
     protected $fillable = [
         'movimentacao',
-        'usuario_id',
+        'user_id',
         'requerimento_id',
         'data_movimentacao',
     ];
@@ -19,13 +19,19 @@ class HistoricoRequerimento extends Model
         'data_movimentacao',
     ];
 
-    public function requerimento()
-    {
-        return $this->belongsTo(Requerimento::class);
-    }
 
     public function usuario()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function toArray()
+    {
+        return [
+
+            'id' => (int)$this->id,
+            'movimentacao' => $this->movimentacao,
+            'data_movimentacao' => $this->data_movimentacao,
+        ];
     }
 }

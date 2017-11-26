@@ -63,7 +63,7 @@
 
         methods: {
             load(){
-                Sg.get(laroute.route('req-deferidos'))
+                Sg.get(laroute.route('meus-req-deferidos'))
                     .then((response) => {
 
                         this.reqdeferidos = response.data;
@@ -73,7 +73,7 @@
             },
             navigate(page){
                 console.log(page);
-                Sg.get(laroute.route('req-deferidos', {page: page}))
+                Sg.get(laroute.route('meus-req-deferidos', {page: page}))
                     .then((response) => {
                         this.reqdeferidos = response.data;
                         this.pagination = response;

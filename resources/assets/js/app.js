@@ -26,6 +26,7 @@ window.App = new Vue({
     data() {
         return {
             user: 'Sg' in window ? Sg.user : null,
+            regra: window.Sisgera.user.role.name,
         }
     },
     created() {

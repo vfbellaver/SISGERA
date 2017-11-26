@@ -13,6 +13,7 @@
                             <li><a :href="usuarios.novo"><i class="fa fa-user-plus"></i> Novo Usuario</a></li>
                         </ul>
                     </li>
+                    <menu-requerimentos></menu-requerimentos>
                     <menu-geral></menu-geral>
                 </ul>
             </section>

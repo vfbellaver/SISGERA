@@ -14,7 +14,7 @@
                             <th>#</th>
                             <th>Nome</th>
                             <th>Email</th>
-                            <th>Ações</th>
+                            <th v-show="regra === 'admin'" >Ações</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -24,7 +24,7 @@
                             <td>{{aluno.email}}</td>
                             <td>
                                 <button class="btn btn-xs btn-primary" @click="edit(aluno)"><i class="fa fa-edit"></i></button>
-                                <button class="btn btn-xs btn-danger" @click="destroy(aluno)"><i class="fa fa-trash"></i></button>
+                                <button v-show="regra === 'admin'" class="btn btn-xs btn-danger" @click="destroy(aluno)"><i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
                         </tbody>
@@ -44,6 +44,7 @@
         data() {
             return {
                 alunos: [],
+                regra: Sisgera.user.role.name,
                 pagination: {},
                 pageHeading: {
                     title: 'Lista de Alunos',

@@ -8,6 +8,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link rel="shortcut icon" href="{{asset('sisgera.png')}}">
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <script src="{{route('sisgera.js')}}" type="text/javascript"></script>
 </head>
 
 <body class="sidebar-mini fixed">

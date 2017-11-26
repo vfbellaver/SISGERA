@@ -16,8 +16,8 @@ class CreateHistoricoRequerimentoTable extends Migration
             $table->dateTime('data_movimentacao');
             $table->string('movimentacao')->default(Requerimento::ENVIADO);
 
-            $table->unsignedInteger('usuario_id');
-            $table->foreign('usuario_id')->references('id')
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')
                         ->on('users')->onDelete('cascade');
 
             $table->unsignedInteger('requerimento_id');

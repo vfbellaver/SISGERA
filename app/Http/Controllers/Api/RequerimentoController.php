@@ -31,7 +31,7 @@ class RequerimentoController extends Controller
         $requerimento = new Requerimento($data);
         $requerimento->data_criacao = Carbon::now();
         $requerimento->protocolo = gerar_protocolo();
-        $requerimento->usuario_id = auth()->user()->id;
+        $requerimento->user_id = auth()->user()->id;
         $requerimento->save();
 
         foreach ($data['tipos_solicitacao'] as $solicitacao )
@@ -44,7 +44,7 @@ class RequerimentoController extends Controller
         $data = [
             'data_movimentacao' => Carbon::now(),
             'requerimento_id' => $requerimento->id,
-            'usuario_id' => auth()->user()->id,
+            'user_id' => auth()->user()->id,
         ];
 
         $historico = HistoricoRequerimento::query()->create($data);

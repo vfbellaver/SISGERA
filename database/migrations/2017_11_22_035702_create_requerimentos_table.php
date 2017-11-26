@@ -24,8 +24,8 @@ class CreateRequerimentosTable extends Migration
             $table->text('resposta')->nullable();
             $table->string('situacao',30)->default(Requerimento::ENVIADO);
 
-            $table->unsignedInteger('usuario_id');
-            $table->foreign('usuario_id')->references('id')
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')
                         ->on('users')->onDelete('cascade');
 
             $table->timestamps();

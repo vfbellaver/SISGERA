@@ -17,11 +17,11 @@
         data(){
             return {
                 requerimento: {
-                    novo: laroute.route('requerimento.create'),
-                    enviado: laroute.route('requerimentos-enviados'),
-                    recebido: laroute.route('requerimentos-recebidos'),
-                    deferido: laroute.route('requerimentos-deferidos'),
-                    indeferido: laroute.route('requerimentos-indeferidos'),
+                    novo: laroute.route('meus-requerimento.create'),
+                    enviado: laroute.route('meus-requerimentos-enviados'),
+                    recebido: laroute.route('meus-requerimentos-recebidos'),
+                    deferido: laroute.route('meus-requerimentos-deferidos'),
+                    indeferido: laroute.route('meus-requerimentos-indeferidos'),
                 },
 
 

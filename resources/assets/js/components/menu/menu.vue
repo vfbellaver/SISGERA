@@ -4,7 +4,8 @@
             <section class="sidebar">
                 <ul class="sidebar-menu">
                     <menu-admin v-show="regra.name === 'admin'"></menu-admin>
-                    <menu-geral v-show="regra.name === 'aluno' || regra.name === 'civil'"></menu-geral>
+                    <menu-cerel v-show="regra.name === 'cerel'"></menu-cerel>
+                    <menu-geral v-show="regra.name === 'aluno' || regra.name == 'civil'"></menu-geral>
                 </ul>
             </section>
         </aside>

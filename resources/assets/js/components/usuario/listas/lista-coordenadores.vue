@@ -15,7 +15,7 @@
                             <th>Email</th>
                             <th>Função</th>
                             <th>Status</th>
-                            <th>Ações</th>
+                            <th v-show="regra === 'admin'">Ações</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -26,8 +26,8 @@
                             <td>Coordenador Curso</td>
                             <td>{{coord.status ? 'Ativo' : 'Inativo'}}</td>
                             <td>
-                                <button class="btn btn-xs btn-primary" @click="edit(coord)"><i class="fa fa-edit"></i></button>
-                                <button class="btn btn-xs btn-danger" @click="destroy(coord)"><i class="fa fa-trash"></i></button>
+                                <button v-show="regra === 'admin'" class="btn btn-xs btn-primary" @click="edit(coord)"><i class="fa fa-edit"></i></button>
+                                <button v-show="regra === 'admin'" class="btn btn-xs btn-danger" @click="destroy(coord)"><i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
                         </tbody>
@@ -47,6 +47,7 @@
         data() {
             return {
                 coordenadores: [],
+                regra: Sisgera.user.role.name,
                 pagination: {},
                 pageHeading: {
                     title: 'Lista de  Coordenadores',

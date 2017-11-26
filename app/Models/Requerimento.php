@@ -29,14 +29,16 @@ class Requerimento extends Model
         'tipo_solicitacao',
         'justificativa',
         'resposta',
-        'usuario_id',
-        ];
+        'situacao',
+        'user_id',
+    ];
+
 
     protected $dates = ['deleted_at'];
 
     public function usuario()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function TipoRequerimento()
@@ -46,7 +48,28 @@ class Requerimento extends Model
 
     public function historicos()
     {
-        return $this->hasMany(HistoricoRequerimento::class);
+        return $this->hasMany(HistoricoRequerimento::class,'requerimento_id','id');
     }
 
+    public function toArray()
+    {
+        return [
+
+            'id' => (int)$this->id,
+            'data_criacao' => $this->data_criacao,
+            'data_fechamento' => $this->data_fechamento,
+            'protocolo' => $this->protocolo,
+            'nome_estudante' => $this->nome_estudante,
+            'curso' => $this->curso,
+            'turma' => $this->turma,
+            'periodo' => $this->periodo,
+            'turno' => $this->turno,
+            'solicitacoes' => $this->TipoRequerimento->toArray(),
+            'justificativa' => $this->justificativa,
+            'resposta' => $this->resposta,
+            'situacao' => $this->situacao,
+            'usuario' => $this->usuario->toArray(),
+            'historico' => $this->historicos->toArray(),
+            ];
+    }
 }

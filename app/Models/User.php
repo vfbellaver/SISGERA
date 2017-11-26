@@ -10,8 +10,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-   use Notifiable, HasDefender;
-   use SoftDeletes;
+    use Notifiable, HasDefender;
+    use SoftDeletes;
 
     const ADMIN = 'admin';
     const COORDENADOR = 'coordenador';
@@ -35,7 +35,7 @@ class User extends Authenticatable
     protected $dates = ['deleted_at'];
 
     protected $hidden = [
-        'password', 'remember_token','cadastro_token',
+        'password', 'remember_token', 'cadastro_token',
     ];
 
     public function getRoleAttribute()
@@ -50,7 +50,7 @@ class User extends Authenticatable
 
     public function requerimentos()
     {
-        return $this->hasMany(Requerimento::class);
+        return $this->hasMany(Requerimento::class,'id','id');
     }
 
     public function historicoRequerimento()
@@ -60,9 +60,34 @@ class User extends Authenticatable
 
     public function toArray()
     {
-        return array_merge(parent::toArray(), [
+        $role = [];
 
-        ]);
+        if ($this->role) {
+
+            $role = [
+
+                'id' => $this->role->id,
+                'name' => $this->role->name,
+
+            ];
+
+            return [
+
+                'id' => (int)$this->id,
+                'name' => $this->name,
+                'email' => $this->email,
+                'rg' => $this->rg,
+                'org_emissor' => $this->org_emissor,
+                'cpf' => $this->cpf,
+                'telefone' => $this->telefone,
+                'celular' => $this->celular,
+                'status' => $this->status,
+                'role' => $role,
+                'roles' => $this->roles->pluck('name')->all(),
+
+            ];
+
+        }
     }
 
 }

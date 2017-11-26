@@ -14,7 +14,7 @@
                             <th>#</th>
                             <th>Nome</th>
                             <th>Email</th>
-                            <th>Ações</th>
+                            <th v-show="regra === 'admin'" >Ações</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -23,8 +23,8 @@
                             <td>{{cerel.name}}</td>
                             <td>{{cerel.email}}</td>
                             <td>
-                                <button class="btn btn-xs btn-primary" @click="edit(cerel)"><i class="fa fa-edit"></i></button>
-                                <button class="btn btn-xs btn-danger" @click="destroy(cerel)"><i class="fa fa-trash"></i></button>
+                                <button v-show="regra === 'admin'" class="btn btn-xs btn-primary" @click="edit(cerel)"><i class="fa fa-edit"></i></button>
+                                <button v-show="regra === 'admin'" class="btn btn-xs btn-danger" @click="destroy(cerel)"><i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
                         </tbody>
@@ -45,6 +45,7 @@
             return {
                 cerel: [],
                 pagination: {},
+                regra: Sisgera.user.role.name,
                 pageHeading: {
                     title: 'Lista de Servidores Cerel',
                     fa: 'fa fa-user-o',

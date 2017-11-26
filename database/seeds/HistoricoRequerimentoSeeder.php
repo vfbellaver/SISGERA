@@ -14,7 +14,7 @@ class HistoricoRequerimentoSeeder extends Seeder
     {
         \Sisgera\Models\Requerimento::all()->each(function ($requerimento) {
             factory(\Sisgera\Models\HistoricoRequerimento::class, 2)
-                ->create(['usuario_id' => $requerimento->usuario,'requerimento_id'=>$requerimento->id]);
+                ->create(['user_id' => $requerimento->usuario,'requerimento_id'=>$requerimento->id]);
         });
     }
 }
