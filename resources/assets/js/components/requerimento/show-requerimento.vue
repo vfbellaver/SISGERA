@@ -102,29 +102,60 @@
                                     <row>
                                         <column size="12">
                                             <div class="justificativa" v-html="formRequerimento.justificativa">
-
-                                                <!--<vue-editor v-model="formRequerimento.justificativa" :disabled="true" :editorToolbar="customToolbar"></vue-editor>-->
                                             </div>
                                         </column>
                                     </row>
                                 </form-group>
                             </column>
                         </row>
-                        <form class="form-horizontal" v-model="formRequerimento" @submit.prevent="save">
+                        <div v-if="finalizado">
+                            <form class="form-horizontal" v-model="formRequerimento" @submit.prevent="save">
+                                <row>
+                                    <column size="12" v-show="this.regraUsuarioLogado === 'coordenador'|| 'cerel'">
+                                        <fieldset class="col-md-12">
+                                            <legend class="row">4) Resposta Requerimento</legend>
+                                        </fieldset>
+                                        <row>
+                                            <column size="12">
+                                                <div class="justificativa">
+                                                    <form-group :form="formRequerimento" field="resposta">
+                                                        <vue-editor v-model="formRequerimento.resposta"
+                                                                    :editorToolbar="customToolbar"
+                                                                    placeholder="Justifique a sua decisão aqui."></vue-editor>
+                                                    </form-group>
+                                                </div>
+                                            </column>
+                                        </row>
+                                    </column>
+                                </row>
+                                <row>
+                                    <column size="12">
+                                        <div class="card-footer">
+                                            <div class="form-group">
+                                                <a class="btn btn-default icon-btn">
+                                                    <i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar
+                                                </a>
+                                                <a class="btn btn-danger icon-btn" @click="indeferirRequerimento">
+                                                    <i class="fa fa-fw fa-lg fa-thumbs-down"></i>Indeferir Requerimento
+                                                </a>
+                                                <button class="btn btn-primary icon-btn" type="submit"><i
+                                                        class="fa fa-fw fa-lg fa-thumbs-up"></i>Deferir Requerimento
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </column>
+                                </row>
+                            </form>
+                        </div>
+                        <div v-else>
                             <row>
-                                <column size="12" v-show="this.regraUsuarioLogado === 'coordenador'|| 'cerel'">
-
+                                <column size="12">
                                     <fieldset class="col-md-12">
                                         <legend class="row">4) Resposta Requerimento</legend>
                                     </fieldset>
                                     <row>
                                         <column size="12">
-                                            <div class="justificativa">
-                                                <form-group :form="formRequerimento" field="resposta">
-                                                    <vue-editor v-model="formRequerimento.resposta"
-                                                                :editorToolbar="customToolbar"
-                                                                placeholder="Justifique a sua decisão aqui."></vue-editor>
-                                                </form-group>
+                                            <div class="justificativa" v-html="formRequerimento.justificativa">
                                             </div>
                                         </column>
                                     </row>
@@ -134,20 +165,14 @@
                                 <column size="12">
                                     <div class="card-footer">
                                         <div class="form-group">
-                                            <a class="btn btn-default icon-btn">
-                                                <i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar
+                                            <a class="btn btn-success icon-btn" @click="imprimirRequerimento">
+                                                <i class="fa fa-fw fa-lg fa-save"></i>Imprimir Requerimento
                                             </a>
-                                            <a class="btn btn-danger icon-btn" @click="indeferirRequerimento">
-                                                <i class="fa fa-fw fa-lg fa-thumbs-down"></i>Indeferir Requerimento
-                                            </a>
-                                            <button class="btn btn-primary icon-btn" type="submit"><i
-                                                    class="fa fa-fw fa-lg fa-thumbs-up"></i>Deferir Requerimento
-                                            </button>
                                         </div>
                                     </div>
                                 </column>
                             </row>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </row>
@@ -184,6 +209,7 @@
                 formRequerimento: {},
                 user: null,
                 regraUsuarioLogado: null,
+                finalizado: null,
                 customToolbar: [
                     ['bold', 'italic', 'underline'],
                     [{'header': [1, 2, 3, 4, 5, 6, false]}],
@@ -212,7 +238,10 @@
                 this.loaded = false;
                 const uri = laroute.route('requerimento.show', {requerimento: this.id});
                 Sg.find(uri).then((requerimento) => {
+
                     this.user = requerimento.usuario;
+                    this.finalizado = requerimento.situacao !== 'Deferido' && requerimento.situacao !== 'Indeferido' ? true : false,
+
                     this.formRequerimento = new Form({
                         id: requerimento.id,
                         nome_estudante: requerimento.nome_estudante,
@@ -222,6 +251,7 @@
                         turma: requerimento.turma,
                         periodo: requerimento.periodo,
                         justificativa: requerimento.justificativa,
+                        situacao: requerimento.situacao,
                         resposta: requerimento.resposta ? requerimento.resposta : '',
                     });
 
