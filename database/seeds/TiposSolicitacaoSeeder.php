@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Sisgera\Models\TiposSolicitacao;
 
+
 class TiposSolicitacaoSeeder extends Seeder
 {
 
