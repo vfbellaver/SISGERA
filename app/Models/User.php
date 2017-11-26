@@ -74,7 +74,7 @@ class User extends Authenticatable
             return [
 
                 'id' => (int)$this->id,
-                'nome' => $this->nome,
+                'name' => $this->name,
                 'email' => $this->email,
                 'rg' => $this->rg,
                 'org_emissor' => $this->org_emissor,

@@ -15,7 +15,7 @@
                             <th>Email</th>
                             <th>Função</th>
                             <th>Status</th>
-                            <th>Ações</th>
+                            <th v-show="regra === 'admin'">Ações</th>
                         </tr>
                         </thead>
                         <tbody>

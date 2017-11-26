@@ -28,6 +28,10 @@ Vue.component('requerimentos-recebidos',require('./requerimento/listas/lista-rec
 Vue.component('requerimentos-deferidos',require('./requerimento/listas/lista-deferidos'));
 Vue.component('requerimentos-indeferidos',require('./requerimento/listas/lista-indeferidos'));
 
+//CEREL REQUERIMENTO
+Vue.component('cerel-req-recebidos',require('./requerimento/cerel/lista-recebidos'));
+Vue.component('cerel-req-list',require('./requerimento/cerel/lista-todos'));
+
 
 //OUTROS COMPONENTES
 Vue.component('pagination',require('./shared/pagination'));

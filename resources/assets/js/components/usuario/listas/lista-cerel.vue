@@ -14,7 +14,7 @@
                             <th>#</th>
                             <th>Nome</th>
                             <th>Email</th>
-                            <th>Ações</th>
+                            <th v-show="regra === 'admin'" >Ações</th>
                         </tr>
                         </thead>
                         <tbody>

@@ -59,13 +59,20 @@ Route::get('usuarios/externo', 'UsuarioController@listaCivis')->name('lista-civi
 //REQUERIMENTOS
 Route::resource('requerimento', 'Api\RequerimentoController');
 
-Route::get('get/enviados', 'RequerimentoController@getEnviados')->name('req-enviados');
-Route::get('get/recebidos', 'RequerimentoController@getRecebidos')->name('req-recebidos');
-Route::get('get/deferidos', 'RequerimentoController@getDeferidos')->name('req-deferidos');
-Route::get('get/indeferidos', 'RequerimentoController@getIndeferidos')->name('req-indeferidos');
+Route::get('get/enviados', 'MeusRequerimentosController@getEnviados')->name('req-enviados');
+Route::get('get/recebidos', 'MeusRequerimentosController@getRecebidos')->name('req-recebidos');
+Route::get('get/deferidos', 'MeusRequerimentosController@getDeferidos')->name('req-deferidos');
+Route::get('get/indeferidos', 'MeusRequerimentosController@getIndeferidos')->name('req-indeferidos');
 
-Route::get('tipo/solicitacao', 'RequerimentoController@TiposdeSolicitacao')->name('tipos-solicitacao');
-Route::get('requerimentos/enviados', 'RequerimentoController@requerimentosEnviados')->name('requerimentos-enviados');
-Route::get('requerimentos/recebidos', 'RequerimentoController@requerimentosRecebidos')->name('requerimentos-recebidos');
-Route::get('requerimentos/deferidos', 'RequerimentoController@requerimentosDeferidos')->name('requerimentos-deferidos');
-Route::get('requerimentos/indeferidos', 'RequerimentoController@requerimentosIndeferidos')->name('requerimentos-indeferidos');
+Route::get('tipo/solicitacao', 'MeusRequerimentosController@TiposdeSolicitacao')->name('tipos-solicitacao');
+Route::get('requerimentos/enviados', 'MeusRequerimentosController@requerimentosEnviados')->name('requerimentos-enviados');
+Route::get('requerimentos/recebidos', 'MeusRequerimentosController@requerimentosRecebidos')->name('requerimentos-recebidos');
+Route::get('requerimentos/deferidos', 'MeusRequerimentosController@requerimentosDeferidos')->name('requerimentos-deferidos');
+Route::get('requerimentos/indeferidos', 'MeusRequerimentosController@requerimentosIndeferidos')->name('requerimentos-indeferidos');
+
+
+//Cerel Requerimentos
+Route::get('get/cerel-recebidos','CerelRequerimentosController@getRecebidos')->name('get-cerel-req-recebidos');
+Route::get('get/view-cerel-recebidos','CerelRequerimentosController@requerimentosRecebidos')->name('view-cerel-req-recebidos');
+Route::get('get/cerel-req-list','CerelRequerimentosController@getAll')->name('get-cerel-req-list');
+Route::get('get/view-cerel-req-list','CerelRequerimentosController@requerimentosList')->name('view-cerel-req-list');
