@@ -4,7 +4,11 @@
         <div class="card">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Lista de  Coordenadores</h5>
+                    <fieldset class="col-md-12">
+                        <legend class="row"><i class="fa fa-list"></i> Coordenadores
+                            <small class="pull-right">{{new Date | data('DD/M/Y')}} <i class="fa fa-calendar"></i></small>
+                        </legend>
+                    </fieldset>
                 </div>
                 <div class="ibox-content">
                     <table class="table table-hover">

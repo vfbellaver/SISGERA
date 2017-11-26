@@ -10,7 +10,7 @@ class CerelRequerimentosController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('needsRole:cerel|admin,true');
+        $this->middleware('needsRole:admin|coordenador|cerel,true');
     }
 
     // RETORNA TIPOS DE SOLICITACAO DO REQUERIMENTO

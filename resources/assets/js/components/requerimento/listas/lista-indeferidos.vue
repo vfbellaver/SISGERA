@@ -87,6 +87,9 @@
                         this.pagination = response;
                     });
             },
+            visualizarRequerimento(requerimento){
+                window.location = (laroute.route('requerimento.edit',{requerimento:requerimento.id}));
+            },
 
         }
 
