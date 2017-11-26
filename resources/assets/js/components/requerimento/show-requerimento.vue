@@ -48,16 +48,20 @@
                                 </column>
                             </row>
                             <row>
-                                <column size="4">
+                                <column size="12">
                                     <label class="control-label">
                                         <h4><strong>Nome do Estudante:</strong>&nbsp {{formRequerimento.nome_estudante}}</h4>
                                     </label>
                                 </column>
-                                <column size="2">
+                            </row>
+                            <row>
+                                <column size="12">
                                     <label class="control-label">
                                         <h4><strong>Curso:</strong>&nbsp {{formRequerimento.curso}}</h4>
                                     </label>
                                 </column>
+                            </row>
+                            <row>
                                 <column size="2">
                                     <label class="control-label">
                                         <h4><strong>Turno:</strong>&nbsp {{formRequerimento.turno}}</h4>
@@ -95,8 +99,8 @@
                                         </fieldset>
                                         <row>
                                             <column size="12">
-                                                <div class="justificativa">
-                                                <h4>{{formRequerimento.justificativa}}</h4>
+                                                <div class="justificativa" v-html="formRequerimento.justificativa">
+
                                                     <!--<vue-editor v-model="formRequerimento.justificativa" :disabled="true" :editorToolbar="customToolbar"></vue-editor>-->
                                                 </div>
                                             </column>
@@ -149,6 +153,7 @@
         text-align: justify;
         padding-left: 20px;
         padding-right: 20px;
+        font-size: 18px;
     }
 </style>
 <script>
@@ -193,7 +198,6 @@
                 this.loaded = false;
                 const uri = laroute.route('requerimento.show', {requerimento: this.id});
                 Sg.find(uri).then((requerimento) => {
-                    debugger;
                     this.user = requerimento.usuario;
                     this.formRequerimento = new Form({
                         id: requerimento.id,

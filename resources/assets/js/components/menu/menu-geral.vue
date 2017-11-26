@@ -17,7 +17,7 @@
         data(){
             return {
                 requerimento: {
-                    novo: laroute.route('meus-requerimento.create'),
+                    novo: laroute.route('requerimento.create'),
                     enviado: laroute.route('meus-requerimentos-enviados'),
                     recebido: laroute.route('meus-requerimentos-recebidos'),
                     deferido: laroute.route('meus-requerimentos-deferidos'),
