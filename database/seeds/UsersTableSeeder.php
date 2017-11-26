@@ -63,7 +63,7 @@ class UsersTableSeeder extends Seeder
             'cpf' => 5345345345,
             'telefone' => 3453534534,
             'celular' => 3453534534,
-            'email' => 'cerel@example.com',
+            'email' => 'cerel@sisgera.com',
             'password' => bcrypt('cerelsisgera##'),
         ]);
         $user->attachRole($role);
@@ -85,7 +85,7 @@ class UsersTableSeeder extends Seeder
             'cpf' => 555555555,
             'telefone' => 123123123,
             'celular' => 123123123,
-            'email' => 'aluno.tsi@example.com',
+            'email' => 'aluno.tsi@@sisgera.com',
             'password' => bcrypt('alunosisgera##'),
         ]);
         $user->attachRole($role);
@@ -107,7 +107,7 @@ class UsersTableSeeder extends Seeder
             'cpf' => 34534543,
             'telefone' => 3453534534,
             'celular' => 3453534534,
-            'email' => 'civil@example.com',
+            'email' => 'civil@@sisgera.com',
             'password' => bcrypt('civilsisgera##'),
         ]);
         $user->attachRole($role);
