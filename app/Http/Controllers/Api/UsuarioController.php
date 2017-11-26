@@ -16,7 +16,8 @@ class UsuarioController extends Controller
 {
     function __construct()
     {
-        $this->middleware('needsRole:admin|cerel,true');
+
+        $this->middleware('auth');
     }
 
     public function create()
@@ -27,6 +28,7 @@ class UsuarioController extends Controller
 
     public function store(UsuarioCreateRequest $request)
     {
+        $this->middleware('needsRole:admin|coordenadorcerel,true');
         $data = $request->all();
         $user = new User($data);
         $user->cadastro_token = str_random(128);

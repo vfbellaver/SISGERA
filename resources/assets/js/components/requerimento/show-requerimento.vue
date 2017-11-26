@@ -5,141 +5,149 @@
             <row>
                 <div class="col-xs-12">
                     <div class="bs-component">
-                            <fieldset class="col-md-12">
-                                <legend class="row">1) Dados Requerente
-                                    <small class="pull-right">{{new Date | data('DD/M/Y') }} <i
-                                            class="fa fa-calendar"></i></small>
-                                </legend>
-                            </fieldset>
-                            <row>
-                                <column size="4">
-                                    <label class="control-label">
-                                        <h4><strong>Nome do Requerente:</strong> &nbsp {{user.name}}</h4>
-                                    </label>
-                                </column>
+                        <fieldset class="col-md-12">
+                            <legend class="row">1) Dados Requerente
+                                <small class="pull-right">{{new Date | data('DD/M/Y') }} <i
+                                        class="fa fa-calendar"></i></small>
+                            </legend>
+                        </fieldset>
+                        <row>
+                            <column size="4">
+                                <label class="control-label">
+                                    <h4><strong>Nome do Requerente:</strong> &nbsp {{user.name}}</h4>
+                                </label>
+                            </column>
 
-                                <column size="4">
-                                    <label class="control-label">
-                                        <h4><strong>Rg:</strong> &nbsp {{user.rg}} &nbsp {{user.org_emissor}}</h4>
-                                    </label>
-                                </column>
-                                <column size="4">
-                                    <label class="control-label">
-                                        <h4><strong>Cpf:</strong> &nbsp {{user.cpf}}</h4>
-                                    </label>
-                                </column>
-                            </row>
+                            <column size="4">
+                                <label class="control-label">
+                                    <h4><strong>Rg:</strong> &nbsp {{user.rg}} &nbsp {{user.org_emissor}}</h4>
+                                </label>
+                            </column>
+                            <column size="4">
+                                <label class="control-label">
+                                    <h4><strong>Cpf:</strong> &nbsp {{user.cpf}}</h4>
+                                </label>
+                            </column>
+                        </row>
 
-                            <row>
-                                <column size="4">
-                                    <label class="control-label">
-                                        <h4><strong>Email:</strong> &nbsp {{user.email}}</h4>
-                                    </label>
-                                </column>
-                                <column size="4">
-                                    <label class="control-label">
-                                        <h4><strong>Tel Fixo:</strong>&nbsp {{user.telefone}} </h4>
-                                    </label>
-                                </column>
-                                <column size="4">
-                                    <label class="control-label">
-                                        <h4><strong>Tel Celular:</strong>&nbsp {{user.celular}}</h4>
-                                    </label>
-                                </column>
-                            </row>
-                            <row>
-                                <column size="12">
-                                    <label class="control-label">
-                                        <h4><strong>Nome do Estudante:</strong>&nbsp {{formRequerimento.nome_estudante}}</h4>
-                                    </label>
-                                </column>
-                            </row>
-                            <row>
+                        <row>
+                            <column size="4">
+                                <label class="control-label">
+                                    <h4><strong>Email:</strong> &nbsp {{user.email}}</h4>
+                                </label>
+                            </column>
+                            <column size="4">
+                                <label class="control-label">
+                                    <h4><strong>Tel Fixo:</strong>&nbsp {{user.telefone}} </h4>
+                                </label>
+                            </column>
+                            <column size="4">
+                                <label class="control-label">
+                                    <h4><strong>Tel Celular:</strong>&nbsp {{user.celular}}</h4>
+                                </label>
+                            </column>
+                        </row>
+                        <row>
+                            <column size="12">
+                                <label class="control-label">
+                                    <h4><strong>Nome do Estudante:</strong>&nbsp {{formRequerimento.nome_estudante}}
+                                    </h4>
+                                </label>
+                            </column>
+                        </row>
+                        <row>
 
-                            </row>
-                            <row>
-                                <column size="4">
-                                    <label class="control-label">
-                                        <h4><strong>Curso:</strong>&nbsp {{formRequerimento.curso}}</h4>
-                                    </label>
-                                </column>
-                                <column size="2">
-                                    <label class="control-label">
-                                        <h4><strong>Turma:</strong>&nbsp {{formRequerimento.turma}}</h4>
-                                    </label>
-                                </column>
-                                <column size="2">
-                                    <label class="control-label">
-                                        <h4><strong>Periodo:</strong>&nbsp {{formRequerimento.periodo}}</h4>
-                                    </label>
-                                </column>
-                                <column size="4">
-                                    <label class="control-label">
-                                        <h4><strong>Turno:</strong>&nbsp {{formRequerimento.turno}}</h4>
-                                    </label>
-                                </column>
-                            </row>
-                            <row>
-                                <column size="12">
-                                        <fieldset class="col-md-12">
-                                            <legend class="row">2) Tipo de Solicitação:</legend>
-                                        </fieldset>
-                                    <div v-for="tp in formRequerimento.tipos_solicitacao">
-                                        <column size="3">
-                                            <h4><i class="fa fa-check"></i>&nbsp;{{tp.name}}</h4>
+                        </row>
+                        <row>
+                            <column size="4">
+                                <label class="control-label">
+                                    <h4><strong>Curso:</strong>&nbsp {{formRequerimento.curso}}</h4>
+                                </label>
+                            </column>
+                            <column size="2">
+                                <label class="control-label">
+                                    <h4><strong>Turma:</strong>&nbsp {{formRequerimento.turma}}</h4>
+                                </label>
+                            </column>
+                            <column size="2">
+                                <label class="control-label">
+                                    <h4><strong>Periodo:</strong>&nbsp {{formRequerimento.periodo}}</h4>
+                                </label>
+                            </column>
+                            <column size="4">
+                                <label class="control-label">
+                                    <h4><strong>Turno:</strong>&nbsp {{formRequerimento.turno}}</h4>
+                                </label>
+                            </column>
+                        </row>
+                        <row>
+                            <column size="12">
+                                <fieldset class="col-md-12">
+                                    <legend class="row">2) Tipo de Solicitação:</legend>
+                                </fieldset>
+                                <div v-for="tp in formRequerimento.tipos_solicitacao">
+                                    <column size="3">
+                                        <h4><i class="fa fa-check"></i>&nbsp;{{tp.name}}</h4>
+                                    </column>
+                                </div>
+                            </column>
+                        </row>
+
+                        <row>
+                            <column size="12">
+                                <form-group :form="formRequerimento" field="justificativa">
+                                    <fieldset class="col-md-12">
+                                        <legend class="row">3) Justificativa</legend>
+                                    </fieldset>
+                                    <row>
+                                        <column size="12">
+                                            <div class="justificativa" v-html="formRequerimento.justificativa">
+
+                                                <!--<vue-editor v-model="formRequerimento.justificativa" :disabled="true" :editorToolbar="customToolbar"></vue-editor>-->
+                                            </div>
                                         </column>
-                                    </div>
-                                </column>
-                            </row>
-
-                            <row>
-                                <column size="12">
-                                    <form-group :form="formRequerimento" field="justificativa">
-                                        <fieldset class="col-md-12">
-                                            <legend class="row">3) Justificativa</legend>
-                                        </fieldset>
-                                        <row>
-                                            <column size="12">
-                                                <div class="justificativa" v-html="formRequerimento.justificativa">
-
-                                                    <!--<vue-editor v-model="formRequerimento.justificativa" :disabled="true" :editorToolbar="customToolbar"></vue-editor>-->
-                                                </div>
-                                            </column>
-                                        </row>
-                                    </form-group>
-                                </column>
-                            </row>
+                                    </row>
+                                </form-group>
+                            </column>
+                        </row>
+                        <form class="form-horizontal" v-model="formRequerimento" @submit.prevent="save">
                             <row>
                                 <column size="12" v-show="this.regraUsuarioLogado === 'coordenador'|| 'cerel'">
-                                    <form-group :form="formRequerimento" field="justificativa">
-                                        <fieldset class="col-md-12">
-                                            <legend class="row">4) Resposta Requerimento</legend>
-                                        </fieldset>
-                                        <row>
-                                            <column size="12">
-                                                <div class="justificativa">
-                                                    <vue-editor v-model="formRequerimento.resposta" :editorToolbar="customToolbar"></vue-editor>
-                                                </div>
-                                            </column>
-                                        </row>
-                                    </form-group>
+
+                                    <fieldset class="col-md-12">
+                                        <legend class="row">4) Resposta Requerimento</legend>
+                                    </fieldset>
+                                    <row>
+                                        <column size="12">
+                                            <div class="justificativa">
+                                                <form-group :form="formRequerimento" field="resposta">
+                                                    <vue-editor v-model="formRequerimento.resposta"
+                                                                :editorToolbar="customToolbar"
+                                                                placeholder="Justifique a sua decisão aqui."></vue-editor>
+                                                </form-group>
+                                            </div>
+                                        </column>
+                                    </row>
                                 </column>
                             </row>
-
                             <row>
                                 <column size="12">
                                     <div class="card-footer">
                                         <div class="form-group">
-                                            <a class="btn btn-default icon-btn"><i
-                                                    class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar</a>
-                                            &nbsp;&nbsp;&nbsp;
+                                            <a class="btn btn-default icon-btn">
+                                                <i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar
+                                            </a>
+                                            <a class="btn btn-danger icon-btn" @click="indeferirRequerimento">
+                                                <i class="fa fa-fw fa-lg fa-thumbs-down"></i>Indeferir Requerimento
+                                            </a>
                                             <button class="btn btn-primary icon-btn" type="submit"><i
-                                                    class="fa fa-fw fa-lg fa-send"></i>Enviar Requerimento
+                                                    class="fa fa-fw fa-lg fa-thumbs-up"></i>Deferir Requerimento
                                             </button>
                                         </div>
                                     </div>
                                 </column>
                             </row>
+                        </form>
                     </div>
                 </div>
             </row>
@@ -150,7 +158,8 @@
     fieldset {
         margin-top: 15px;
     }
-    .justificativa{
+
+    .justificativa {
         text-align: justify;
         padding-left: 20px;
         padding-right: 20px;
@@ -174,14 +183,14 @@
             return {
                 formRequerimento: {},
                 user: null,
-                regraUsuarioLogado:null,
+                regraUsuarioLogado: null,
                 customToolbar: [
                     ['bold', 'italic', 'underline'],
-                    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-                    [{ 'script': 'sub'}, { 'script': 'super' }],
-                    [{ 'indent': '-1'}, { 'indent': '+1' }],
-                    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                    [{ 'align': [] }],
+                    [{'header': [1, 2, 3, 4, 5, 6, false]}],
+                    [{'script': 'sub'}, {'script': 'super'}],
+                    [{'indent': '-1'}, {'indent': '+1'}],
+                    [{'list': 'ordered'}, {'list': 'bullet'}],
+                    [{'align': []}],
                 ],
                 pageHeading: {
                     title: 'Requerimento',
@@ -213,21 +222,31 @@
                         turma: requerimento.turma,
                         periodo: requerimento.periodo,
                         justificativa: requerimento.justificativa,
-                        resposta: requerimento.resposta ? requerimento.resposta : '<p>Digite aqui a resposta para sua decisão.</p>' ,
+                        resposta: requerimento.resposta ? requerimento.resposta : '',
                     });
 
                 });
             },
 
             save(){
-                const uri = laroute.route('requerimento.update');
-                Sg.post(uri, this.formRequerimento).then((response) => {
-                    console.log('Requerimento Deferido', response.message);
+                this.formRequerimento.situacao = 'Deferido';
+                const uri = laroute.route('requerimento.update', {requerimento: this.id});
+                Sg.put(uri, this.formRequerimento).then((response) => {
+                    console.log('Requerimento atualizado', response.message);
                     swal('Pronto', response.message, 'success');
                     this.formRequerimento = new Form();
                 });
             },
 
+            indeferirRequerimento(){
+                this.formRequerimento.situacao = 'Indeferido';
+                const uri = laroute.route('requerimento.update', {requerimento: this.id});
+                Sg.put(uri, this.formRequerimento).then((response) => {
+                    console.log('Requerimento atualizado', response.message);
+                    swal('Pronto', response.message, 'success');
+                    this.formRequerimento = new Form();
+                });
+            },
         }
     }
 </script>
