@@ -4,7 +4,6 @@ namespace Sisgera\Http\Controllers\Api;
 
 
 use Artesaos\Defender\Facades\Defender;
-use Illuminate\Http\Request;
 use Sisgera\Http\Controllers\Controller;
 use Sisgera\Http\Requests\PasswordUpdateRequest;
 use Sisgera\Http\Requests\UserUpdateRequest;
@@ -17,7 +16,7 @@ class UsuarioController extends Controller
 {
     function __construct()
     {
-        $this->middleware('needsRole:admin');
+        $this->middleware('needsRole:admin|cerel,true');
     }
 
     public function create()
