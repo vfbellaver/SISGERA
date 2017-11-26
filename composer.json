@@ -11,7 +11,8 @@
         "fideloper/proxy": "~3.3",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
-        "lord/laroute": "dev-master"
+        "lord/laroute": "dev-master",
+        "nesbot/carbon": "^1.22"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
@@ -26,7 +27,10 @@
         ],
         "psr-4": {
             "Sisgera\\": "app/"
-        }
+        },
+        "files": [
+            "app/Helpers/ControleProtocolo.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

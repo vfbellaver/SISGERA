@@ -4,27 +4,30 @@
         <div class="card">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Lista de  Alunos</h5>
+                    <h5>Lista de  Coordenadores</h5>
                 </div>
                 <div class="ibox-content">
-
-                    <table class="table">
+                    <table class="table table-hover">
                         <thead>
                         <tr>
                             <th>#</th>
                             <th>Nome</th>
                             <th>Email</th>
-                            <th>Ações</th>
+                            <th>Função</th>
+                            <th>Status</th>
+                            <th v-show="regra === 'admin'">Ações</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="( aluno, index ) in alunos">
+                        <tr v-for="( coord, index ) in coordenadores">
                             <td>{{ index + 1 }}</td>
-                            <td>{{aluno.name}}</td>
-                            <td>{{aluno.email}}</td>
+                            <td>{{coord.name}}</td>
+                            <td>{{coord.email}}</td>
+                            <td>Coordenador Curso</td>
+                            <td>{{coord.status ? 'Ativo' : 'Inativo'}}</td>
                             <td>
-                                <button class="btn btn-xs btn-primary" @click="edit(aluno)"><i class="fa fa-edit"></i></button>
-                                <button class="btn btn-xs btn-danger" @click="destroy(aluno)"><i class="fa fa-trash"></i></button>
+                                <button v-show="regra === 'admin'" class="btn btn-xs btn-primary" @click="edit(coord)"><i class="fa fa-edit"></i></button>
+                                <button v-show="regra === 'admin'" class="btn btn-xs btn-danger" @click="destroy(coord)"><i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
                         </tbody>
@@ -43,11 +46,12 @@
         components: {},
         data() {
             return {
-                alunos: [],
+                coordenadores: [],
+                regra: Sisgera.user.role.name,
                 pagination: {},
                 pageHeading: {
-                    title: 'Lista de Alunos',
-                    fa: 'fa fa-graduation-cap',
+                    title: 'Lista de  Coordenadores',
+                    fa:'fa fa-graduation-cap',
                     breadcrumb: [
                         {title: 'Home', url: laroute.route('home')}
                     ]
@@ -61,23 +65,19 @@
 
         methods: {
             load(){
-                Sg.get(laroute.route('get-alunos'))
+                Sg.get(laroute.route('get-coordenadores'))
                     .then((response) => {
-
-                        this.alunos = response.data;
+                        this.coordenadores = response.data;
                         this.pagination = response;
                     });
-
             },
             navigate(page){
-                console.log(page);
-                Sg.get(laroute.route('get-alunos', {page: page}))
+                Sg.get(laroute.route('get-coordenadores', {page: page}))
                     .then((response) => {
-                        this.alunos = response.data;
+                        this.coordenadores = response.data;
                         this.pagination = response;
                     });
             },
-
             edit(coord) {
                 window.location = laroute.route("user.edit", {user: coord.id});
             },
@@ -98,6 +98,7 @@
                     return _coord.id === coord.id;
                 });
             }
+
         }
 
     }

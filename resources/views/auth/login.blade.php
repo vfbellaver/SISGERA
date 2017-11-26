@@ -14,13 +14,14 @@
 </section>
 <section class="login-content">
     <div class="logo">
-        <h2 class="text-center"><i class="fa fa-graduation-cap"></i></h2>
-        <h1>{{ config('app.name', env('APP_NAME')) }}</h1>
+        <h1 class="text-center">{{ config('app.name', env('APP_NAME')) }} <i class="fa fa-graduation-cap"></i></h1>
+        {{--<h1>{{ config('app.name', env('APP_NAME')) }}</h1>--}}
+        <h1 class="text-center">Sistema de Gerenciamento de Requerimentos Acadêmicos</h1>
     </div>
     <div class="login-box">
         <form class="login-form" method="POST" action="{{ route('login') }}">
             {{ csrf_field() }}
-            <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>SIGN IN</h3>
+            <h3 class="login-head"><i class="fa fa-lg fa-fw fa-lock"></i>Acessar o sitema</h3>
             <div class="form-group">
                 <label for="email" class="control-label">EMAIL</label>
                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required
@@ -32,7 +33,7 @@
                 @endif
             </div>
             <div class="form-group">
-                <label for="password" class="control-label">EMAIL</label>
+                <label for="password" class="control-label">SENHA</label>
                 <input id="password" type="password" class="form-control" name="password" required>
                 @if ($errors->has('password'    ))
                     <span class="help-block">

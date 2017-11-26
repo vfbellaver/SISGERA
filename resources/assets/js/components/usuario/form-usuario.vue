@@ -34,7 +34,7 @@
                                         <label class="control-label" for="rg"><h4>
                                             <strong>Registro Geral:</strong></h4></label>
                                         <input class="form-control" id="rg" type="text" name="rg"
-                                               placeholder="Rg" v-model="form.rg">
+                                               placeholder="Rg" v-model="form.rg" v-rg>
                                     </form-group>
                                 </column>
                                 <column size="2">
@@ -50,7 +50,7 @@
                                         <label class="control-label" for="cpf"><h4>
                                             <strong>Cpf:</strong></h4></label>
                                         <input class="form-control" id="cpf" type="text" name="cpf"
-                                               placeholder="Cpf" v-model="form.cpf">
+                                               placeholder="Cpf" v-model="form.cpf" v-cpf>
                                     </form-group>
                                 </column>
                             </row>
@@ -60,7 +60,7 @@
                                         <label class="control-label" for="telefone"><h4>
                                             <strong>Telefone Fixo:</strong></h4></label>
                                         <input class="form-control" id="telefone" type="text" name="telefone"
-                                               placeholder="Telefone fixo" v-model="form.telefone">
+                                               placeholder="Telefone fixo" v-model="form.telefone" v-tel>
                                     </form-group>
                                 </column>
                                 <column size="6">
@@ -68,7 +68,7 @@
                                         <label class="control-label" for="celular"><h4>
                                             <strong>Celular:</strong></h4></label>
                                         <input class="form-control" id="celular" type="text" name="celular"
-                                               placeholder="Celular" v-model="form.celular">
+                                               placeholder="Celular" v-model="form.celular" v-tel >
                                     </form-group>
                                 </column>
                             </row>

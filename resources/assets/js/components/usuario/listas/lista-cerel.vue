@@ -4,30 +4,27 @@
         <div class="card">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Lista de  Coordenadores</h5>
+                    <h5>Lista de Servidores Cerel</h5>
                 </div>
                 <div class="ibox-content">
-                    <table class="table table-hover">
+
+                    <table class="table">
                         <thead>
                         <tr>
                             <th>#</th>
                             <th>Nome</th>
                             <th>Email</th>
-                            <th>Função</th>
-                            <th>Status</th>
-                            <th>Ações</th>
+                            <th v-show="regra === 'admin'" >Ações</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="( coord, index ) in coordenadores">
+                        <tr v-for="( cerel, index ) in cerel">
                             <td>{{ index + 1 }}</td>
-                            <td>{{coord.name}}</td>
-                            <td>{{coord.email}}</td>
-                            <td>Coordenador Curso</td>
-                            <td>{{coord.status ? 'Ativo' : 'Inativo'}}</td>
+                            <td>{{cerel.name}}</td>
+                            <td>{{cerel.email}}</td>
                             <td>
-                                <button class="btn btn-xs btn-primary" @click="edit(coord)"><i class="fa fa-edit"></i></button>
-                                <button class="btn btn-xs btn-danger" @click="destroy(coord)"><i class="fa fa-trash"></i></button>
+                                <button v-show="regra === 'admin'" class="btn btn-xs btn-primary" @click="edit(cerel)"><i class="fa fa-edit"></i></button>
+                                <button v-show="regra === 'admin'" class="btn btn-xs btn-danger" @click="destroy(cerel)"><i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
                         </tbody>
@@ -46,11 +43,12 @@
         components: {},
         data() {
             return {
-                coordenadores: [],
+                cerel: [],
                 pagination: {},
+                regra: Sisgera.user.role.name,
                 pageHeading: {
-                    title: 'Lista de  Coordenadores',
-                    fa:'fa fa-graduation-cap',
+                    title: 'Lista de Servidores Cerel',
+                    fa: 'fa fa-user-o',
                     breadcrumb: [
                         {title: 'Home', url: laroute.route('home')}
                     ]
@@ -64,16 +62,19 @@
 
         methods: {
             load(){
-                Sg.get(laroute.route('get-coordenadores'))
+                Sg.get(laroute.route('get-cerel'))
                     .then((response) => {
-                        this.coordenadores = response.data;
+
+                        this.cerel = response.data;
                         this.pagination = response;
                     });
+
             },
             navigate(page){
-                Sg.get(laroute.route('get-coordenadores', {page: page}))
+                console.log(page);
+                Sg.get(laroute.route('get-cerel', {page: page}))
                     .then((response) => {
-                        this.coordenadores = response.data;
+                        this.cerel = response.data;
                         this.pagination = response;
                     });
             },
@@ -97,7 +98,6 @@
                     return _coord.id === coord.id;
                 });
             }
-
         }
 
     }

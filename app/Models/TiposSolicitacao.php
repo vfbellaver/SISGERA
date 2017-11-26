@@ -4,13 +4,16 @@ namespace Sisgera\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TipoRequerimento extends Model
+class TiposSolicitacao extends Model
 {
     protected $fillable = [
         'name',
     ];
 
-    public function requerimento(){
+    protected $table = 'tipos_solicitacao';
+
+    public function requerimentos()
+    {
         return $this->belongsToMany(Requerimento::class);
     }
 }

@@ -4,27 +4,37 @@
         <div class="card">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Lista de  Civis</h5>
+                    <fieldset class="col-md-12">
+                        <legend class="row"><i class="fa fa-list"></i>  Lista de Requerimentos
+                            <small class="pull-right">{{new Date | data('DD/M/Y')}} <i class="fa fa-calendar"></i></small>
+                        </legend>
+                    </fieldset>
                 </div>
                 <div class="ibox-content">
-
                     <table class="table">
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Nome</th>
-                            <th>Email</th>
-                            <th>Ações</th>
+                            <th>Protocolo</th>
+                            <th>Data Criacão</th>
+                            <th>Situacão</th>
+                            <th>Ultima movimentação</th>
+                            <th>Movimentação</th>
+                            <th>Ação</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="( civil, index ) in civis">
+                        <tr v-for="( req, index ) in reqindeferidos">
                             <td>{{ index + 1 }}</td>
-                            <td>{{civil.name}}</td>
-                            <td>{{civil.email}}</td>
+                            <td>{{req.protocolo}}</td>
+                            <td>{{req.data_criacao | data('DD/M/Y')}}</td>
+                            <td>{{req.situacao}}</td>
+                            <td>{{req.historico[req.historico.length - 1].data_movimentacao.date | data('DD/M/Y')}}</td>
+                            <td>{{req.historico[req.historico.length - 1].movimentacao}}</td>
                             <td>
-                                <button class="btn btn-xs btn-primary" @click="edit(civil)"><i class="fa fa-edit"></i></button>
-                                <button class="btn btn-xs btn-danger" @click="destroy(civil)"><i class="fa fa-trash"></i></button>
+                                <button class="btn btn-xs btn-primary" @click="visualizarRequerimento(req)"><i
+                                        class="fa fa-edit"></i> Visualizar
+                                </button>
                             </td>
                         </tr>
                         </tbody>
@@ -43,11 +53,11 @@
         components: {},
         data() {
             return {
-                civis: [],
+                reqindeferidos: [],
                 pagination: {},
                 pageHeading: {
-                    title: 'Lista Publico Civil',
-                    fa: 'fa fa-user',
+                    title: 'Requerimentos Indeferidos',
+                    fa: 'fa fa-thumbs-down',
                     breadcrumb: [
                         {title: 'Home', url: laroute.route('home')}
                     ]
@@ -61,42 +71,23 @@
 
         methods: {
             load(){
-                Sg.get(laroute.route('get-civis'))
+                Sg.get(laroute.route('meus-req-indeferidos'))
                     .then((response) => {
 
-                        this.civis = response.data;
+                        this.reqindeferidos = response.data;
                         this.pagination = response;
                     });
 
             },
             navigate(page){
                 console.log(page);
-                Sg.get(laroute.route('get-civis', {page: page}))
+                Sg.get(laroute.route('meus-req-indeferidos', {page: page}))
                     .then((response) => {
-                        this.civis = response.data;
+                        this.reqindeferidos = response.data;
                         this.pagination = response;
                     });
             },
-            edit(coord) {
-                window.location = laroute.route("user.edit", {user: coord.id});
-            },
 
-            destroy(coord) {
-                const self = this;
-                Sg.delete(laroute.route('user.destroy', {user: coord.id}),coord.destroyForm)
-                    .then(() => {
-                        self.removeCoord(coord)
-                    });
-            },
-            removeCoord(coord) {
-                this.coordenadores.splice(this.findIndex(coord), 1);
-            },
-
-            findIndex(coord) {
-                return this.coordenadores.findIndex((_coord) => {
-                    return _coord.id === coord.id;
-                });
-            }
         }
 
     }

@@ -17,13 +17,8 @@ class HomeController extends Controller
 
     public function index()
     {
-        $role = Auth::user()->getRoleAttribute();
 
-        if ($role->name == User::ADMIN) {
-            return redirect()->route('usuario.index');
-        }
+        return view('dashboard.index');
 
-
-        return view('home');
     }
 }

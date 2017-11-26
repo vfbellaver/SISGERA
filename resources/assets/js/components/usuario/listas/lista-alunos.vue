@@ -4,27 +4,27 @@
         <div class="card">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Lista de Servidores Cerel</h5>
+                    <h5>Lista de  Alunos</h5>
                 </div>
                 <div class="ibox-content">
 
-                    <table class="table">
+                    <table class="table table-responsive">
                         <thead>
                         <tr>
                             <th>#</th>
                             <th>Nome</th>
                             <th>Email</th>
-                            <th>Ações</th>
+                            <th v-show="regra === 'admin'" >Ações</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="( cerel, index ) in cerel">
+                        <tr v-for="( aluno, index ) in alunos">
                             <td>{{ index + 1 }}</td>
-                            <td>{{cerel.name}}</td>
-                            <td>{{cerel.email}}</td>
+                            <td>{{aluno.name}}</td>
+                            <td>{{aluno.email}}</td>
                             <td>
-                                <button class="btn btn-xs btn-primary" @click="edit(cerel)"><i class="fa fa-edit"></i></button>
-                                <button class="btn btn-xs btn-danger" @click="destroy(cerel)"><i class="fa fa-trash"></i></button>
+                                <button class="btn btn-xs btn-primary" @click="edit(aluno)"><i class="fa fa-edit"></i></button>
+                                <button v-show="regra === 'admin'" class="btn btn-xs btn-danger" @click="destroy(aluno)"><i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
                         </tbody>
@@ -43,11 +43,12 @@
         components: {},
         data() {
             return {
-                cerel: [],
+                alunos: [],
+                regra: Sisgera.user.role.name,
                 pagination: {},
                 pageHeading: {
-                    title: 'Lista de Servidores Cerel',
-                    fa: 'fa fa-user-o',
+                    title: 'Lista de Alunos',
+                    fa: 'fa fa-graduation-cap',
                     breadcrumb: [
                         {title: 'Home', url: laroute.route('home')}
                     ]
@@ -61,22 +62,23 @@
 
         methods: {
             load(){
-                Sg.get(laroute.route('get-cerel'))
+                Sg.get(laroute.route('get-alunos'))
                     .then((response) => {
 
-                        this.cerel = response.data;
+                        this.alunos = response.data;
                         this.pagination = response;
                     });
 
             },
             navigate(page){
                 console.log(page);
-                Sg.get(laroute.route('get-cerel', {page: page}))
+                Sg.get(laroute.route('get-alunos', {page: page}))
                     .then((response) => {
-                        this.cerel = response.data;
+                        this.alunos = response.data;
                         this.pagination = response;
                     });
             },
+
             edit(coord) {
                 window.location = laroute.route("user.edit", {user: coord.id});
             },
