@@ -14,7 +14,7 @@ class Sisgera
     public static function scriptVariables()
     {
         return [
-            'user' => self::getCurrentUser(),
+            'user' => auth()->user(),
             'csrfToken' => csrf_token(),
 
             'regras' => [

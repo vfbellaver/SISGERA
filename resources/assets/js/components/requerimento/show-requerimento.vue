@@ -5,26 +5,19 @@
             <row>
                 <div class="col-xs-12">
                     <div class="bs-component">
-                        <form class="form-horizontal" v-model="formRequerimento" @submit.prevent="save">
                             <fieldset class="col-md-12">
                                 <legend class="row">1) Dados Requerente
-                                    <small class="pull-right">{{new Date | data('DD/M/Y') }} <i class="fa fa-calendar"></i> </small>
+                                    <small class="pull-right">{{new Date | data('DD/M/Y') }} <i
+                                            class="fa fa-calendar"></i></small>
                                 </legend>
                             </fieldset>
                             <row>
-                                <column size="12">
+                                <column size="4">
                                     <label class="control-label">
                                         <h4><strong>Nome do Requerente:</strong> &nbsp {{user.name}}</h4>
                                     </label>
                                 </column>
-                            </row>
 
-                            <row>
-                                <column size="4">
-                                    <label class="control-label">
-                                        <h4><strong>Email:</strong> &nbsp {{user.email}}</h4>
-                                    </label>
-                                </column>
                                 <column size="4">
                                     <label class="control-label">
                                         <h4><strong>Rg:</strong> &nbsp {{user.rg}} &nbsp {{user.org_emissor}}</h4>
@@ -40,6 +33,11 @@
                             <row>
                                 <column size="4">
                                     <label class="control-label">
+                                        <h4><strong>Email:</strong> &nbsp {{user.email}}</h4>
+                                    </label>
+                                </column>
+                                <column size="4">
+                                    <label class="control-label">
                                         <h4><strong>Tel Fixo:</strong>&nbsp {{user.telefone}} </h4>
                                     </label>
                                 </column>
@@ -49,89 +47,74 @@
                                     </label>
                                 </column>
                             </row>
-
+                            <row>
+                                <column size="4">
+                                    <label class="control-label">
+                                        <h4><strong>Nome do Estudante:</strong>&nbsp {{formRequerimento.nome_estudante}}</h4>
+                                    </label>
+                                </column>
+                                <column size="2">
+                                    <label class="control-label">
+                                        <h4><strong>Curso:</strong>&nbsp {{formRequerimento.curso}}</h4>
+                                    </label>
+                                </column>
+                                <column size="2">
+                                    <label class="control-label">
+                                        <h4><strong>Turno:</strong>&nbsp {{formRequerimento.turno}}</h4>
+                                    </label>
+                                </column>
+                                <column size="2">
+                                    <label class="control-label">
+                                        <h4><strong>Periodo:</strong>&nbsp {{formRequerimento.periodo}}</h4>
+                                    </label>
+                                </column>
+                                <column size="2">
+                                    <label class="control-label">
+                                        <h4><strong>Turma:</strong>&nbsp {{formRequerimento.turma}}</h4>
+                                    </label>
+                                </column>
+                            </row>
                             <row>
                                 <column size="12">
-                                    <form-group :form="formRequerimento" field="nome_estudante">
-                                        <label class="control-label" for="nome_estudante"><h4>
-                                            <strong>Nome do Estudante:</strong></h4></label>
-                                        <div>
-                                            <input class="form-control" id="nome_estudante" type="text"
-                                                   name="nome_estudante"
-                                                   placeholder="Nome Estudante"
-                                                   v-model="formRequerimento.nome_estudante">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" v-model="checked" @click="setEstudante">O próprio usuário logado
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </form-group>
-                                </column>
-                            </row>
-
-                            <row>
-                                <column size="6">
-                                    <form-group :form="formRequerimento" field="curso">
-                                        <label class="control-label" for="curso"><h4>
-                                            <strong>Curso:</strong></h4></label>
-                                        <input class="form-control" id="curso" type="text" name="curso"
-                                               placeholder="Curso do estudante" v-model="formRequerimento.curso">
-                                    </form-group>
-                                </column>
-                                <column size="6">
-                                    <form-group :form="formRequerimento" field="turma">
-                                        <label class="control-label" for="turma"><h4>
-                                            <strong>Turma:</strong></h4></label>
-                                        <input class="form-control" id="turma" type="text" name="turma"
-                                               placeholder="Turma" v-model="formRequerimento.turma">
-                                    </form-group>
-                                </column>
-                            </row>
-
-                            <row>
-                                <column size="6">
-                                    <form-group :form="formRequerimento" field="periodo">
-                                        <label class="control-label" for="periodo"><h4>
-                                            <strong>Periodo:</strong></h4></label>
-                                        <input class="form-control" id="periodo" type="text" name="periodo"
-                                               placeholder="Informe o periodo" v-model="formRequerimento.periodo">
-                                    </form-group>
-                                </column>
-                                <column size="6">
-                                    <form-group :form="formRequerimento" field="turno">
-                                        <label class="control-label" for="turno"><h4>
-                                            <strong>Turno:</strong></h4></label>
-                                        <input class="form-control" id="turno" type="text" name="turno"
-                                               placeholder="Turno" v-model="formRequerimento.turno">
-                                    </form-group>
-                                </column>
-
-                            </row>
-
-                            <row>
-                                <column size="12">
-                                    <form-group :form="formRequerimento" field="tipos_solicitacao">
                                         <fieldset class="col-md-12">
-                                            <legend class="row">2) Tipo de Requerimento</legend>
+                                            <legend class="row">2) Tipo de Solicitação:</legend>
                                         </fieldset>
-                                        <column size="12">
-                                            <tipo-solicitacao v-model="formRequerimento.tipos_solicitacao"></tipo-solicitacao>
+                                    <div v-for="tp in formRequerimento.tipos_solicitacao">
+                                        <column size="3">
+                                            <h4><i class="fa fa-check"></i>&nbsp;{{tp.name}}</h4>
                                         </column>
-                                    </form-group>
+                                    </div>
                                 </column>
                             </row>
 
                             <row>
                                 <column size="12">
                                     <form-group :form="formRequerimento" field="justificativa">
-
                                         <fieldset class="col-md-12">
-                                            <legend class="row">3) Detalhamento do pedido</legend>
+                                            <legend class="row">3) Justificativa</legend>
                                         </fieldset>
                                         <row>
                                             <column size="12">
-                                                <vue-editor v-model="formRequerimento.justificativa"></vue-editor>
+                                                <div class="justificativa">
+                                                <h4>{{formRequerimento.justificativa}}</h4>
+                                                    <!--<vue-editor v-model="formRequerimento.justificativa" :disabled="true" :editorToolbar="customToolbar"></vue-editor>-->
+                                                </div>
+                                            </column>
+                                        </row>
+                                    </form-group>
+                                </column>
+                            </row>
+                            <row v-show="regraUsuarioLogado.name === 'cerel' || regraUsuarioLogado.name === 'coordenador'">
+                                <column size="12">
+                                    <form-group :form="formRequerimento" field="justificativa">
+                                        <fieldset class="col-md-12">
+                                            <legend class="row">4) Resposta Requerimento</legend>
+                                        </fieldset>
+                                        <row>
+                                            <column size="12">
+                                                <div class="justificativa">
+                                                    <vue-editor v-model="formRequerimento.justificativa" :disabled="true" :editorToolbar="customToolbar"></vue-editor>
+                                                </div>
                                             </column>
                                         </row>
                                     </form-group>
@@ -152,7 +135,6 @@
                                     </div>
                                 </column>
                             </row>
-                        </form>
                     </div>
                 </div>
             </row>
@@ -162,6 +144,11 @@
 <style lang="scss" scoped="scoped">
     fieldset {
         margin-top: 15px;
+    }
+    .justificativa{
+        text-align: justify;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 </style>
 <script>
@@ -173,15 +160,22 @@
             VueEditor,
         },
         props: {
-            user: {required: true}
+
+            id: {required: false},
         },
 
         data() {
             return {
                 formRequerimento: {},
-                checked: false,
+                user: null,
+                regraUsuarioLogado: Sisgera.user.role.name,
+                customToolbar: [
+                    ['bold', 'italic', 'underline'],
+                    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                    [ 'code-block']
+                ],
                 pageHeading: {
-                    title: 'Novo Requerimento',
+                    title: 'Requerimento',
                     fa: 'fa fa-edit',
                     breadcrumb: [
                         {title: 'Home', url: laroute.route('home')}
@@ -191,35 +185,34 @@
         },
 
         created(){
-            this.formRequerimento = this.createForm();
+            this.loadForm();
         },
 
         methods: {
-            createForm(requerimento) {
-                return new Form({
-                    id: requerimento ? requerimento.id : null,
-                    nome_estudante: requerimento ? requerimento.nome_estudante : null,
-                    tipos_solicitacao: [],
-                    curso: requerimento ? requerimento.curso : null,
-                    turno: requerimento ? requerimento.turno : null,
-                    turma: requerimento ? requerimento.turma : null,
-                    periodo: requerimento ? requerimento.periodo : null,
-                    justificativa: requerimento ? requerimento.justificativa : '<p>Detalhamento do seu Pedido</p>',
+            loadForm() {
+                this.loaded = false;
+                const uri = laroute.route('requerimento.show', {requerimento: this.id});
+                Sg.find(uri).then((requerimento) => {
+                    debugger;
+                    this.user = requerimento.usuario;
+                    this.formRequerimento = new Form({
+                        id: requerimento.id,
+                        nome_estudante: requerimento.nome_estudante,
+                        tipos_solicitacao: requerimento.solicitacoes,
+                        curso: requerimento.curso,
+                        turno: requerimento.turno,
+                        turma: requerimento.turma,
+                        periodo: requerimento.periodo,
+                        justificativa: requerimento.justificativa,
+                    });
+
                 });
-            },
-            setEstudante(){
-                this.checked = !this.checked;
-                if (this.checked) {
-                    this.formRequerimento.nome_estudante = this.user.name;
-                } else {
-                    this.formRequerimento.nome_estudante = null;
-                }
             },
 
             save(){
-                const uri = laroute.route('requerimento.store');
+                const uri = laroute.route('requerimento.update');
                 Sg.post(uri, this.formRequerimento).then((response) => {
-                    console.log('Requerimento criado', response.message);
+                    console.log('Requerimento Deferido', response.message);
                     swal('Pronto', response.message, 'success');
                     this.formRequerimento = new Form();
                 });

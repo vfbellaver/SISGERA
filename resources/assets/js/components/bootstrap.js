@@ -24,10 +24,14 @@ Vue.component('perfil-usuario',require('./usuario/perfil-usuario'));
 
 //REQUERIMENTO
 Vue.component('requerimento-form',require('./requerimento/requerimento-form'));
+Vue.component('show-requerimento',require('./requerimento/show-requerimento'));
+
+//LISTAS REQUERIMENTOS
 Vue.component('requerimentos-enviados',require('./requerimento/listas/lista-enviados'));
 Vue.component('requerimentos-recebidos',require('./requerimento/listas/lista-recebidos'));
 Vue.component('requerimentos-deferidos',require('./requerimento/listas/lista-deferidos'));
 Vue.component('requerimentos-indeferidos',require('./requerimento/listas/lista-indeferidos'));
+
 
 //CEREL REQUERIMENTO
 Vue.component('cerel-req-recebidos',require('./requerimento/cerel/lista-recebidos'));

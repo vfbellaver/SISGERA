@@ -64,13 +64,16 @@ class RequerimentoController extends Controller
 
     public function show($id)
     {
-        //
+       return Requerimento::query()->findOrFail($id);
     }
 
 
     public function edit($id)
     {
-        //
+        $requerimento = Requerimento::query()->findOrFail($id);
+        return view('requerimento.show.editar', [
+            'requerimento' => $requerimento
+        ]);
     }
 
 
