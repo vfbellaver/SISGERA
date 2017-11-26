@@ -109,8 +109,8 @@
                                     </form-group>
                                 </column>
                             </row>
-                            <row v-show="regraUsuarioLogado.name === 'cerel' || regraUsuarioLogado.name === 'coordenador'">
-                                <column size="12">
+                            <row>
+                                <column size="12" v-show="this.regraUsuarioLogado === 'coordenador'|| 'cerel'">
                                     <form-group :form="formRequerimento" field="justificativa">
                                         <fieldset class="col-md-12">
                                             <legend class="row">4) Resposta Requerimento</legend>
@@ -118,7 +118,7 @@
                                         <row>
                                             <column size="12">
                                                 <div class="justificativa">
-                                                    <vue-editor v-model="formRequerimento.justificativa" :disabled="true" :editorToolbar="customToolbar"></vue-editor>
+                                                    <vue-editor v-model="formRequerimento.resposta" :editorToolbar="customToolbar"></vue-editor>
                                                 </div>
                                             </column>
                                         </row>
@@ -174,11 +174,14 @@
             return {
                 formRequerimento: {},
                 user: null,
-                regraUsuarioLogado: Sisgera.user.role.name,
+                regraUsuarioLogado:null,
                 customToolbar: [
                     ['bold', 'italic', 'underline'],
+                    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                    [{ 'script': 'sub'}, { 'script': 'super' }],
+                    [{ 'indent': '-1'}, { 'indent': '+1' }],
                     [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                    [ 'code-block']
+                    [{ 'align': [] }],
                 ],
                 pageHeading: {
                     title: 'Requerimento',
@@ -191,6 +194,7 @@
         },
 
         created(){
+            this.regraUsuarioLogado = Sisgera.user.role.name;
             this.loadForm();
         },
 
@@ -209,6 +213,7 @@
                         turma: requerimento.turma,
                         periodo: requerimento.periodo,
                         justificativa: requerimento.justificativa,
+                        resposta: requerimento.resposta ? requerimento.resposta : '<p>Digite aqui a resposta para sua decisão.</p>' ,
                     });
 
                 });
