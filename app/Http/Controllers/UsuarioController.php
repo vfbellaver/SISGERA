@@ -9,7 +9,7 @@ class UsuarioController extends Controller
 {
     function __construct()
     {
-        $this->middleware('needsRole:cerel|admin,true');
+        $this->middleware('needsRole:admin|coordenador|cerel,true');
     }
 
 

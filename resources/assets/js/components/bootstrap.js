@@ -5,6 +5,7 @@ Vue.component('menu-aside',require('./menu/menu'));
 Vue.component('menu-admin',require('./menu/menu-admin'));
 Vue.component('menu-cerel',require('./menu/menu-cerel'));
 Vue.component('menu-geral',require('./menu/menu-geral'));
+Vue.component('menu-coordenador',require('./menu/menu-coordenador'));
 Vue.component('menu-requerimentos',require('./menu/menu-requerimentos'));
 
 //USERS
