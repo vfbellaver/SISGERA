@@ -55,16 +55,17 @@
                                 </column>
                             </row>
                             <row>
-                                <column size="12">
+
+                            </row>
+                            <row>
+                                <column size="4">
                                     <label class="control-label">
                                         <h4><strong>Curso:</strong>&nbsp {{formRequerimento.curso}}</h4>
                                     </label>
                                 </column>
-                            </row>
-                            <row>
                                 <column size="2">
                                     <label class="control-label">
-                                        <h4><strong>Turno:</strong>&nbsp {{formRequerimento.turno}}</h4>
+                                        <h4><strong>Turma:</strong>&nbsp {{formRequerimento.turma}}</h4>
                                     </label>
                                 </column>
                                 <column size="2">
@@ -72,9 +73,9 @@
                                         <h4><strong>Periodo:</strong>&nbsp {{formRequerimento.periodo}}</h4>
                                     </label>
                                 </column>
-                                <column size="2">
+                                <column size="4">
                                     <label class="control-label">
-                                        <h4><strong>Turma:</strong>&nbsp {{formRequerimento.turma}}</h4>
+                                        <h4><strong>Turno:</strong>&nbsp {{formRequerimento.turno}}</h4>
                                     </label>
                                 </column>
                             </row>
