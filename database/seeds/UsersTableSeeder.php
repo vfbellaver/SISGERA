@@ -63,7 +63,7 @@ class UsersTableSeeder extends Seeder
             'cpf' => 5345345345,
             'telefone' => 3453534534,
             'celular' => 3453534534,
-            'email' => 'cerel@example.com',
+            'email' => 'cerel@sisgera.com',
             'password' => bcrypt('cerelsisgera##'),
         ]);
         $user->attachRole($role);
