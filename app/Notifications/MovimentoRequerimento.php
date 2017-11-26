@@ -6,52 +6,43 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Sisgera\Models\HistoricoRequerimento;
+use Sisgera\Models\Requerimento;
+use Sisgera\Models\User;
 
 class MovimentoRequerimento extends Notification
 {
     use Queueable;
 
-    /**
-     * Create a new notification instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public $requerimento;
+    public $user;
+
+    public function __construct(User $user, Requerimento $requerimento)
     {
-        //
+        $this->user = $user;
+        $this->requerimento = $requerimento;
     }
 
-    /**
-     * Get the notification's delivery channels.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
+
     public function via($notifiable)
     {
         return ['mail'];
     }
 
-    /**
-     * Get the mail representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
-     */
+
     public function toMail($notifiable)
     {
+        $appName = config('app.name');
+        $appRoute = route('login');
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->subject("Movimentacão de requerimento no {$appName}!")
+                    ->greeting("Olá {$this->user->name}!")
+                    ->line("O requerimento de protocolo {$this->requerimento->protocolo} movimentou!")
+                    ->action('Acesse o Sisgera', url($appRoute))
+                    ->line('Obrigado por usar o Sisgera!');
     }
 
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
+
     public function toArray($notifiable)
     {
         return [

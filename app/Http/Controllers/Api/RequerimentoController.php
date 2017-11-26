@@ -10,6 +10,7 @@ use Sisgera\Models\HistoricoRequerimento;
 use Sisgera\Models\Requerimento;
 use Sisgera\Models\TiposSolicitacao;
 use Sisgera\Models\User;
+use Sisgera\Notifications\MovimentoRequerimento;
 
 class RequerimentoController extends Controller
 {
@@ -48,6 +49,9 @@ class RequerimentoController extends Controller
 
         $historico = HistoricoRequerimento::query()->create($data);
 
+        //NOTIFICA O USUARIO SOBRE A CRIACAO VIA EMAIL
+        $user = auth()->user();
+        $requerimento->notify(new MovimentoRequerimento($user,$requerimento));
 
         $response = [
             'message' => 'Requerimento enviado com sucesso.',

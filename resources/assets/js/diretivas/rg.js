@@ -2,7 +2,7 @@ Vue.directive('rg', {
 
     bind: function (el, binding) {
 
-        $(el).attr('maxlength', 14);
+        $(el).attr('maxlength', 20);
 
         let mask = function () {
             let v = $(el).val();

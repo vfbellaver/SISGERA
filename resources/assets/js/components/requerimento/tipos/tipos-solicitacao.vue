@@ -44,10 +44,8 @@
             },
 
             setType(valor){
-                if (this.internalValue.length === 0) {
-                    console.log('novo');
-                    this.internalValue.push(valor);
-                }
+                this.internalValue.push(valor);
+                this.internalValue = _.differenceBy(this.internalValue,[valor],);
             },
 
             findIndex(tipo) {
