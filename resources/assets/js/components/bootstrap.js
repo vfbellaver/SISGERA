@@ -7,6 +7,8 @@ Vue.component('menu-cerel',require('./menu/menu-cerel'));
 Vue.component('menu-geral',require('./menu/menu-geral'));
 Vue.component('menu-coordenador',require('./menu/menu-coordenador'));
 Vue.component('menu-requerimentos',require('./menu/menu-requerimentos'));
+Vue.component('menu-sistema',require('./menu/menu-sistema'));
+Vue.component('menu-usuarios',require('./menu/menu-usuarios'));
 
 //USERS
 Vue.component('users-list',require('./usuario/listas/lista-usuarios'));
