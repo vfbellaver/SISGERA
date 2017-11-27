@@ -22,6 +22,11 @@ class CreateUsersTable extends Migration
             $table->string('cadastro_token')->nullable();
             $table->boolean('status')->default(1);
             $table->rememberToken();
+
+            $table->unsignedInteger('conta_id')->nullable();
+            $table->foreign('conta_id')->references('id')
+                        ->on('contas')->onUpdate('cascade');
+
             $table->timestamps();
             $table->softDeletes();
         });

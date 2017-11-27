@@ -58,6 +58,11 @@ class User extends Authenticatable
         return $this->hasMany(HistoricoRequerimento::class);
     }
 
+    public function conta()
+    {
+        $this->hasOne(Conta::class);
+    }
+
     public function toArray()
     {
         $role = [];
@@ -82,6 +87,7 @@ class User extends Authenticatable
                 'telefone' => $this->telefone,
                 'celular' => $this->celular,
                 'status' => $this->status,
+                'conta' => $this->conta->toArray(),
                 'role' => $role,
                 'roles' => $this->roles->pluck('name')->all(),
 
