@@ -13,10 +13,6 @@ class Conta extends Model
         'status',
     ];
 
-    public function usuarios()
-    {
-        $this->hasMany(User::class);
-    }
 
     public function toArray()
     {

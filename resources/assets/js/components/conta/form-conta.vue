@@ -6,7 +6,8 @@
                     <div class="bs-component">
                         <form class="form-horizontal" v-model="formConta" @submit.prevent="save">
                             <fieldset class="col-md-12">
-                                <legend class="row"><i class="fa fa-plus"></i> &nbsp; Nova Conta</legend>
+                                <legend class="row" v-if="conta === null"><i class="fa fa-plus"></i> &nbsp; Nova Conta</legend>
+                                <legend class="row" v-else><i class="fa fa-vcard-o"></i> &nbsp; Editar Conta</legend>
                             </fieldset>
 
                             <row>
@@ -38,8 +39,11 @@
                                             <a class="btn btn-default icon-btn" :href="index"><i
                                                     class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar</a>
                                             &nbsp;&nbsp;&nbsp;
-                                            <button class="btn btn-primary icon-btn" type="submit"><i
+                                            <button class="btn btn-primary icon-btn" type="submit" v-if="conta === null"><i
                                                     class="fa fa-fw fa-lg fa-check-circle"></i>Criar Conta
+                                            </button>
+                                            <button class="btn btn-primary icon-btn" type="submit" v-else><i
+                                                    class="fa fa-fw fa-lg fa-check-circle"></i>Atualizar Conta
                                             </button>
                                         </div>
                                     </div>

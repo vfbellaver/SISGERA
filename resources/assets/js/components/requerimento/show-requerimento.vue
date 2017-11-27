@@ -217,6 +217,7 @@
                 user: null,
                 regraUsuarioLogado: null,
                 finalizado: null,
+                contaDestino: null,
                 customToolbar: [
                     ['bold', 'italic', 'underline'],
                     [{'header': [1, 2, 3, 4, 5, 6, false]}],
@@ -248,7 +249,7 @@
 
                     this.user = requerimento.usuario;
                     this.finalizado = requerimento.situacao !== 'Deferido' && requerimento.situacao !== 'Indeferido' && this.regraUsuarioLogado === 'coordenador' ? true : false,
-
+                    this.contaDestino = requerimento.conta;
                     this.formRequerimento = new Form({
                         id: requerimento.id,
                         nome_estudante: requerimento.nome_estudante,

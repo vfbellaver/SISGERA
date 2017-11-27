@@ -15,6 +15,7 @@ class Requerimento extends Model
     const ENVIADO = 'Enviado';
     const ANDAMENTO = 'Em andamento';
     const DEFERIDO = 'Deferido';
+    const PARCIALMENTE = 'Deferido Parcialmente';
     const INDEFERIDO = 'Indeferido';
 
     protected $fillable = [
@@ -43,7 +44,7 @@ class Requerimento extends Model
 
     public function conta()
     {
-        return $this->belongsTo(Conta::class, 'conta_id', 'id');
+        return $this->hasOne(Conta::class, 'id', 'conta_id');
     }
 
     public function TipoRequerimento()
@@ -73,6 +74,7 @@ class Requerimento extends Model
             'justificativa' => $this->justificativa,
             'resposta' => $this->resposta,
             'situacao' => $this->situacao,
+            'conta' => $this->conta->toArray(),
             'usuario' => $this->usuario->toArray(),
             'historico' => $this->historicos->toArray(),
             ];

@@ -17,7 +17,7 @@
                         <tr>
                             <th>#</th>
                             <th>Nome</th>
-                            <th>Função</th>
+                            <th>Usuário</th>
                             <th v-show="regra === 'admin'" >Ações</th>
                         </tr>
                         </thead>
@@ -25,6 +25,7 @@
                         <tr v-for="( conta, index ) in contas">
                             <td>{{ index + 1 }}</td>
                             <td>{{conta.name}}</td>
+                            <td>{{conta.funcao}}</td>
                             <td>{{conta.funcao}}</td>
                             <td>
                                 <button class="btn btn-xs btn-primary" @click="edit(conta)"><i class="fa fa-edit"></i></button>
