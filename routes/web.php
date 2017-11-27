@@ -43,6 +43,9 @@ Route::get('current/user', 'UsuarioController@getCurrentUser')->name('current.us
 Route::get('configuracoes/perfil', 'UsuarioController@perfilUsuario')->name('perfil-usuario');
 Route::put('perfil/{user}/password', 'Api\UsuarioController@atualizaPassword')->name('atualiza.password');
 
+//CONTAS
+Route::resource('conta', 'Api\ContaController');
+
 //RETORNA OS USUARIOS
 Route::get('get/coord', 'UsuarioController@getCoordenadores')->name('get-coordenadores');
 Route::get('get/alunos', 'UsuarioController@getAlunos')->name('get-alunos');
@@ -56,7 +59,6 @@ Route::get('usuarios/externo', 'UsuarioController@listaCivis')->name('lista-civi
 
 //REQUERIMENTOS DO USUARIO LOGADO
 Route::resource('requerimento', 'Api\RequerimentoController');
-
 Route::get('get/meus/enviados', 'MeusRequerimentosController@getEnviados')->name('meus-req-enviados');
 Route::get('get/meus/recebidos', 'MeusRequerimentosController@getRecebidos')->name('meus-req-recebidos');
 Route::get('get/meus/deferidos', 'MeusRequerimentosController@getDeferidos')->name('meus-req-deferidos');
