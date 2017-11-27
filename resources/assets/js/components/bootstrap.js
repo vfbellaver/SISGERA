@@ -17,6 +17,12 @@ Vue.component('lista-alunos',require('./usuario/listas/lista-alunos'));
 Vue.component('lista-cerel',require('./usuario/listas/lista-cerel'));
 Vue.component('lista-civis',require('./usuario/listas/lista-civis'));
 
+//CONTAS
+Vue.component('lista-contas',require('./conta/lista/contas'));
+Vue.component('form-conta',require('./conta/form-conta'));
+Vue.component('criar-conta',require('./conta/criar-conta'));
+Vue.component('editar-conta',require('./conta/editar-conta'));
+
 //FORMS
 Vue.component('form-user',require('./usuario/form-usuario'));
 Vue.component('form-password',require('./usuario/form-password'));

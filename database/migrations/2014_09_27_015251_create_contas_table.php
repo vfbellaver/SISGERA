@@ -11,7 +11,7 @@ class CreateContasTable extends Migration
     {
         Schema::create('contas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome',100);
+            $table->string('name',100);
             $table->string('funcao',100);
             $table->boolean('status')->default(true);
 

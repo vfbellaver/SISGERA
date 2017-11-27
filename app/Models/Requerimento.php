@@ -41,6 +41,11 @@ class Requerimento extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
+    public function conta()
+    {
+        return $this->belongsTo(Conta::class, 'conta_id', 'id');
+    }
+
     public function TipoRequerimento()
     {
         return $this->belongsToMany(TiposSolicitacao::class);

@@ -24,7 +24,7 @@ class ContasSeeder extends Seeder
 
         foreach ($array as $conta) {
             $contas = Conta::query()->create([
-                'nome' => $conta,
+                'name' => $conta,
                 'funcao' => $conta,
 
             ]);

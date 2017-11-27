@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Conta extends Model
 {
+
     protected $fillable = [
-        'nome',
+        'name',
         'funcao',
         'status',
     ];
@@ -22,9 +23,8 @@ class Conta extends Model
         return [
 
             'id' => (int)$this->id,
-            'nome' => $this->name,
+            'name' => $this->name,
             'funcao' => $this->funcao,
-            'usuarios' => $this->usuarios->toArray()
         ];
     }
 }

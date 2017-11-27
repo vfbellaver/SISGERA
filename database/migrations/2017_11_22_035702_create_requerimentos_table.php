@@ -28,6 +28,10 @@ class CreateRequerimentosTable extends Migration
             $table->foreign('user_id')->references('id')
                         ->on('users')->onDelete('cascade');
 
+            $table->unsignedInteger('conta_id')->nullable();
+            $table->foreign('conta_id')->references('id')
+                ->on('contas')->onDelete('cascade');
+
             $table->timestamps();
             $table->softDeletes();
         });
