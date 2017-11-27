@@ -45,17 +45,6 @@
 
             setType(valor){
                 this.internalValue.push(valor);
-                this.internalValue = _.differenceBy(this.internalValue,[valor],);
-            },
-
-            findIndex(tipo) {
-                return this.internalValue.findIndex((_tipo) => {
-                    return _tipo.id === tipo.id;
-                });
-            },
-
-            removeType(valor) {
-                this.clients.splice(this.findIndex(client), 1);
             },
         }
     }

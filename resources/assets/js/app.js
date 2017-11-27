@@ -25,7 +25,7 @@ window.App = new Vue({
     el: '#app',
     data() {
         return {
-            user: 'Sg' in window ? Sg.user : null,
+            user: 'Sisgera' in window ? window.Sisgera.user : null,
             regra: window.Sisgera.user.role.name,
         }
     },

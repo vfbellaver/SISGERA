@@ -87,6 +87,7 @@ class RequerimentoController extends Controller
 
         $movimentacao = [
             'data_movimentacao' => Carbon::now(),
+            'movimentacao'=> $requerimento->situacao,
             'requerimento_id' => $requerimento->id,
             'user_id' => auth()->user()->id,
         ];

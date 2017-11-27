@@ -111,7 +111,7 @@
                         <div v-if="finalizado">
                             <form class="form-horizontal" v-model="formRequerimento" @submit.prevent="save">
                                 <row>
-                                    <column size="12" v-show="this.regraUsuarioLogado === 'coordenador'|| 'cerel'">
+                                    <column size="12" v-show="regraUsuarioLogado == 'coordenador'|| 'cerel'">
                                         <fieldset class="col-md-12">
                                             <legend class="row">4) Resposta Requerimento</legend>
                                         </fieldset>
@@ -132,9 +132,6 @@
                                     <column size="12">
                                         <div class="card-footer">
                                             <div class="form-group">
-                                                <a class="btn btn-default icon-btn">
-                                                    <i class="fa fa-fw fa-lg fa-times-circle"></i>Cancelar
-                                                </a>
                                                 <a class="btn btn-danger icon-btn" @click="indeferirRequerimento">
                                                     <i class="fa fa-fw fa-lg fa-thumbs-down"></i>Indeferir Requerimento
                                                 </a>
@@ -151,11 +148,21 @@
                             <row>
                                 <column size="12">
                                     <fieldset class="col-md-12">
-                                        <legend class="row">4) Resposta Requerimento</legend>
+                                        <legend class="row">4) Situação Requerimento: </legend>
+                                    </fieldset>
+                                    <column size="6">
+                                        <h4><i class="fa fa-check"></i>&nbsp;{{formRequerimento.situacao}}</h4>
+                                    </column>
+                                </column>
+                            </row>
+                            <row>
+                                <column size="12">
+                                    <fieldset class="col-md-12">
+                                        <legend class="row">5) Resposta Requerimento</legend>
                                     </fieldset>
                                     <row>
                                         <column size="12">
-                                            <div class="justificativa" v-html="formRequerimento.justificativa">
+                                            <div class="justificativa" v-html="formRequerimento.resposta">
                                             </div>
                                         </column>
                                     </row>
@@ -240,7 +247,7 @@
                 Sg.find(uri).then((requerimento) => {
 
                     this.user = requerimento.usuario;
-                    this.finalizado = requerimento.situacao !== 'Deferido' && requerimento.situacao !== 'Indeferido' ? true : false,
+                    this.finalizado = requerimento.situacao !== 'Deferido' && requerimento.situacao !== 'Indeferido' && this.regraUsuarioLogado === 'coordenador' ? true : false,
 
                     this.formRequerimento = new Form({
                         id: requerimento.id,
@@ -263,8 +270,8 @@
                 const uri = laroute.route('requerimento.update', {requerimento: this.id});
                 Sg.put(uri, this.formRequerimento).then((response) => {
                     console.log('Requerimento atualizado', response.message);
+                    this.formRequerimento = new Form(response.data);
                     swal('Pronto', response.message, 'success');
-                    this.formRequerimento = new Form();
                 });
             },
 
@@ -273,8 +280,9 @@
                 const uri = laroute.route('requerimento.update', {requerimento: this.id});
                 Sg.put(uri, this.formRequerimento).then((response) => {
                     console.log('Requerimento atualizado', response.message);
+                    this.formRequerimento = new Form([response.data]);
                     swal('Pronto', response.message, 'success');
-                    this.formRequerimento = new Form();
+
                 });
             },
         }
