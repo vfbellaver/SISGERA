@@ -108,7 +108,7 @@
                                 </form-group>
                             </column>
                         </row>
-                        <div v-if="finalizado">
+                        <div v-if="naofinalizado && contaDestino">
                             <form class="form-horizontal" v-model="formRequerimento" @submit.prevent="save">
                                 <row>
                                     <column size="12" v-show="regraUsuarioLogado == 'coordenador'|| 'cerel'">
@@ -128,17 +128,36 @@
                                         </row>
                                     </column>
                                 </row>
+                                <br>
                                 <row>
                                     <column size="12">
                                         <div class="card-footer">
-                                            <div class="form-group">
-                                                <a class="btn btn-danger icon-btn" @click="indeferirRequerimento">
-                                                    <i class="fa fa-fw fa-lg fa-thumbs-down"></i>Indeferir Requerimento
-                                                </a>
-                                                <button class="btn btn-primary icon-btn" type="submit"><i
-                                                        class="fa fa-fw fa-lg fa-thumbs-up"></i>Deferir Requerimento
-                                                </button>
-                                            </div>
+                                            <column size="6">
+                                                <form-group :form="formRequerimento" field="conta_id">
+                                                    <label class="col-md-2 control-label" for="select">Despachar</label>
+                                                    <div class="col-md-7">
+                                                        <select class="form-control option" id="select" v-model="formRequerimento.conta_id">
+                                                            <option value="" selected >Selecione uma conta</option>
+                                                            <option v-for="ct in contas" :value="ct.id">{{ct.name}}</option>
+                                                        </select><br>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <a class="btn btn-success icon-btn" @click="indeferirRequerimento">
+                                                            <i class="fa fa-fw fa-lg fa-send"></i>Encaminhar
+                                                        </a>
+                                                    </div>
+                                                </form-group>
+                                            </column>
+                                            <column size="6">
+                                                <div class="form-group pull-right">
+                                                    <a class="btn btn-danger icon-btn" @click="indeferirRequerimento">
+                                                        <i class="fa fa-fw fa-lg fa-thumbs-down"></i>Indeferir Requerimento
+                                                    </a>
+                                                    <button class="btn btn-primary icon-btn" type="submit"><i
+                                                            class="fa fa-fw fa-lg fa-thumbs-up"></i>Deferir Requerimento
+                                                    </button>
+                                                </div>
+                                            </column>
                                         </div>
                                     </column>
                                 </row>
@@ -162,7 +181,11 @@
                                     </fieldset>
                                     <row>
                                         <column size="12">
-                                            <div class="justificativa" v-html="formRequerimento.resposta">
+                                            <div class="justificativa" v-html="formRequerimento.resposta"
+                                                 v-if="formRequerimento.resposta">
+                                            </div>
+                                            <div class="justificativa" v-else>
+                                                <p>Requerimento em processo.</p>
                                             </div>
                                         </column>
                                     </row>
@@ -197,6 +220,10 @@
         padding-right: 20px;
         font-size: 18px;
     }
+    .option{
+        font-size: 14px !important;
+    }
+
 </style>
 <script>
     import TipoSolicitacao from './tipos/tipos-solicitacao';
@@ -214,10 +241,16 @@
         data() {
             return {
                 formRequerimento: {},
+                contas:[],
+
                 user: null,
                 regraUsuarioLogado: null,
-                finalizado: null,
+                naofinalizado: null,
                 contaDestino: null,
+                deferido: 'Deferido',
+                indeferido: 'Indeferido',
+                deferidoparcialmente: 'Deferido Parcialmente',
+
                 customToolbar: [
                     ['bold', 'italic', 'underline'],
                     [{'header': [1, 2, 3, 4, 5, 6, false]}],
@@ -226,6 +259,7 @@
                     [{'list': 'ordered'}, {'list': 'bullet'}],
                     [{'align': []}],
                 ],
+
                 pageHeading: {
                     title: 'Requerimento',
                     fa: 'fa fa-edit',
@@ -236,20 +270,25 @@
             }
         },
 
-        created(){
+        mounted(){
             this.regraUsuarioLogado = Sisgera.user.role.name;
             this.loadForm();
+            this.getContas();
         },
 
         methods: {
             loadForm() {
-                this.loaded = false;
                 const uri = laroute.route('requerimento.show', {requerimento: this.id});
                 Sg.find(uri).then((requerimento) => {
 
                     this.user = requerimento.usuario;
-                    this.finalizado = requerimento.situacao !== 'Deferido' && requerimento.situacao !== 'Indeferido' && this.regraUsuarioLogado === 'coordenador' ? true : false,
-                    this.contaDestino = requerimento.conta;
+
+                    this.naofinalizado = requerimento.situacao !== this.deferido &&
+                    requerimento.situacao !== this.indeferido &&
+                    requerimento.situacao !== this.deferidoparcialmente ? true : false;
+
+                    this.contaDestino = requerimento.conta.id === Sisgera.user.conta.id ? true : false;
+
                     this.formRequerimento = new Form({
                         id: requerimento.id,
                         nome_estudante: requerimento.nome_estudante,
@@ -264,6 +303,13 @@
                     });
 
                 });
+            },
+            getContas(){
+                Sg.get(laroute.route('lista-todas'))
+                    .then((response) => {
+                        this.contas = response;
+                    });
+
             },
 
             save(){
@@ -285,6 +331,9 @@
                     swal('Pronto', response.message, 'success');
 
                 });
+            },
+            imprimirRequerimento(){
+
             },
         }
     }

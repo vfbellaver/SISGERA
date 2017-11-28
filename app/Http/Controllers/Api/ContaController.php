@@ -76,4 +76,9 @@ class ContaController extends Controller
     {
         return view('conta.lista.lista');
     }
+
+    public function todasContas()
+    {
+        return Conta::all();
+    }
 }

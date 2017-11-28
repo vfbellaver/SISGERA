@@ -44,8 +44,9 @@ Route::get('configuracoes/perfil', 'UsuarioController@perfilUsuario')->name('per
 Route::put('perfil/{user}/password', 'Api\UsuarioController@atualizaPassword')->name('atualiza.password');
 
 //CONTAS
-Route::resource('contas', 'Api\ContaController');
+Route::resource('contas', 'Api\ContaController',['except'=>['show']]);
 Route::get('lista/contas', 'Api\ContaController@listaContas')->name('lista-contas');
+Route::get('todas/contas', 'Api\ContaController@todasContas')->name('lista-todas');
 
 //RETORNA OS USUARIOS
 Route::get('get/coord', 'UsuarioController@getCoordenadores')->name('get-coordenadores');
