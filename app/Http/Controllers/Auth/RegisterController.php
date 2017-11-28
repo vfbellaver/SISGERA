@@ -40,7 +40,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:6',
             'confirm_password' => 'required|same:password',
             'rg' => 'required|unique:users',
             'org_emissor' => 'required',
@@ -66,11 +66,19 @@ class RegisterController extends Controller
 
     protected function create(array $data)
     {
-        return User::create([
+        $user = new User([
             'name' => $data['name'],
             'email' => $data['email'],
+            'rg' => $data['rg'],
+            'org_emissor' => $data['org_emissor'],
+            'cpf' => $data['cpf'],
             'password' => bcrypt($data['password']),
         ]);
+        $user->save();
+        $role = Defender::findRole('aluno');
+        $user->attachRole($role);
+
+        return $user;
     }
 
     public function invitation($token)

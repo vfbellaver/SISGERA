@@ -9,7 +9,7 @@ class UsuarioController extends Controller
 {
     function __construct()
     {
-        $this->middleware('needsRole:admin|coordenador|cerel,true');
+        $this->middleware('needsRole:admin|coordenador|cerel|aluno,true');
     }
 
 
@@ -63,10 +63,5 @@ class UsuarioController extends Controller
     public function listaCivis()
     {
         return view('usuarios.lista-civis');
-    }
-
-    public function perfilUsuario(){
-        $user = User::query()->findOrFail(auth()->user()->id);
-        return view('usuario.perfil',compact('user'));
     }
 }

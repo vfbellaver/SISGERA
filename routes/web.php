@@ -40,8 +40,8 @@ Route::get('registro/cadastro/{token}', 'Auth\RegisterController@invitation')->n
 //USERS
 Route::resource('user', 'Api\UsuarioController');
 Route::get('current/user', 'UsuarioController@getCurrentUser')->name('current.user');
-Route::get('configuracoes/perfil', 'UsuarioController@perfilUsuario')->name('perfil-usuario');
-Route::put('perfil/{user}/password', 'Api\UsuarioController@atualizaPassword')->name('atualiza.password');
+Route::get('configuracoes/perfil', 'PerfilController@perfilUsuario')->name('perfil-usuario');
+Route::put('perfil/{user}/password', 'PerfilController@atualizaPassword')->name('atualiza.password');
 
 //CONTAS
 Route::resource('contas', 'Api\ContaController',['except'=>['show']]);

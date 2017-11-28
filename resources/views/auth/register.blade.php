@@ -65,10 +65,10 @@
                                                 <strong>Registro geral:</strong></h4></label>
                                         <input class="form-control"
                                                id="rg" type="text"
-                                               name="name">
+                                               name="rg" v-rg>
                                         @if ($errors->has('rg'))
                                             <span class="help-block">
-                                                     <strong>{{ $errors->first('name') }}</strong>
+                                                     <strong>{{ $errors->first('rg') }}</strong>
                                                  </span>
                                         @endif
                                     </div>
@@ -93,7 +93,7 @@
                                                 <strong>Cpf:</strong></h4></label>
                                         <input class="form-control"
                                                id="cpf" type="text"
-                                               name="cpf">
+                                               name="cpf" v-cpf>
                                         @if ($errors->has('cpf'))
                                             <span class="help-block">
                                                      <strong>{{ $errors->first('cpf') }}</strong>
@@ -109,7 +109,7 @@
                                                 <strong>Telefone Fixo:</strong></h4></label>
                                         <input class="form-control"
                                                id="telefone" type="text"
-                                               name="telefone">
+                                               name="telefone" v-tel>
                                         @if ($errors->has('telefone'))
                                             <span class="help-block">
                                                      <strong>{{ $errors->first('telefone') }}</strong>
@@ -123,7 +123,7 @@
                                                 <strong>Celular:</strong></h4></label>
                                         <input class="form-control"
                                                id="celular" type="text"
-                                               name="celular">
+                                               name="celular" v-tel>
                                         @if ($errors->has('celular'))
                                             <span class="help-block">
                                                      <strong>{{ $errors->first('celular') }}</strong>
