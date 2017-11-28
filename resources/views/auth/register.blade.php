@@ -59,7 +59,7 @@
                                 </column>
                             </row>
                             <row>
-                                <column size="4">
+                                <column size="3">
                                     <div class="form-group{{ $errors->has('rg') ? ' has-error' : '' }}">
                                         <label class="control-label" for="rg"><h4>
                                                 <strong>Registro geral:</strong></h4></label>
@@ -73,7 +73,7 @@
                                         @endif
                                     </div>
                                 </column>
-                                <column size="2">
+                                <column size="3">
                                     <div class="form-group{{ $errors->has('org_emissor') ? ' has-error' : '' }}">
                                         <label class="control-label" for="org_emissor"><h4>
                                                 <strong>Orgão emissor:</strong></h4></label>

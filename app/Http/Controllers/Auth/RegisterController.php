@@ -39,9 +39,28 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:usuarios',
+            'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'confirm_password' => 'required|same:password',
+            'rg' => 'required|unique:users',
+            'org_emissor' => 'required',
+            'cpf' => 'required|unique:users',
+        ],[
+           'name.required' => 'Informe o nome do usuario.',
+            'email.required' => 'Informe um endereco de email.',
+            'email.email' => 'Informe um endereco de email válido.',
+            'email.unique' => 'Já existe este endereco de email.',
+            'rg.required' => 'Informe um número de Registro Geral.',
+            'rg.unique' => 'Já existe este número de Registro Geral.',
+            'org_emissor.required' => 'Informe um orgão emissor para o RG.',
+            'cpf.required' => 'Informe o número de CPF.',
+            'cpf.unique' => 'Número de CPF existente.',
+            'password.required' => 'Informe a nova senha.',
+            'password.min' => 'A nova senha deve conter no minimo 6 caractéres.',
+            'confirm_password.required' => 'É necessária a confirmação da nova senha.',
+            'confirm_password.same' => 'Confirmação de senha não confere.',
         ]);
+
     }
 
 
@@ -67,12 +86,12 @@ class RegisterController extends Controller
     public function registerInvitation(RegisterInvitationRequest $request)
     {
 
-        $user = User::where('cadastro_token', $request->input('cadastro_token'))->first();
+        $user = User::query()->where('cadastro_token', $request->input('cadastro_token'))->first();
 
         $user->cadastro_token = null;
         $user->password = bcrypt($request->input('password'));
         $user->remember_token = str_random(10);
-        $user->save();
+        $user->update();
 
         return redirect()->route('login');
 
