@@ -5,13 +5,13 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <fieldset class="col-md-12">
-                        <legend class="row"><i class="fa fa-list"></i>  Lista de Requerimentos
+                        <legend class="row"><i class="fa fa-list"></i> Novos Requerimentos
                             <small class="pull-right">{{new Date | data('DD/M/Y')}} <i class="fa fa-calendar"></i></small>
                         </legend>
                     </fieldset>
                 </div>
                 <div class="ibox-content">
-                    <table class="table table-responsive">
+                    <table class="table">
                         <thead>
                         <tr>
                             <th>#</th>
@@ -24,7 +24,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="( req, index ) in reqdeferidos">
+                        <tr v-for="( req, index ) in recebidos">
                             <td>{{ index + 1 }}</td>
                             <td>{{req.protocolo}}</td>
                             <td>{{req.data_criacao | data('DD/M/Y')}}</td>
@@ -43,22 +43,36 @@
         </div>
     </div>
 </template>
-<script>
 
+
+<style lang="scss" scoped="scoped">
+
+</style>
+
+<script>
     export default {
+
+        props: {},
+
         components: {},
+
+        computed: {},
+
         data() {
+
             return {
-                reqdeferidos: [],
-                pagination: {},
+
+                recebidos: [],
+                pagination:{},
                 pageHeading: {
-                    title: 'Requerimentos Deferidos',
+                    title: 'Requerimentos Recebidos',
                     fa: 'fa fa-thumbs-up',
                     breadcrumb: [
                         {title: 'Home', url: laroute.route('home')}
                     ]
                 },
             }
+
         },
 
         mounted() {
@@ -67,27 +81,27 @@
 
         methods: {
             load(){
-                Sg.get(laroute.route('meus-req-deferidos'))
-                    .then((response) => {
 
-                        this.reqdeferidos = response.data;
+                Sg.get(laroute.route('get-requerimentos-deferidos'))
+                    .then((response) => {
+                        this.recebidos = response.data;
                         this.pagination = response;
                     });
 
             },
             navigate(page){
                 console.log(page);
-                Sg.get(laroute.route('meus-req-deferidos', {page: page}))
+                Sg.get(laroute.route('get-requerimentos-deferidos', {page: page}))
                     .then((response) => {
-                        this.reqdeferidos = response.data;
+                        this.recebidos = response.data;
                         this.pagination = response;
                     });
             },
-
             visualizarRequerimento(requerimento){
                 window.location = (laroute.route('requerimento.edit',{requerimento:requerimento.id}));
             },
-        }
+        },
+
 
     }
 

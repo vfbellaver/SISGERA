@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Sisgera\Http\Controllers\Controller;
 use Sisgera\Http\Requests\CreateRequerimentoRequest;
 use Sisgera\Http\Requests\UpdateRequerimentoRequest;
+use Sisgera\Models\Conta;
 use Sisgera\Models\HistoricoRequerimento;
 use Sisgera\Models\Requerimento;
 use Sisgera\Models\TiposSolicitacao;
@@ -28,12 +29,15 @@ class RequerimentoController extends Controller
 
     public function store(CreateRequerimentoRequest $request)
     {
+
         $data = $request->all();
         $requerimento = new Requerimento($data);
         $requerimento->data_criacao = Carbon::now();
+
         $requerimento->protocolo = gerar_protocolo();
         $requerimento->user_id = auth()->user()->id;
         $requerimento->save();
+        $requerimento->conta()->associate($requerimento);
 
         foreach ($data['tipos_solicitacao'] as $solicitacao )
         {
@@ -87,6 +91,7 @@ class RequerimentoController extends Controller
 
         $movimentacao = [
             'data_movimentacao' => Carbon::now(),
+            'movimentacao'=> $requerimento->situacao,
             'requerimento_id' => $requerimento->id,
             'user_id' => auth()->user()->id,
         ];

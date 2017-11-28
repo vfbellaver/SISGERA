@@ -5,7 +5,7 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <fieldset class="col-md-12">
-                        <legend class="row"><i class="fa fa-list"></i>  Lista de Requerimentos
+                        <legend class="row"><i class="fa fa-list"></i> Novos Requerimentos
                             <small class="pull-right">{{new Date | data('DD/M/Y')}} <i class="fa fa-calendar"></i></small>
                         </legend>
                     </fieldset>
@@ -24,18 +24,14 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="( req, index ) in reqandamento">
+                        <tr v-for="( req, index ) in recebidos">
                             <td>{{ index + 1 }}</td>
                             <td>{{req.protocolo}}</td>
                             <td>{{req.data_criacao | data('DD/M/Y')}}</td>
                             <td>{{req.situacao}}</td>
                             <td>{{req.historico[req.historico.length - 1].data_movimentacao.date | data('DD/M/Y')}}</td>
                             <td>{{req.historico[req.historico.length - 1].movimentacao}}</td>
-                            <td>
-                                <button class="btn btn-xs btn-primary" @click="visualizarRequerimento(req)"><i
-                                        class="fa fa-edit"></i> Visualizar
-                                </button>
-                            </td>
+                            <td><button class="btn btn-xs btn-primary" @click="visualizarRequerimento(req)"><i class="fa fa-edit"></i> Visualizar</button></td>
                         </tr>
                         </tbody>
                     </table>
@@ -47,22 +43,36 @@
         </div>
     </div>
 </template>
-<script>
 
+
+<style lang="scss" scoped="scoped">
+
+</style>
+
+<script>
     export default {
+
+        props: {},
+
         components: {},
+
+        computed: {},
+
         data() {
+
             return {
-                reqandamento: [],
-                pagination: {},
+
+                recebidos: [],
+                pagination:{},
                 pageHeading: {
-                    title: 'Requerimentos em andamento',
+                    title: 'Requerimentos Recebidos',
                     fa: 'fa fa-refresh',
                     breadcrumb: [
                         {title: 'Home', url: laroute.route('home')}
                     ]
                 },
             }
+
         },
 
         mounted() {
@@ -71,27 +81,25 @@
 
         methods: {
             load(){
-                Sg.get(laroute.route('meus-req-recebidos'))
+                Sg.get(laroute.route('get-requerimentos-recebidos'))
                     .then((response) => {
-
-                        this.reqandamento = response.data;
+                        this.recebidos = response.data;
                         this.pagination = response;
                     });
 
             },
             navigate(page){
-                console.log(page);
-                Sg.get(laroute.route('meus-req-recebidos', {page: page}))
+                Sg.get(laroute.route('get-requerimentos-recebidos',{page: page}))
                     .then((response) => {
-                        this.reqandamento = response.data;
+                        this.recebidos = response.data;
                         this.pagination = response;
                     });
             },
-
             visualizarRequerimento(requerimento){
                 window.location = (laroute.route('requerimento.edit',{requerimento:requerimento.id}));
             },
-        }
+        },
+
 
     }
 

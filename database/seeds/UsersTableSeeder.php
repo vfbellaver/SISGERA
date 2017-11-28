@@ -44,6 +44,7 @@ class UsersTableSeeder extends Seeder
             'celular' => 2211334455,
             'email' => 'coord.tsi@sisgera.com',
             'password' => bcrypt('coordsisgera##'),
+            'conta_id' => 1,
         ]);
          $user->attachRole($role);
         factory(User::class, 7)
@@ -65,6 +66,7 @@ class UsersTableSeeder extends Seeder
             'celular' => 3453534534,
             'email' => 'cerel@sisgera.com',
             'password' => bcrypt('cerelsisgera##'),
+            'conta_id' => 5,
         ]);
         $user->attachRole($role);
 

@@ -45,23 +45,23 @@ class MeusRequerimentosController extends Controller
     public function requerimentosEnviados()
     {
         $user = auth()->user();
-        return view('requerimento.enviados',compact('user'));
+        return view('requerimento.usuario.enviados',compact('user'));
     }
 
     public function requerimentosRecebidos()
     {
         $user = auth()->user();
-        return view('requerimento.recebidos',compact('user'));
+        return view('requerimento.usuario.recebidos',compact('user'));
     }
     public function requerimentosDeferidos()
     {
         $user = auth()->user();
-        return view('requerimento.deferidos',compact('user'));
+        return view('requerimento.usuario.deferidos',compact('user'));
     }
     public function requerimentosIndeferidos()
     {
         $user = auth()->user();
-        return view('requerimento.indeferidos',compact('user'));
+        return view('requerimento.usuario.indeferidos',compact('user'));
     }
 //---------------------------------------------------------------------------------------------
 }

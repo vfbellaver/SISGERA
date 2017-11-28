@@ -28,8 +28,17 @@ class CerelRequerimentosController extends Controller
 
     public function getDeferidos()
     {
-        return Requerimento::query()->where('user_id',auth()->user()->id)
-            ->where('situacao','=',Requerimento::DEFERIDO)->paginate(10);
+        return Requerimento::query()->where('situacao','=',Requerimento::DEFERIDO)->paginate(10);
+    }
+
+    public function getIndeferidos()
+    {
+        return Requerimento::query()->where('situacao','=',Requerimento::INDEFERIDO)->paginate(10);
+    }
+
+    public function getEnviados()
+    {
+        return Requerimento::query()->where('situacao','=',Requerimento::ENVIADO)->paginate(10);
     }
 
     public function getAll()
@@ -39,19 +48,30 @@ class CerelRequerimentosController extends Controller
 //---------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------
     // FUNCOES ABAIXO RETORNAM VIEWS
+    public function requerimentosEnviados()
+    {
+        return view('requerimento.listas.enviados');
+    }
 
     public function requerimentosRecebidos()
     {
-        return view('requerimento.cerel.recebidos');
+        return view('requerimento.listas.recebidos');
     }
+
     public function requerimentosList()
     {
-        return view('requerimento.cerel.list');
+        return view('requerimento.listas.todos');
     }
+
+    public function requerimentosDeferidos()
+    {
+        return view('requerimento.listas.deferidos');
+    }
+
     public function requerimentosIndeferidos()
     {
-        $user = auth()->user();
-        return view('requerimento.indeferidos',compact('user'));
+        return view('requerimento.listas.indeferidos');
     }
+
 //---------------------------------------------------------------------------------------------
 }
