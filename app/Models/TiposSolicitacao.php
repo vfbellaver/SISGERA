@@ -16,4 +16,12 @@ class TiposSolicitacao extends Model
     {
         return $this->belongsToMany(Requerimento::class);
     }
+
+    public function toArray()
+    {
+        return [
+            'id' => (int)$this->id,
+            'name' => $this->name,
+        ];
+    }
 }

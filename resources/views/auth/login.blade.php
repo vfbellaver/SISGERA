@@ -54,7 +54,11 @@
                 </div>
             </div>
             <div class="form-group btn-container">
-                <button class="btn btn-primary btn-block"><i class="fa fa-sign-in fa-lg fa-fw"></i>SIGN IN</button>
+                <button class="btn btn-primary btn-block"><i class="fa fa-sign-in fa-lg fa-fw"></i>LOGAR</button>
+            </div>
+            <br>
+            <div class="form-group btn-container">
+                <a class="btn btn-primary btn-block" href="{{ route('register') }}"><i class="fa fa-sign-in fa-lg fa-user-plus"></i> REGISTRAR-SE</a>
             </div>
         </form>
         <div>
@@ -69,7 +73,8 @@
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                     <label for="email" class="control-label">EMAIL</label>
                     <div>
-                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}"
+                               required>
 
                         @if ($errors->has('email'))
                             <span class="help-block">
