@@ -21,6 +21,7 @@ class CreateRequerimentosTable extends Migration
             $table->string('turma',10);
             $table->string('turno',20);
             $table->text('justificativa');
+            $table->text('anexo_url')->nullable();
             $table->text('resposta')->nullable();
             $table->string('situacao',30)->default(Requerimento::ENVIADO);
 

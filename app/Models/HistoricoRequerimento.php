@@ -19,6 +19,10 @@ class HistoricoRequerimento extends Model
         'data_movimentacao',
     ];
 
+    public function requerimento()
+    {
+        return $this->hasOne(Requerimento::class);
+    }
 
     public function usuario()
     {

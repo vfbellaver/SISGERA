@@ -65,7 +65,7 @@
                 recebidos: [],
                 pagination:{},
                 pageHeading: {
-                    title: 'Requerimentos Enviados',
+                    title: 'Novos Requerimentos dos Usuarios',
                     fa: 'fa fa-send',
                     breadcrumb: [
                         {title: 'Home', url: laroute.route('home')}

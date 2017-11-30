@@ -43,7 +43,7 @@ export default   {
         });
     },
 
-    // --
+
     upload(uri, files) {
         const data = new FormData();
         for (let i = 0; i < files.length; i++) {

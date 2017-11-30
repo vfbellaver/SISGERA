@@ -270,7 +270,7 @@
             }
         },
 
-        mounted(){
+        created(){
             this.regraUsuarioLogado = Sisgera.user.role.name;
             this.loadForm();
             this.getContas();

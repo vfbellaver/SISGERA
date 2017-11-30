@@ -14,7 +14,7 @@ class TiposSolicitacao extends Model
 
     public function requerimentos()
     {
-        return $this->belongsToMany(Requerimento::class);
+        return $this->belongsToMany(Requerimento::class,'requerimento_tipos_solicitacao','tipos_solicitacao_id','requerimento_id');
     }
 
     public function toArray()

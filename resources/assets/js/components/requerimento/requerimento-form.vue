@@ -11,45 +11,7 @@
                                     <small class="pull-right">{{new Date | data('DD/M/Y') }} <i class="fa fa-calendar"></i> </small>
                                 </legend>
                             </fieldset>
-                            <row>
-                                <column size="12">
-                                    <label class="control-label">
-                                        <h4><strong>Nome do Requerente:</strong> &nbsp {{user.name}}</h4>
-                                    </label>
-                                </column>
-                            </row>
-
-                            <row>
-                                <column size="4">
-                                    <label class="control-label">
-                                        <h4><strong>Email:</strong> &nbsp {{user.email}}</h4>
-                                    </label>
-                                </column>
-                                <column size="4">
-                                    <label class="control-label">
-                                        <h4><strong>Rg:</strong> &nbsp {{user.rg}} &nbsp {{user.org_emissor}}</h4>
-                                    </label>
-                                </column>
-                                <column size="4">
-                                    <label class="control-label">
-                                        <h4><strong>Cpf:</strong> &nbsp {{user.cpf}}</h4>
-                                    </label>
-                                </column>
-                            </row>
-
-                            <row>
-                                <column size="4">
-                                    <label class="control-label">
-                                        <h4><strong>Tel Fixo:</strong>&nbsp {{user.telefone}} </h4>
-                                    </label>
-                                </column>
-                                <column size="4">
-                                    <label class="control-label">
-                                        <h4><strong>Tel Celular:</strong>&nbsp {{user.celular}}</h4>
-                                    </label>
-                                </column>
-                            </row>
-
+                            <informacoes-usuario :user="this.user"></informacoes-usuario>
                             <row>
                                 <column size="12">
                                     <form-group :form="formRequerimento" field="nome_estudante">
@@ -111,7 +73,7 @@
 
                             <row>
                                 <column size="12">
-                                    <form-group :form="formRequerimento" field="tipos_solicitacao">
+                                    <form-group :form="formRequerimento" field="anexo">
                                         <fieldset class="col-md-12">
                                             <legend class="row">2) Tipo de Requerimento</legend>
                                         </fieldset>
@@ -121,7 +83,6 @@
                                     </form-group>
                                 </column>
                             </row>
-
                             <row>
                                 <column size="12">
                                     <form-group :form="formRequerimento" field="justificativa">
@@ -137,7 +98,20 @@
                                     </form-group>
                                 </column>
                             </row>
+                            <row>
+                                <column size="12">
+                                    <form-group :form="formRequerimento" field="anexo_url">
 
+                                        <fieldset class="col-md-12">
+                                            <legend class="row">4) Anexar arquivo</legend>
+                                        </fieldset>
+                                        <column size="6">
+                                            <anexo-upload v-model="formRequerimento.anexo_url" id="anexo"></anexo-upload>
+                                        </column>
+                                    </form-group>
+                                </column>
+                            </row>
+                            <br>
                             <row>
                                 <column size="12">
                                     <div class="card-footer">
@@ -166,10 +140,14 @@
 </style>
 <script>
     import TipoSolicitacao from './tipos/tipos-solicitacao';
+    import InformacoesUsuario from './informacoes-usuario';
+    import AnexoUpload from './anexo-upload'
     import {VueEditor} from 'vue2-editor';
     export default {
         components: {
             TipoSolicitacao,
+            InformacoesUsuario,
+            AnexoUpload,
             VueEditor,
         },
         props: {
@@ -211,6 +189,7 @@
                     curso: requerimento ? requerimento.curso : null,
                     turno: requerimento ? requerimento.turno : null,
                     turma: requerimento ? requerimento.turma : null,
+                    anexo_url: requerimento ? requerimento.anexo_url : null,
                     periodo: requerimento ? requerimento.periodo : null,
                     justificativa: requerimento ? requerimento.justificativa : '<p>Detalhamento do seu Pedido</p>',
                 });
@@ -229,7 +208,7 @@
                 Sg.post(uri, this.formRequerimento).then((response) => {
                     console.log('Requerimento criado', response.message);
                     swal('Pronto', response.message, 'success');
-                    this.formRequerimento = new Form();
+                    this.formRequerimento = this.createForm(requerimento);
                 });
             },
 

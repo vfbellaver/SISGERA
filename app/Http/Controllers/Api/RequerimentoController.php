@@ -39,8 +39,8 @@ class RequerimentoController extends Controller
         $requerimento->save();
         $requerimento->conta()->associate($requerimento);
 
-        $solicitacoes = $request->input('tipos_solicitacao');
-        foreach ( $solicitacoes as $solicitacao )
+
+        foreach ($data['tipos_solicitacao'] as $solicitacao )
         {
             $tp = TiposSolicitacao::query()->where('id',$solicitacao['id'])->get();
             $requerimento->solicitacao()->attach($tp);

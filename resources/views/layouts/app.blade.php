@@ -21,6 +21,7 @@
             <a class="sidebar-toggle" href="#" data-toggle="offcanvas"></a>
             <div class="navbar-custom-menu">
                 <ul class="top-nav">
+                    <li style="color: white">@{{user.name}}</li>
                     <!--Notification Menu-->
                     <li class="dropdown notification-menu"><a class="dropdown-toggle" href="#"
                                                               data-toggle="dropdown" aria-expanded="false"><i

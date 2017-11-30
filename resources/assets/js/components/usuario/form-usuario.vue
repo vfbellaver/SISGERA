@@ -79,8 +79,8 @@
                                     <form-group :form="form" field="role">
                                         <label class="control-label" for="role"><h4>
                                             <strong>Tipo de Usuario:</strong></h4></label>
-                                        <select v-model="form.role" id="role" class="form-control">
-                                            <option value="" selected>Selecione um tipo de Usuário</option>
+                                        <select v-model="form.role" id="role"  class="form-control">
+                                            <option value="selected" selected="selected">Selecione um tipo de Usuário</option>
                                             <option value="coordenador">Coordenador</option>
                                             <option value="cerel">Cerel</option>
                                             <option value="aluno">Aluno</option>

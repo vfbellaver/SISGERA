@@ -89,3 +89,5 @@ Route::get('get/requerimentos/indeferidos','CerelRequerimentosController@getInde
 Route::get('requerimentos/todos','CerelRequerimentosController@requerimentosList')->name('view-cerel-req-list');
 Route::get('get/requerimentos/todos','CerelRequerimentosController@getAll')->name('get-requerimentos-todos');
 
+//ANEXO UPLOAD
+Route::post('anexo/upload', 'FileUploadController@fileUpload')->name('file.upload');

@@ -44,17 +44,17 @@ class Requerimento extends Model
 
     public function conta()
     {
-        return $this->belongsTo(Conta::class, 'conta_id', 'id');
+        return $this->belongsTo(Conta::class);
     }
 
     public function solicitacao()
     {
-        return $this->belongsToMany(TiposSolicitacao::class);
+        return $this->belongsToMany(TiposSolicitacao::class,'requerimento_tipos_solicitacao','requerimento_id','tipos_solicitacao_id');
     }
 
     public function historicos()
     {
-        return $this->hasMany(HistoricoRequerimento::class,'requerimento_id','id');
+        return $this->hasMany(HistoricoRequerimento::class);
     }
 
     public function toArray()
