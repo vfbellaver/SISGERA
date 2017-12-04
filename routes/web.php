@@ -64,12 +64,14 @@ Route::resource('requerimento', 'Api\RequerimentoController');
 Route::get('get/meus/enviados', 'MeusRequerimentosController@getEnviados')->name('meus-req-enviados');
 Route::get('get/meus/recebidos', 'MeusRequerimentosController@getRecebidos')->name('meus-req-recebidos');
 Route::get('get/meus/deferidos', 'MeusRequerimentosController@getDeferidos')->name('meus-req-deferidos');
+Route::get('get/meus/deferidos/parcialmente', 'MeusRequerimentosController@getDeferidosParcialmente')->name('meus-req-deferidos-parcialmente');
 Route::get('get/meus/indeferidos', 'MeusRequerimentosController@getIndeferidos')->name('meus-req-indeferidos');
 
 Route::get('tipo/solicitacao', 'MeusRequerimentosController@TiposdeSolicitacao')->name('tipos-solicitacao');
 Route::get('meus/requerimentos/enviados', 'MeusRequerimentosController@requerimentosEnviados')->name('meus-requerimentos-enviados');
 Route::get('meus/requerimentos/recebidos', 'MeusRequerimentosController@requerimentosRecebidos')->name('meus-requerimentos-recebidos');
 Route::get('meus/requerimentos/deferidos', 'MeusRequerimentosController@requerimentosDeferidos')->name('meus-requerimentos-deferidos');
+Route::get('meus/requerimentos/deferidos/parcialmente', 'MeusRequerimentosController@requerimentosDeferidosParcialmente')->name('meus-requerimentos-deferidos-parcialmente');
 Route::get('meus/requerimentos/indeferidos', 'MeusRequerimentosController@requerimentosIndeferidos')->name('meus-requerimentos-indeferidos');
 
 

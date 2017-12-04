@@ -6,7 +6,6 @@
                     <menu-sistema></menu-sistema>
                     <menu-usuarios></menu-usuarios>
                     <menu-requerimentos></menu-requerimentos>
-                    <menu-geral></menu-geral>
                 </ul>
             </section>
         </aside>

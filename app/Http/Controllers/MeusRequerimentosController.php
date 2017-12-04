@@ -34,6 +34,12 @@ class MeusRequerimentosController extends Controller
             ->where('situacao','=',Requerimento::DEFERIDO)->paginate(10);
     }
 
+    public function getDeferidosParcialmente()
+    {
+        return Requerimento::query()->where('user_id',auth()->user()->id)
+            ->where('situacao','=',Requerimento::PARCIALMENTE)->paginate(10);
+    }
+
     public function getIndeferidos()
     {
         return Requerimento::query()->where('user_id',auth()->user()->id)
@@ -58,6 +64,13 @@ class MeusRequerimentosController extends Controller
         $user = auth()->user();
         return view('requerimento.usuario.deferidos',compact('user'));
     }
+
+    public function requerimentosDeferidosParcialmente()
+    {
+        $user = auth()->user();
+        return view('requerimento.usuario.deferidos-parcialmente',compact('user'));
+    }
+
     public function requerimentosIndeferidos()
     {
         $user = auth()->user();

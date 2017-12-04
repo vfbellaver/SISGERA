@@ -4,7 +4,7 @@ require('./shared/_register');
 Vue.component('menu-aside',require('./menu/menu'));
 Vue.component('menu-admin',require('./menu/menu-admin'));
 Vue.component('menu-cerel',require('./menu/menu-cerel'));
-Vue.component('menu-geral',require('./menu/menu-geral'));
+Vue.component('meus-requerimentos',require('./menu/meus-requerimentos.vue'));
 Vue.component('menu-coordenador',require('./menu/menu-coordenador'));
 Vue.component('menu-requerimentos',require('./menu/menu-requerimentos'));
 Vue.component('menu-sistema',require('./menu/menu-sistema'));
@@ -39,6 +39,7 @@ Vue.component('show-requerimento',require('./requerimento/show-requerimento'));
 Vue.component('requerimentos-usuario-enviados',require('./requerimento/usuario/lista-enviados'));
 Vue.component('requerimentos-usuario-recebidos',require('./requerimento/usuario/lista-recebidos'));
 Vue.component('requerimentos-usuario-deferidos',require('./requerimento/usuario/lista-deferidos'));
+Vue.component('requerimentos-usuario-deferidos-parcialmente',require('./requerimento/usuario/lista-deferidos-parcialmente'));
 Vue.component('requerimentos-usuario-indeferidos',require('./requerimento/usuario/lista-indeferidos'));
 
 

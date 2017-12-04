@@ -53,7 +53,7 @@
                 pagination: {},
                 pageHeading: {
                     title: 'Requerimentos Deferidos',
-                    fa: 'fa fa-thumbs-up',
+                    fa: 'fa fa-handshake-o',
                     breadcrumb: [
                         {title: 'Home', url: laroute.route('home')}
                     ]

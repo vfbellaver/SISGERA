@@ -5,7 +5,7 @@
                 <ul class="sidebar-menu">
                     <menu-usuarios></menu-usuarios>
                     <menu-requerimentos></menu-requerimentos>
-                    <menu-geral></menu-geral>
+                    <meus-requerimentos></meus-requerimentos>
                 </ul>
             </section>
         </aside>
