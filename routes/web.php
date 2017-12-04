@@ -52,12 +52,12 @@ Route::get('todas/contas', 'Api\ContaController@todasContas')->name('lista-todas
 Route::get('get/coord', 'UsuarioController@getCoordenadores')->name('get-coordenadores');
 Route::get('get/alunos', 'UsuarioController@getAlunos')->name('get-alunos');
 Route::get('get/cerel', 'UsuarioController@getCerel')->name('get-cerel');
-Route::get('get/civis', 'UsuarioController@getCivis')->name('get-civis');
+Route::get('get/publico/externo', 'UsuarioController@getExterno')->name('get-externo');
 
 Route::get('usuarios/coordenadores', 'UsuarioController@listaCoordenadores')->name('lista-coordenadores');
 Route::get('usuarios/alunos', 'UsuarioController@listaAlunos')->name('lista-alunos');
 Route::get('usuarios/cerel', 'UsuarioController@listaCerel')->name('lista-cerel');
-Route::get('usuarios/externo', 'UsuarioController@listaCivis')->name('lista-civis');
+Route::get('usuarios/externo', 'UsuarioController@listaExterno')->name('lista-externo');
 
 //REQUERIMENTOS DO USUARIO LOGADO
 Route::resource('requerimento', 'Api\RequerimentoController');
@@ -74,20 +74,23 @@ Route::get('meus/requerimentos/indeferidos', 'MeusRequerimentosController@requer
 
 
 //TODOS REQUERIMENTOS INDEPENDENTE DE USUARIO LOGADO
-Route::get('requerimentos/enviados','CerelRequerimentosController@requerimentosEnviados')->name('view-cerel-req-enviados');
-Route::get('get/requerimentos/enviados','CerelRequerimentosController@getEnviados')->name('get-requerimentos-enviados');
+Route::get('requerimentos/enviados','RequerimentosController@requerimentosEnviados')->name('view-req-enviados');
+Route::get('get/requerimentos/enviados','RequerimentosController@getEnviados')->name('get-requerimentos-enviados');
 
-Route::get('requerimentos/recebidos','CerelRequerimentosController@requerimentosRecebidos')->name('view-cerel-req-recebidos');
-Route::get('get/requerimentos/recebidos','CerelRequerimentosController@getRecebidos')->name('get-requerimentos-recebidos');
+Route::get('requerimentos/recebidos','RequerimentosController@requerimentosRecebidos')->name('view-req-recebidos');
+Route::get('get/requerimentos/recebidos','RequerimentosController@getRecebidos')->name('get-requerimentos-recebidos');
 
-Route::get('requerimentos/deferidos','CerelRequerimentosController@requerimentosDeferidos')->name('view-cerel-req-deferidos');
-Route::get('get/requerimentos/deferidos','CerelRequerimentosController@getDeferidos')->name('get-requerimentos-deferidos');
+Route::get('requerimentos/deferidos','RequerimentosController@requerimentosDeferidos')->name('view-req-deferidos');
+Route::get('get/requerimentos/deferidos','RequerimentosController@getDeferidos')->name('get-requerimentos-deferidos');
 
-Route::get('requerimentos/indeferidos','CerelRequerimentosController@requerimentosIndeferidos')->name('view-cerel-req-indeferidos');
-Route::get('get/requerimentos/indeferidos','CerelRequerimentosController@getIndeferidos')->name('get-requerimentos-indeferidos');
+Route::get('requerimentos/deferidos/parcialmente','RequerimentosController@requerimentosDeferidosParcialmente')->name('view-req-deferidos-parcialmente');
+Route::get('get/requerimentos/parcialmente','RequerimentosController@getDeferidosParcialmente')->name('get-requerimentos-deferidos-parcialmente');
 
-Route::get('requerimentos/todos','CerelRequerimentosController@requerimentosList')->name('view-cerel-req-list');
-Route::get('get/requerimentos/todos','CerelRequerimentosController@getAll')->name('get-requerimentos-todos');
+Route::get('requerimentos/indeferidos','RequerimentosController@requerimentosIndeferidos')->name('view-req-indeferidos');
+Route::get('get/requerimentos/indeferidos','RequerimentosController@getIndeferidos')->name('get-requerimentos-indeferidos');
+
+Route::get('requerimentos/todos','RequerimentosController@requerimentosList')->name('view-req-list');
+Route::get('get/requerimentos/todos','RequerimentosController@getAll')->name('get-requerimentos-todos');
 
 //ANEXO UPLOAD
 Route::post('anexo/upload', 'FileUploadController@fileUpload')->name('file.upload');

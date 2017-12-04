@@ -5,7 +5,7 @@
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <fieldset class="col-md-12">
-                        <legend class="row"><i class="fa fa-list"></i> Lista de Civis
+                        <legend class="row"><i class="fa fa-list"></i> Lista Publico Externo
                             <small class="pull-right">{{new Date | data('DD/M/Y')}} <i class="fa fa-calendar"></i></small>
                         </legend>
                     </fieldset>
@@ -22,7 +22,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="( civil, index ) in civis">
+                        <tr v-for="( civil, index ) in externo">
                             <td>{{ index + 1 }}</td>
                             <td>{{civil.name}}</td>
                             <td>{{civil.email}}</td>
@@ -47,11 +47,11 @@
         components: {},
         data() {
             return {
-                civis: [],
+                externo: [],
                 pagination: {},
                 regra: Sisgera.user.role.name,
                 pageHeading: {
-                    title: 'Lista Publico Civil',
+                    title: 'Lista Publico Externo',
                     fa: 'fa fa-user',
                     breadcrumb: [
                         {title: 'Home', url: laroute.route('home')}
@@ -66,19 +66,19 @@
 
         methods: {
             load(){
-                Sg.get(laroute.route('get-civis'))
+                Sg.get(laroute.route('get-externo'))
                     .then((response) => {
 
-                        this.civis = response.data;
+                        this.externo = response.data;
                         this.pagination = response;
                     });
 
             },
             navigate(page){
                 console.log(page);
-                Sg.get(laroute.route('get-civis', {page: page}))
+                Sg.get(laroute.route('get-externo', {page: page}))
                     .then((response) => {
-                        this.civis = response.data;
+                        this.externo = response.data;
                         this.pagination = response;
                     });
             },

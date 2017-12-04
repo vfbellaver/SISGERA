@@ -17,7 +17,7 @@ class User extends Authenticatable
     const COORDENADOR = 'coordenador';
     const CEREL = 'cerel';
     const ALUNO = 'aluno';
-    const CIVIL = 'civil';
+    const EXTERNO = 'externo';
 
     protected $fillable = [
         'name',

@@ -15,7 +15,7 @@ Vue.component('users-list',require('./usuario/listas/lista-usuarios'));
 Vue.component('lista-coordenadores',require('./usuario/listas/lista-coordenadores'));
 Vue.component('lista-alunos',require('./usuario/listas/lista-alunos'));
 Vue.component('lista-cerel',require('./usuario/listas/lista-cerel'));
-Vue.component('lista-civis',require('./usuario/listas/lista-civis'));
+Vue.component('lista-publico-externo',require('./usuario/listas/lista-publico-externo'));
 
 //CONTAS
 Vue.component('lista-contas',require('./conta/lista/contas'));
@@ -42,11 +42,12 @@ Vue.component('requerimentos-usuario-deferidos',require('./requerimento/usuario/
 Vue.component('requerimentos-usuario-indeferidos',require('./requerimento/usuario/lista-indeferidos'));
 
 
-//CEREL REQUERIMENTO DE TODOS USUARIOS POR SITUACAO
+//REQUERIMENTO DE TODOS USUARIOS POR SITUACAO
 Vue.component('requerimentos-recebidos',require('./requerimento/listas/lista-recebidos'));
 Vue.component('requerimentos-todos',require('./requerimento/listas/lista-todos'));
 Vue.component('requerimentos-enviados',require('./requerimento/listas/lista-enviados'));
 Vue.component('requerimentos-deferidos',require('./requerimento/listas/lista-deferidos'));
+Vue.component('requerimentos-deferidos-parcialmente',require('./requerimento/listas/lista-deferidos-parcialmente'));
 Vue.component('requerimentos-indeferidos',require('./requerimento/listas/lista-indeferidos'));
 
 

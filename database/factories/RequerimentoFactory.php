@@ -6,7 +6,7 @@ use Faker\Generator as Faker;
 
 $factory->define(\Sisgera\Models\Requerimento::class, function (Faker $faker) {
 
-    $status = ['Enviado','Em andamento','Deferido','Indeferido'];
+    $status = ['Enviado','Em andamento','Deferido','Deferido Parcialmente','Indeferido'];
 
     $cursos = [
                 ['nome' => 'Tecnologia em Sistemas para Internet','turno' => 'Noturno'],
@@ -20,7 +20,7 @@ $factory->define(\Sisgera\Models\Requerimento::class, function (Faker $faker) {
         'data_criacao' =>\Carbon\Carbon::now()->format('Y-m-d H:m:s'),
         'protocolo' => $faker->swiftBicNumber,
         'justificativa' => $faker->text($maxNbChars = 600),
-        'situacao' => $status[rand(0, 3)],
+        'situacao' => $status[rand(0, 4)],
         'curso' => $curso['nome'],
         'turno' => $curso['turno'],
         'periodo' => $faker->numberBetween(0,9),

@@ -92,7 +92,7 @@ class UsersTableSeeder extends Seeder
         ]);
         $user->attachRole($role);
 
-        factory(User::class, 50)
+        factory(User::class, 20)
             ->create()
             ->each(function (User $user) use ($role) {
                 $user->attachRole($role);
@@ -101,7 +101,7 @@ class UsersTableSeeder extends Seeder
 
     public function createUserCivil()
     {
-        $role = Defender::findRole('civil');
+        $role = Defender::findRole('externo');
         $user = factory(User::class)->create([
             'name' => 'Civil Sisgera',
             'rg' => 534543543,
@@ -114,7 +114,7 @@ class UsersTableSeeder extends Seeder
         ]);
         $user->attachRole($role);
 
-        factory(User::class, 20)
+        factory(User::class, 10)
             ->create()
             ->each(function (User $user) use ($role) {
                 $user->attachRole($role);

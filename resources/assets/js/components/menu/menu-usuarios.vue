@@ -5,7 +5,7 @@
             <li><a :href="usuarios.coordenadores"><i class="fa fa-street-view"></i> Coordenadores</a></li>
             <li><a :href="usuarios.alunos"><i class="fa fa-graduation-cap"></i> Alunos</a></li>
             <li><a :href="usuarios.cerel"><i class="fa fa-user-circle-o"></i> Cerel</a></li>
-            <li><a :href="usuarios.civis"><i class="fa fa-user-o"></i> Civis</a></li>
+            <li><a :href="usuarios.externo"><i class="fa fa-user-o"></i> Publico Externo</a></li>
             <li><a :href="usuarios.novo"><i class="fa fa-user-plus"></i> Novo Usuario</a></li>
         </ul>
     </li>
@@ -18,7 +18,7 @@
                     coordenadores: laroute.route('lista-coordenadores'),
                     alunos: laroute.route('lista-alunos'),
                     cerel: laroute.route('lista-cerel'),
-                    civis: laroute.route('lista-civis'),
+                    externo: laroute.route('lista-externo'),
                     novo: laroute.route('user.create'),
                 },
 

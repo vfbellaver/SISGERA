@@ -39,10 +39,10 @@ class UsuarioController extends Controller
             function ($query) { $query->where('name', '=', 'cerel');})->paginate(10);
     }
 
-    public function getCivis()
+    public function getExterno()
     {
         return User::whereHas('roles',
-            function ($query) { $query->where('name', '=', 'civil');})->paginate(10);
+            function ($query) { $query->where('name', '=', 'externo');})->paginate(10);
     }
 
     public function listaCoordenadores()
@@ -60,8 +60,8 @@ class UsuarioController extends Controller
         return view('usuarios.lista-cerel');
     }
 
-    public function listaCivis()
+    public function listaExterno()
     {
-        return view('usuarios.lista-civis');
+        return view('usuarios.lista-publico-externo');
     }
 }

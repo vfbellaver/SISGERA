@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    <lista-civis></lista-civis>
+    <lista-publico-externo></lista-publico-externo>
 @endsection
