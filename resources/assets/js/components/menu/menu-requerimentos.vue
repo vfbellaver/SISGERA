@@ -4,7 +4,7 @@
         <ul class="treeview-menu">
             <li><a :href="requimento.novo"><i class="fa fa-file-text"></i>Novos Requerimentos</a></li>
             <li><a :href="requimento.emandamento"><i class="fa fa-refresh"></i>Em andamento</a></li>
-            <li><a :href="requimento.deferidos"><i class="fa fa-thumbs-up"></i> Deferidos</a></li>
+            <li><a :href="requimento.deferidos"><i class="fa fa-handshake-o"></i> Deferidos</a></li>
             <li><a :href="requimento.parcialmente"><i class="fa fa-thumbs-up"></i> Deferidos Parcialmente</a></li>
             <li><a :href="requimento.indeferidos"><i class="fa fa-thumbs-down"></i> Indeferidos</a></li>
             <li><a :href="requimento.list"><i class="fa fa fa-list-ol"></i> Listar Todos</a></li>

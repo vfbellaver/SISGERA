@@ -94,5 +94,8 @@ Route::get('get/requerimentos/indeferidos','RequerimentosController@getIndeferid
 Route::get('requerimentos/todos','RequerimentosController@requerimentosList')->name('view-req-list');
 Route::get('get/requerimentos/todos','RequerimentosController@getAll')->name('get-requerimentos-todos');
 
+//DESPACHAR REQUERIMENTO
+Route::post('despachar/requerimento/{requerimento}','RequerimentosController@despacharRequerimento')->name('despachar-requerimento');
+
 //ANEXO UPLOAD
 Route::post('anexo/upload', 'FileUploadController@fileUpload')->name('file.upload');

@@ -15,7 +15,7 @@ class RequerimentoSeeder extends Seeder
     private function createRequerimentos()
     {
         User::all()->each(function ($user) {
-            factory(\Sisgera\Models\Requerimento::class, 3)->create(['user_id' => $user->id,'nome_estudante' => $user->name,'conta_id'=>5]);
+            factory(\Sisgera\Models\Requerimento::class, 10)->create(['user_id' => $user->id,'nome_estudante' => $user->name,'conta_id'=>5]);
         });
     }
 

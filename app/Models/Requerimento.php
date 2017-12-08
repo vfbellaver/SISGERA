@@ -31,6 +31,7 @@ class Requerimento extends Model
         'justificativa',
         'resposta',
         'situacao',
+        'conta_id',
         'user_id',
     ];
 

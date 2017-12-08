@@ -98,15 +98,16 @@
                                     <column size="12">
                                         <div class="card-footer">
                                             <column size="6">
-                                                <form-group :form="formRequerimento" field="conta_id">
-                                                    <label class="col-md-2 control-label" for="select">Despachar</label>
+                                                <form-group :form="formRequerimento" field="conta">
+                                                    <label class="col-md-2 control-label" for="conta">Despachar</label>
                                                     <div class="col-md-7">
-                                                        <select class="form-control option" id="select" v-model="formRequerimento.conta_id">
-                                                            <option v-for="ct in contas" :value="ct.id">{{ct.name}}</option>
+                                                        <select class="form-control option" id="conta" v-model="formRequerimento.conta">
+                                                            <option selected="selected" :value="formRequerimento.conta">{{formRequerimento.conta.name}}</option>
+                                                            <option v-for="ct in contas" :value="ct">{{ct.name}}</option>
                                                         </select><br>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <a class="btn btn-success icon-btn" @click="indeferirRequerimento">
+                                                        <a class="btn btn-success icon-btn" @click="despacharRequerimento">
                                                             <i class="fa fa-fw fa-lg fa-send"></i>Encaminhar
                                                         </a>
                                                     </div>
@@ -263,6 +264,7 @@
                         turno: requerimento.turno,
                         turma: requerimento.turma,
                         periodo: requerimento.periodo,
+                        conta: requerimento.conta,
                         justificativa: requerimento.justificativa,
                         situacao: requerimento.situacao,
                         resposta: requerimento.resposta ? requerimento.resposta : '',
@@ -297,9 +299,13 @@
 
                 });
             },
-            imprimirRequerimento(){
-
+            despacharRequerimento(){
+                console.log('teste');
             },
+
+            imprimirRequerimento(){
+                console.log('imprimindo!!');
+            }
         }
     }
 </script>

@@ -47,11 +47,11 @@ class UsersTableSeeder extends Seeder
             'conta_id' => 1,
         ]);
          $user->attachRole($role);
-        factory(User::class, 7)
-            ->create()
-            ->each(function (User $user) use ($role) {
-                $user->attachRole($role);
-            });
+//        factory(User::class, 7)
+//            ->create()
+//            ->each(function (User $user) use ($role) {
+//                $user->attachRole($role);
+//            });
     }
 
     public function createUserCerel()
@@ -70,11 +70,11 @@ class UsersTableSeeder extends Seeder
         ]);
         $user->attachRole($role);
 
-        factory(User::class, 5)
-            ->create()
-            ->each(function (User $user) use ($role) {
-                $user->attachRole($role);
-            });
+//        factory(User::class, 5)
+//            ->create()
+//            ->each(function (User $user) use ($role) {
+//                $user->attachRole($role);
+//            });
     }
 
     public function createUserAlunos()
@@ -92,11 +92,11 @@ class UsersTableSeeder extends Seeder
         ]);
         $user->attachRole($role);
 
-        factory(User::class, 20)
-            ->create()
-            ->each(function (User $user) use ($role) {
-                $user->attachRole($role);
-            });
+//        factory(User::class, 20)
+//            ->create()
+//            ->each(function (User $user) use ($role) {
+//                $user->attachRole($role);
+//            });
     }
 
     public function createUserCivil()
@@ -114,10 +114,10 @@ class UsersTableSeeder extends Seeder
         ]);
         $user->attachRole($role);
 
-        factory(User::class, 10)
-            ->create()
-            ->each(function (User $user) use ($role) {
-                $user->attachRole($role);
-            });
+//        factory(User::class, 10)
+//            ->create()
+//            ->each(function (User $user) use ($role) {
+//                $user->attachRole($role);
+//            });
     }
 }
