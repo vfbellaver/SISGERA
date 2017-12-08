@@ -13,10 +13,6 @@ class Conta extends Model
         'status',
     ];
 
-    public function requerimentos()
-    {
-        return $this->hasMany(Requerimento::class,'conta_id','id');
-    }
 
     public function toArray()
     {

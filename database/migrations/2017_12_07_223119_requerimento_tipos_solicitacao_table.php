@@ -4,9 +4,13 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRequerimentoTiposSolicitacaoTable extends Migration
+class RequerimentoTiposSolicitacaoTable extends Migration
 {
-
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
     public function up()
     {
         Schema::create('requerimento_tipos_solicitacao', function (Blueprint $table) {

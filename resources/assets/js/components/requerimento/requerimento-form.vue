@@ -73,7 +73,7 @@
 
                             <row>
                                 <column size="12">
-                                    <form-group :form="formRequerimento" field="anexo">
+                                    <form-group :form="formRequerimento" field="tipos_solicitacao">
                                         <fieldset class="col-md-12">
                                             <legend class="row">2) Tipo de Requerimento</legend>
                                         </fieldset>
@@ -86,13 +86,13 @@
                             <row>
                                 <column size="12">
                                     <form-group :form="formRequerimento" field="justificativa">
-
                                         <fieldset class="col-md-12">
                                             <legend class="row">3) Detalhamento do pedido</legend>
                                         </fieldset>
                                         <row>
                                             <column size="12">
-                                                <vue-editor v-model="formRequerimento.justificativa" :editorToolbar="customToolbar"></vue-editor>
+                                                <vue-editor v-model="formRequerimento.justificativa" :editorToolbar="customToolbar"
+                                                            placeholder="Justifique a sua solicitação aqui."></vue-editor>
                                             </column>
                                         </row>
                                     </form-group>
@@ -191,7 +191,7 @@
                     turma: requerimento ? requerimento.turma : null,
                     anexo_url: requerimento ? requerimento.anexo_url : null,
                     periodo: requerimento ? requerimento.periodo : null,
-                    justificativa: requerimento ? requerimento.justificativa : '<p>Detalhamento do seu Pedido</p>',
+                    justificativa: requerimento ? requerimento.justificativa : '',
                 });
             },
             setEstudante(){
@@ -208,7 +208,10 @@
                 Sg.post(uri, this.formRequerimento).then((response) => {
                     console.log('Requerimento criado', response.message);
                     swal('Pronto', response.message, 'success');
-                    this.formRequerimento = this.createForm(requerimento);
+                    this.formRequerimento = this.createForm();
+                    setTimeout(function(){
+                        window.location = laroute.route('requerimento.create');
+                    }, 2000);
                 });
             },
 

@@ -102,7 +102,6 @@
                                                     <label class="col-md-2 control-label" for="select">Despachar</label>
                                                     <div class="col-md-7">
                                                         <select class="form-control option" id="select" v-model="formRequerimento.conta_id">
-                                                            <option value="" selected >Selecione uma conta</option>
                                                             <option v-for="ct in contas" :value="ct.id">{{ct.name}}</option>
                                                         </select><br>
                                                     </div>
@@ -237,7 +236,7 @@
             }
         },
 
-        created(){
+        mounted(){
             this.regraUsuarioLogado = Sisgera.user.role.name;
             this.loadForm();
             this.getContas();
@@ -276,7 +275,6 @@
                     .then((response) => {
                         this.contas = response;
                     });
-
             },
 
             save(){

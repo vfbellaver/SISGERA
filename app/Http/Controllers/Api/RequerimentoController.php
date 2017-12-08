@@ -34,16 +34,19 @@ class RequerimentoController extends Controller
         $requerimento = new Requerimento($data);
         $requerimento->data_criacao = Carbon::now();
 
+        $conta = Conta::query()->findOrFail(5);
         $requerimento->protocolo = gerar_protocolo();
         $requerimento->user_id = auth()->user()->id;
+        $requerimento->conta()->associate($conta);
         $requerimento->save();
-        $requerimento->conta()->associate($requerimento);
+
 
 
         foreach ($data['tipos_solicitacao'] as $solicitacao )
         {
-            $tp = TiposSolicitacao::query()->where('id',$solicitacao['id'])->get();
+            $tp = TiposSolicitacao::query()->findOrFail($solicitacao['id']);
             $requerimento->solicitacao()->attach($tp);
+
         }
 
         //SALVANDO HISTORICO NA TABELA DE HISTORICO

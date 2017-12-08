@@ -44,7 +44,7 @@ class Requerimento extends Model
 
     public function conta()
     {
-        return $this->belongsTo(Conta::class);
+        return $this->belongsTo(Conta::class,'conta_id','id');
     }
 
     public function solicitacao()
