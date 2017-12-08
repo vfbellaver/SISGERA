@@ -94,6 +94,21 @@ Route::get('get/requerimentos/indeferidos','RequerimentosController@getIndeferid
 Route::get('requerimentos/todos','RequerimentosController@requerimentosList')->name('view-req-list');
 Route::get('get/requerimentos/todos','RequerimentosController@getAll')->name('get-requerimentos-todos');
 
+//REQUERIMENTOS POR FUNCAO
+Route::get('conta/requerimentos/entrada','RequerimentosController@requerimentosEnviados')->name('view-req-enviados');
+Route::get('get/conta/entrada','RequerimentosController@getEnviados')->name('get-requerimentos-enviados');
+
+Route::get('conta/requerimentos/deferidos','RequerimentosController@requerimentosDeferidos')->name('view-req-deferidos');
+Route::get('get/conta/requerimentos/deferidos','RequerimentosController@getDeferidos')->name('get-requerimentos-deferidos');
+
+Route::get('conta/requerimentos/deferidos/parcialmente','RequerimentosController@requerimentosDeferidosParcialmente')->name('view-req-deferidos-parcialmente');
+Route::get('get/conta/requerimentos/parcialmente','RequerimentosController@getDeferidosParcialmente')->name('get-requerimentos-deferidos-parcialmente');
+
+Route::get('conta/requerimentos/indeferidos','RequerimentosController@requerimentosIndeferidos')->name('view-req-indeferidos');
+Route::get('get/conta/requerimentos/indeferidos','RequerimentosController@getIndeferidos')->name('get-requerimentos-indeferidos');
+
+
+
 //DESPACHAR REQUERIMENTO
 Route::post('despachar/requerimento/{requerimento}','Api\RequerimentoController@despacharRequerimento')->name('despachar-requerimento');
 

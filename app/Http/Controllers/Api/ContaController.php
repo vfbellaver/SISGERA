@@ -16,12 +16,10 @@ class ContaController extends Controller
         return Conta::query()->paginate(10);
     }
 
-
     public function create()
     {
         return view('conta.criar');
     }
-
 
     public function store(CreateContaRequest $request)
     {
@@ -36,8 +34,6 @@ class ContaController extends Controller
 
        return $response;
     }
-
-
 
     public function edit($id)
     {
@@ -60,7 +56,6 @@ class ContaController extends Controller
         return $response;
     }
 
-
     public function destroy($id)
     {
         $conta = Conta::query()->findOrFail($id);
@@ -72,6 +67,7 @@ class ContaController extends Controller
 
         return $response;
     }
+
     public function listaContas()
     {
         return view('conta.lista.lista');

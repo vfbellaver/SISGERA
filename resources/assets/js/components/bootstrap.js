@@ -2,13 +2,16 @@ require('./shared/_register');
 
 //MENUS
 Vue.component('menu-aside',require('./menu/menu'));
-Vue.component('menu-admin',require('./menu/menu-admin'));
-Vue.component('menu-cerel',require('./menu/menu-cerel'));
-Vue.component('meus-requerimentos',require('./menu/meus-requerimentos.vue'));
-Vue.component('menu-coordenador',require('./menu/menu-coordenador'));
-Vue.component('menu-requerimentos',require('./menu/menu-requerimentos'));
 Vue.component('menu-sistema',require('./menu/menu-sistema'));
 Vue.component('menu-usuarios',require('./menu/menu-usuarios'));
+
+Vue.component('menu-admin',require('./menu/usuarios/menu-admin'));
+Vue.component('menu-cerel',require('./menu/usuarios/menu-cerel'));
+Vue.component('menu-coordenador',require('./menu/usuarios/menu-coordenador'));
+
+Vue.component('meus-requerimentos',require('./menu/requerimentos/meus-requerimentos.vue'));
+Vue.component('menu-requerimentos',require('./menu/requerimentos/menu-requerimentos'));
+Vue.component('menu-requerimentos-conta',require('./menu/requerimentos/menu-requerimentos-conta'));
 
 //USERS
 Vue.component('users-list',require('./usuario/listas/lista-usuarios'));
