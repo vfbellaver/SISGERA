@@ -95,7 +95,7 @@ Route::get('requerimentos/todos','RequerimentosController@requerimentosList')->n
 Route::get('get/requerimentos/todos','RequerimentosController@getAll')->name('get-requerimentos-todos');
 
 //DESPACHAR REQUERIMENTO
-Route::post('despachar/requerimento/{requerimento}','RequerimentosController@despacharRequerimento')->name('despachar-requerimento');
+Route::post('despachar/requerimento/{requerimento}','Api\RequerimentoController@despacharRequerimento')->name('despachar-requerimento');
 
 //ANEXO UPLOAD
 Route::post('anexo/upload', 'FileUploadController@fileUpload')->name('file.upload');

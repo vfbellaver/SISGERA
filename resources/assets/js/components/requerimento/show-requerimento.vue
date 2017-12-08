@@ -300,7 +300,12 @@
                 });
             },
             despacharRequerimento(){
-                console.log('teste');
+                const uri = laroute.route('despachar-requerimento', {requerimento: this.id});
+                Sg.post(uri, this.formRequerimento).then((response) => {
+                    console.log('Requerimento despachado', response.message);
+                    this.formRequerimento = new Form([response.data]);
+                    swal('Pronto', response.message, 'success');
+                });
             },
 
             imprimirRequerimento(){

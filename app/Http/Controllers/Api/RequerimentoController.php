@@ -109,11 +109,25 @@ class RequerimentoController extends Controller
         return $response;
     }
 
-
-    public function destroy($id)
+    public function despacharRequerimento(Request $request,$id)
     {
-        //
+        $data = $request->all();
+        $requerimento = Requerimento::query()->findOrFail($id);
+        $requerimento->conta()->dissociate();
+        $cc = $data['conta'];
+        $conta = Conta::query()->findOrFail($cc['id']);
+        $requerimento->conta()->associate($conta);
+        $requerimento->save();
+
+        $response = [
+            'message' => 'Requerimento Despachado',
+            'data' => $requerimento,
+        ];
+
+
+        return $response;
     }
+
 
 
 }
