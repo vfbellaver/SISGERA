@@ -85,14 +85,14 @@
                                         </select>
                                     </form-group>
                                 </column>
-                                <column size="6" v-if="form.conta">
+                                <column size="6" v-if="form.role !='aluno'">
                                     <form-group :form="form" field="role">
                                         <label class="control-label" for="role"><h4>
-                                            <strong>Conta:</strong></h4></label>
-                                        <select class="form-control option" id="role" v-model="form.role">
-                                            <option selected="selected" :value="form.role" >{{form.role}}</option>
-                                            <option v-for="rl in roles" :value="rl">{{rl}}</option>
-                                        </select>
+                                            <strong>Função:</strong></h4></label>
+                                        <select class="form-control option" id="conta" v-model="form.conta">
+                                            <option selected="selected" :value="form.conta">{{form.conta.name}}</option>
+                                            <option v-for="ct in contas" :value="ct">{{ct.name}}</option>
+                                        </select><br>
                                     </form-group>
                                 </column>
                                 <column size="6" v-else></column>
@@ -135,12 +135,14 @@
         data(){
             return {
                 roles: Sisgera.regras,
+                contas:[],
                 form: null,
                 index: laroute.route('home'),
             }
         },
         created(){
             this.load(this.user);
+            this.getContas();
         },
 
         methods: {
@@ -149,7 +151,7 @@
                     id: user ? user.id : null,
                     name: user ? user.name : null,
                     role: user ? user.role.name : 'Selecione um tipo de usuário',
-                    conta: user ? user.conta : null,
+                    conta: user ? user.conta : {name:'Selecione um tipo de função'},
                     email: user ? user.email : null,
                     rg: user ? user.rg : null,
                     org_emissor: user ? user.org_emissor : null,
@@ -164,7 +166,7 @@
                     const uri = laroute.route('user.store');
                     Sg.post(uri, this.form).then((response) => {
                         console.log('User Created', response.message);
-                        swal('Pronto', response.message, 'success')
+                        swal('Pronto', response.message, 'success');
                         this.load(response.data);
                     });
                 }
@@ -176,6 +178,12 @@
                        this.form = response.data;
                     });
                 }
+            },
+            getContas(){
+                Sg.get(laroute.route('lista-todas'))
+                    .then((response) => {
+                        this.contas = response;
+                    });
             },
         }
     }
