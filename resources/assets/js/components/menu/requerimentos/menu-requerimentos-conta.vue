@@ -1,5 +1,5 @@
 <template>
-    <li class="treeview"><a href="#"><i class="fa fa-vcard"></i><span>Requerimentos {{conta.name}}</span><i
+    <li class="treeview"><a href="#"><i class="fa fa-vcard"></i><span>Requerimentos @{conta.name}</span><i
             class="fa fa-angle-right"></i></a>
         <ul class="treeview-menu">
             <li><a :href="requimento.novo"><i class="fa fa-file-text"></i>Novos Requerimentos</a></li>

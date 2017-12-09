@@ -16,7 +16,7 @@
                                             <strong>Nome:</strong></h4></label>
                                         <input class="form-control" v-model="form.name" id="name" type="text"
                                                name="name"
-                                               placeholder="Nome Estudante">
+                                               placeholder="Nome">
                                     </form-group>
                                 </column>
                                 <column size="6">
@@ -79,14 +79,23 @@
                                     <form-group :form="form" field="role">
                                         <label class="control-label" for="role"><h4>
                                             <strong>Tipo de Usuario:</strong></h4></label>
-                                        <select v-model="form.role" id="role"  class="form-control">
-                                            <option value="selected" selected="selected">Selecione um tipo de Usuário</option>
-                                            <option value="coordenador">Coordenador</option>
-                                            <option value="cerel">Cerel</option>
-                                            <option value="aluno">Aluno</option>
+                                        <select class="form-control option" id="role" v-model="form.role">
+                                            <option selected="selected" :value="form.role" >{{form.role}}</option>
+                                            <option v-for="rl in roles" :value="rl">{{rl}}</option>
                                         </select>
                                     </form-group>
                                 </column>
+                                <column size="6" v-if="form.conta">
+                                    <form-group :form="form" field="role">
+                                        <label class="control-label" for="role"><h4>
+                                            <strong>Conta:</strong></h4></label>
+                                        <select class="form-control option" id="role" v-model="form.role">
+                                            <option selected="selected" :value="form.role" >{{form.role}}</option>
+                                            <option v-for="rl in roles" :value="rl">{{rl}}</option>
+                                        </select>
+                                    </form-group>
+                                </column>
+                                <column size="6" v-else></column>
                             </row>
                             <row>
                                 <column size="12">
@@ -95,8 +104,11 @@
                                             <a class="btn btn-default icon-btn" :href="index"><i
                                                     class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
                                             &nbsp;&nbsp;&nbsp;
-                                            <button class="btn btn-primary icon-btn" type="submit"><i
-                                                    class="fa fa-fw fa-lg fa-check-circle"></i>Register
+                                            <button class="btn btn-primary icon-btn" type="submit" v-if="this.user"><i
+                                                    class="fa fa-fw fa-lg fa-check-circle"></i>Atualizar
+                                            </button>
+                                            <button class="btn btn-primary icon-btn" type="submit" v-else><i
+                                                    class="fa fa-fw fa-lg fa-check-circle"></i>Registrar
                                             </button>
                                         </div>
                                     </div>
@@ -109,6 +121,11 @@
         </div>
     </div>
 </template>
+<style lang="scss" scoped="scoped">
+    .option{
+        font-size: 14px !important;
+    }
+</style>
 <script>
     export default {
         props: {
@@ -117,6 +134,7 @@
 
         data(){
             return {
+                roles: Sisgera.regras,
                 form: null,
                 index: laroute.route('home'),
             }
@@ -130,6 +148,8 @@
                 this.form = new Form({
                     id: user ? user.id : null,
                     name: user ? user.name : null,
+                    role: user ? user.role.name : 'Selecione um tipo de usuário',
+                    conta: user ? user.conta : null,
                     email: user ? user.email : null,
                     rg: user ? user.rg : null,
                     org_emissor: user ? user.org_emissor : null,
