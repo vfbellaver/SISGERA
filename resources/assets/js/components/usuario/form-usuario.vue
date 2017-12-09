@@ -85,7 +85,7 @@
                                         </select>
                                     </form-group>
                                 </column>
-                                <column size="6" v-if="form.role !='aluno'">
+                                <column size="6" v-if="form.role !='aluno' && form.role != this.tipouser">
                                     <form-group :form="form" field="role">
                                         <label class="control-label" for="role"><h4>
                                             <strong>Função:</strong></h4></label>
@@ -136,6 +136,7 @@
             return {
                 roles: Sisgera.regras,
                 contas:[],
+                tipouser:'Selecione um tipo de usuário',
                 form: null,
                 index: laroute.route('home'),
             }
@@ -150,7 +151,7 @@
                 this.form = new Form({
                     id: user ? user.id : null,
                     name: user ? user.name : null,
-                    role: user ? user.role.name : 'Selecione um tipo de usuário',
+                    role: user ? user.role.name : this.tipouser,
                     conta: user ? user.conta : {name:'Selecione um tipo de função'},
                     email: user ? user.email : null,
                     rg: user ? user.rg : null,
