@@ -26,6 +26,11 @@ Vue.component('form-conta',require('./conta/form-conta'));
 Vue.component('criar-conta',require('./conta/criar-conta'));
 Vue.component('editar-conta',require('./conta/editar-conta'));
 
+Vue.component('conta-entrada',require('./conta/requerimentos/lista-entrada'));
+Vue.component('conta-deferidos',require('./conta/requerimentos/lista-deferidos'));
+Vue.component('conta-indeferidos',require('./conta/requerimentos/lista-indeferidos'));
+Vue.component('conta-parcialmente',require('./conta/requerimentos/lista-parcialmente'));
+
 //FORMS
 Vue.component('form-user',require('./usuario/form-usuario'));
 Vue.component('form-password',require('./usuario/form-password'));

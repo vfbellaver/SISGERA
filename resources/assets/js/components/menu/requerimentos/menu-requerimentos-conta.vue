@@ -18,12 +18,10 @@
             return {
 
                 requimento: {
-                    novo: laroute.route('view-req-enviados'),
-                    emandamento: laroute.route('view-req-recebidos'),
-                    deferidos: laroute.route('view-req-deferidos'),
-                    parcialmente: laroute.route('view-req-deferidos-parcialmente'),
-                    indeferidos: laroute.route('view-req-indeferidos'),
-                    list: laroute.route('view-req-list'),
+                    novo: laroute.route('conta-req-andamento'),
+                    deferidos: laroute.route('conta-req-deferidos'),
+                    parcialmente: laroute.route('conta-req-deferidos-parcialmente'),
+                    indeferidos: laroute.route('conta-req-indeferidos'),
                 },
 
             }
