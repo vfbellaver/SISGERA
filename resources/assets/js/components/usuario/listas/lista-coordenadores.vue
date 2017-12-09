@@ -27,7 +27,7 @@
                             <td>{{ index + 1 }}</td>
                             <td>{{coord.name}}</td>
                             <td>{{coord.email}}</td>
-                            <td>Coordenador Curso</td>
+                            <td>{{coord.conta.funcao}}</td>
                             <td>{{coord.status ? 'Ativo' : 'Inativo'}}</td>
                             <td>
                                 <button v-show="regra === 'admin'" class="btn btn-xs btn-primary" @click="edit(coord)"><i class="fa fa-edit"></i></button>

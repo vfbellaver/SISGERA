@@ -23,7 +23,7 @@ class Sisgera
                 'coordenador' => 'coordenador',
                 'cerel' => 'cerel',
                 'aluno' => 'aluno',
-                'civil' => 'civil',
+                'externo' => 'externo',
 
             ],
 

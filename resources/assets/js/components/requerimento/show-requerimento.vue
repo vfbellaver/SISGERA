@@ -254,7 +254,11 @@
                     requerimento.situacao !== this.indeferido &&
                     requerimento.situacao !== this.deferidoparcialmente ? true : false;
 
+                    if(Sisgera.user.conta){
                     this.contaDestino = requerimento.conta.id === Sisgera.user.conta.id ? true : false;
+                    }else{
+                        this.contaDestino = false;
+                    }
 
                     this.formRequerimento = new Form({
                         id: requerimento.id,
@@ -303,7 +307,7 @@
                 const uri = laroute.route('despachar-requerimento', {requerimento: this.id});
                 Sg.post(uri, this.formRequerimento).then((response) => {
                     console.log('Requerimento despachado', response.message);
-                    this.formRequerimento = new Form(response.data);
+                    this.formRequerimento = new Form([response.data]);
                     swal('Pronto', response.message, 'success');
                 });
             },

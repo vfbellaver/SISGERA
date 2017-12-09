@@ -67,6 +67,8 @@ class UsuarioController extends Controller
     {
         $user = User::query()->findOrFail($id);
         $data = $request->all();
+
+
         $user->update($data);
 
         $response = [

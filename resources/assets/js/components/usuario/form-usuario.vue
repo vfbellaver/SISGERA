@@ -85,7 +85,7 @@
                                         </select>
                                     </form-group>
                                 </column>
-                                <column size="6" v-if="form.role !='aluno' && form.role != this.tipouser">
+                                <column size="6" v-if="form.role !='aluno' && form.role !='externo' && form.role != this.tipouser">
                                     <form-group :form="form" field="role">
                                         <label class="control-label" for="role"><h4>
                                             <strong>Função:</strong></h4></label>

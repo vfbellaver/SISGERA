@@ -18,6 +18,7 @@
                             <th>#</th>
                             <th>Nome</th>
                             <th>Email</th>
+                            <th>Função</th>
                             <th v-show="regra === 'admin'" >Ações</th>
                         </tr>
                         </thead>
@@ -26,6 +27,7 @@
                             <td>{{ index + 1 }}</td>
                             <td>{{cerel.name}}</td>
                             <td>{{cerel.email}}</td>
+                            <td>{{cerel.conta.funcao}}</td>
                             <td>
                                 <button v-show="regra === 'admin'" class="btn btn-xs btn-primary" @click="edit(cerel)"><i class="fa fa-edit"></i></button>
                                 <button v-show="regra === 'admin'" class="btn btn-xs btn-danger" @click="destroy(cerel)"><i class="fa fa-trash"></i></button>

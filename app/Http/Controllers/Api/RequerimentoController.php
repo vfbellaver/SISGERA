@@ -59,8 +59,8 @@ class RequerimentoController extends Controller
         $historico = HistoricoRequerimento::query()->create($data);
 
         //NOTIFICA O USUARIO SOBRE A CRIACAO VIA EMAIL
-        $user = auth()->user();
-        $requerimento->notify(new MovimentoRequerimento($user,$requerimento));
+        $user = User::query()->findOrFail(auth()->user()->id);
+        $user->notify(new MovimentoRequerimento($user,$requerimento));
 
         $response = [
             'message' => 'Requerimento enviado com sucesso.',

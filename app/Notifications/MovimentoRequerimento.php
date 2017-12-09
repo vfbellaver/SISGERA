@@ -16,11 +16,13 @@ class MovimentoRequerimento extends Notification
 
     public $requerimento;
     public $user;
+    public $historico;
 
     public function __construct(User $user, Requerimento $requerimento)
     {
         $this->user = $user;
         $this->requerimento = $requerimento;
+//        $this->historico = $historicoRequerimento;
     }
 
 
@@ -38,6 +40,7 @@ class MovimentoRequerimento extends Notification
                     ->subject("Movimentacão de requerimento no {$appName}!")
                     ->greeting("Olá {$this->user->name}!")
                     ->line("O requerimento de protocolo {$this->requerimento->protocolo} movimentou!")
+                    ->line("Movimento: {$this->requerimento->historico->movimentacao}")
                     ->action('Acesse o Sisgera', url($appRoute))
                     ->line('Obrigado por usar o Sisgera!');
     }
