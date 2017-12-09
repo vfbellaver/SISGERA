@@ -110,7 +110,7 @@ Route::get('get/conta/requerimentos/indeferidos','Api\RequerimentosContaControll
 
 
 //DESPACHAR REQUERIMENTO
-Route::post('despachar/requerimento/{requerimento}','Api\RequerimentoController@despacharRequerimento')->name('despachar-requerimento');
+Route::post('despachar/requerimento/{requerimento}','Api\RequerimentosContaController@despacharRequerimento')->name('despachar-requerimento');
 
 //ANEXO UPLOAD
 Route::post('anexo/upload', 'FileUploadController@fileUpload')->name('file.upload');
