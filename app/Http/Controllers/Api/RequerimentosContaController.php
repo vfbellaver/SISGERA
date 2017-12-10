@@ -63,6 +63,7 @@ class RequerimentosContaController extends Controller
     {
         $data = $request->all();
         $requerimento = Requerimento::query()->findOrFail($id);
+        $requerimento->visualizado = false;
         $requerimento->conta()->dissociate();
         $cc = $data['conta'];
         $conta = Conta::query()->findOrFail($cc['id']);
@@ -83,7 +84,45 @@ class RequerimentosContaController extends Controller
             'message' => 'Requerimento Despachado',
             'data' => $requerimento,
         ];
+        return $response;
+    }
 
+    public function getNoticacoes(){
+
+        if(auth()->user()->conta->name == 'Cerel'){
+            return Requerimento::query()
+                ->where('conta_id',auth()->user()->conta->id)
+                ->where('situacao','=',Requerimento::ENVIADO)
+                ->where('visualizado','=',false)
+                ->get();
+        }
+        return Requerimento::query()
+                ->where('conta_id',auth()->user()->conta->id)
+                ->where('situacao','=',Requerimento::ANDAMENTO)
+                ->where('visualizado','=',false)
+                ->get();
+    }
+
+    public function requerimentoRecebido($id)
+    {
+        $requerimento = Requerimento::query()->findOrFail($id);
+        $requerimento->visualizado = true;
+        $requerimento->situacao = Requerimento::ANDAMENTO;
+        $requerimento->save();
+
+        $data = [
+            'data_movimentacao' => Carbon::now(),
+            'movimentacao'=> 'Recebido '.auth()->user()->conta->name,
+            'requerimento_id' => $requerimento->id,
+            'user_id' => auth()->user()->id,
+        ];
+
+        $historico = HistoricoRequerimento::query()->create($data);
+
+        $response = [
+            'message' => 'Requerimento Recebido',
+            'data' => $requerimento,
+        ];
 
         return $response;
     }

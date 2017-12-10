@@ -101,13 +101,18 @@
                                                 <form-group :form="formRequerimento" field="conta">
                                                     <label class="col-md-2 control-label" for="conta">Despachar</label>
                                                     <div class="col-md-7">
-                                                        <select class="form-control option" id="conta" v-model="formRequerimento.conta">
-                                                            <option selected="selected" :value="formRequerimento.conta">{{formRequerimento.conta.name}}</option>
-                                                            <option v-for="ct in contas" :value="ct">{{ct.name}}</option>
+                                                        <select class="form-control option" id="conta"
+                                                                v-model="formRequerimento.conta">
+                                                            <option selected="selected" :value="formRequerimento.conta">
+                                                                {{formRequerimento.conta.name}}
+                                                            </option>
+                                                            <option v-for="ct in contas" :value="ct">{{ct.name}}
+                                                            </option>
                                                         </select><br>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <a class="btn btn-success icon-btn" @click="despacharRequerimento">
+                                                        <a class="btn btn-success icon-btn"
+                                                           @click="despacharRequerimento">
                                                             <i class="fa fa-fw fa-lg fa-send"></i>Encaminhar
                                                         </a>
                                                     </div>
@@ -185,7 +190,8 @@
         padding-right: 20px;
         font-size: 18px;
     }
-    .option{
+
+    .option {
         font-size: 14px !important;
     }
 
@@ -208,7 +214,7 @@
         data() {
             return {
                 formRequerimento: {},
-                contas:[],
+                contas: [],
 
                 user: null,
                 regraUsuarioLogado: null,
@@ -239,41 +245,42 @@
 
         mounted(){
             this.regraUsuarioLogado = Sisgera.user.role.name;
-            this.loadForm();
+            this.getRequerimento();
             this.getContas();
         },
 
         methods: {
-            loadForm() {
+            getRequerimento(){
                 const uri = laroute.route('requerimento.show', {requerimento: this.id});
                 Sg.find(uri).then((requerimento) => {
+                    this.loadForm(requerimento);
+                });
+            },
 
-                    this.user = requerimento.usuario;
+            loadForm(requerimento) {
+                this.user = requerimento.usuario;
 
-                    this.naofinalizado = requerimento.situacao !== this.deferido &&
-                    requerimento.situacao !== this.indeferido &&
-                    requerimento.situacao !== this.deferidoparcialmente ? true : false;
+                this.naofinalizado = requerimento.situacao !== this.deferido &&
+                requerimento.situacao !== this.indeferido &&
+                requerimento.situacao !== this.deferidoparcialmente ? true : false;
 
-                    if(Sisgera.user.conta){
+                if (Sisgera.user.conta) {
                     this.contaDestino = requerimento.conta.id === Sisgera.user.conta.id ? true : false;
-                    }else{
-                        this.contaDestino = false;
-                    }
-
-                    this.formRequerimento = new Form({
-                        id: requerimento.id,
-                        nome_estudante: requerimento.nome_estudante,
-                        tipos_solicitacao: requerimento.solicitacoes,
-                        curso: requerimento.curso,
-                        turno: requerimento.turno,
-                        turma: requerimento.turma,
-                        periodo: requerimento.periodo,
-                        conta: requerimento.conta,
-                        justificativa: requerimento.justificativa,
-                        situacao: requerimento.situacao,
-                        resposta: requerimento.resposta ? requerimento.resposta : '',
-                    });
-
+                } else {
+                    this.contaDestino = false;
+                }
+                this.formRequerimento = new Form({
+                    id: requerimento.id,
+                    nome_estudante: requerimento.nome_estudante,
+                    tipos_solicitacao: requerimento.solicitacoes,
+                    curso: requerimento.curso,
+                    turno: requerimento.turno,
+                    turma: requerimento.turma,
+                    periodo: requerimento.periodo,
+                    conta: requerimento.conta,
+                    justificativa: requerimento.justificativa,
+                    situacao: requerimento.situacao,
+                    resposta: requerimento.resposta ? requerimento.resposta : '',
                 });
             },
             getContas(){
@@ -306,9 +313,11 @@
             despacharRequerimento(){
                 const uri = laroute.route('despachar-requerimento', {requerimento: this.id});
                 Sg.post(uri, this.formRequerimento).then((response) => {
-                    console.log('Requerimento despachado', response.message);
-                    this.formRequerimento = new Form([response.data]);
+                    console.log('Requerimento despachado', response);
+                    debugger;
+                    this.loadForm(response.data);
                     swal('Pronto', response.message, 'success');
+                    EventBus.$emit('novaNotificacao', response.data);
                 });
             },
 

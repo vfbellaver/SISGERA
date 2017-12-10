@@ -20,6 +20,7 @@ class CreateRequerimentosTable extends Migration
             $table->string('curso',50);
             $table->string('turma',10);
             $table->string('turno',20);
+            $table->boolean('visualizado')->default(false);
             $table->text('justificativa');
             $table->text('anexo_url')->nullable();
             $table->text('resposta')->nullable();

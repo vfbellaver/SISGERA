@@ -18,7 +18,8 @@
                             <th>#</th>
                             <th>Nome</th>
                             <th>Email</th>
-                            <th v-show="regra === 'admin'" >Ações</th>
+                            <th>Celular</th>
+                            <th>Ações</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -26,6 +27,7 @@
                             <td>{{ index + 1 }}</td>
                             <td>{{aluno.name}}</td>
                             <td>{{aluno.email}}</td>
+                            <td>{{aluno.celular}}</td>
                             <td>
                                 <button class="btn btn-xs btn-primary" @click="edit(aluno)"><i class="fa fa-edit"></i></button>
                                 <button v-show="regra === 'admin'" class="btn btn-xs btn-danger" @click="destroy(aluno)"><i class="fa fa-trash"></i></button>

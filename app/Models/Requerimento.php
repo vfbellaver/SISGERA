@@ -31,12 +31,14 @@ class Requerimento extends Model
         'justificativa',
         'resposta',
         'situacao',
+        'visualizado',
         'conta_id',
         'user_id',
     ];
 
 
     protected $dates = ['deleted_at'];
+    protected $casts = ['visualizado' => 'boolean'];
 
     public function usuario()
     {
@@ -76,6 +78,7 @@ class Requerimento extends Model
             'resposta' => $this->resposta,
             'situacao' => $this->situacao,
             'conta' => $this->conta->toArray(),
+            'visualizado' => $this->visualizado,
             'usuario' => $this->usuario->toArray(),
             'historico' => $this->historicos->toArray(),
             ];

@@ -61,4 +61,5 @@ Vue.component('requerimentos-indeferidos',require('./requerimento/listas/lista-i
 
 
 //OUTROS COMPONENTES
+Vue.component('notificacao',require('./notificacoes/notificacao'));
 Vue.component('pagination',require('./shared/pagination'));

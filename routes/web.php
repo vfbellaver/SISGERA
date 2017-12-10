@@ -107,7 +107,9 @@ Route::get('get/conta/requerimentos/parcialmente','Api\RequerimentosContaControl
 Route::get('conta/requerimentos/indeferidos','Api\RequerimentosContaController@indeferidos')->name('conta-req-indeferidos');
 Route::get('get/conta/requerimentos/indeferidos','Api\RequerimentosContaController@getIndeferidos')->name('get-conta-requerimentos-indeferidos');
 
-
+//NOTIFACAO NAV BAR
+Route::get('notificacoes/nav/bar','Api\RequerimentosContaController@getNoticacoes')->name('get-noticacoes');
+Route::put('notificacoes/{requerimento}','Api\RequerimentosContaController@requerimentoRecebido')->name('requerimento-recebido');
 
 //DESPACHAR REQUERIMENTO
 Route::post('despachar/requerimento/{requerimento}','Api\RequerimentosContaController@despacharRequerimento')->name('despachar-requerimento');

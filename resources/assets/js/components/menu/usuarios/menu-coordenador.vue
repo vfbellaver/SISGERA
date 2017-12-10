@@ -5,6 +5,7 @@
                 <ul class="sidebar-menu">
                     <menu-usuarios></menu-usuarios>
                     <menu-requerimentos></menu-requerimentos>
+                    <menu-requerimentos-conta v-show="this.conta !== 'admin'" :conta="this.conta"></menu-requerimentos-conta>
                     <meus-requerimentos></meus-requerimentos>
                 </ul>
             </section>
@@ -22,6 +23,7 @@
                     externo: laroute.route('lista-externo'),
                     novo: laroute.route('user.create'),
                 },
+                conta: Sisgera.user.conta,
 
             }
         }
