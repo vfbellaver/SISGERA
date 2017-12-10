@@ -13,6 +13,7 @@ use Sisgera\Models\Requerimento;
 use Sisgera\Models\TiposSolicitacao;
 use Sisgera\Models\User;
 use Sisgera\Notifications\MovimentoRequerimento;
+use Sisgera\Notifications\NovoRequerimento;
 
 class RequerimentoController extends Controller
 {
@@ -52,6 +53,7 @@ class RequerimentoController extends Controller
         //SALVANDO HISTORICO NA TABELA DE HISTORICO
         $data = [
             'data_movimentacao' => Carbon::now(),
+            'movimentacao' => 'Requerimento Enviado',
             'requerimento_id' => $requerimento->id,
             'user_id' => auth()->user()->id,
         ];
@@ -60,7 +62,7 @@ class RequerimentoController extends Controller
 
         //NOTIFICA O USUARIO SOBRE A CRIACAO VIA EMAIL
         $user = User::query()->findOrFail(auth()->user()->id);
-        $user->notify(new MovimentoRequerimento($user,$requerimento));
+        $user->notify(new NovoRequerimento($user,$requerimento));
 
         $response = [
             'message' => 'Requerimento enviado com sucesso.',
@@ -99,7 +101,12 @@ class RequerimentoController extends Controller
             'requerimento_id' => $requerimento->id,
             'user_id' => auth()->user()->id,
         ];
+
         $historico = HistoricoRequerimento::query()->create($movimentacao);
+
+        //NOTIFICA O USUARIO SOBRE A CRIACAO VIA EMAIL
+        $user = User::query()->findOrFail(auth()->user()->id);
+        $user->notify(new MovimentoRequerimento($user,$requerimento,$historico));
 
         $response = [
             'message' => 'Requerimento '.$requerimento->situacao.'.',

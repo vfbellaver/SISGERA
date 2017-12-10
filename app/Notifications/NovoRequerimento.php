@@ -6,11 +6,10 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use Sisgera\Models\HistoricoRequerimento;
 use Sisgera\Models\Requerimento;
 use Sisgera\Models\User;
 
-class MovimentoRequerimento extends Notification
+class NovoRequerimento extends Notification
 {
     use Queueable;
 
@@ -18,11 +17,10 @@ class MovimentoRequerimento extends Notification
     public $user;
     public $historico;
 
-    public function __construct(User $user, Requerimento $requerimento, HistoricoRequerimento $historicoRequerimento)
+    public function __construct(User $user, Requerimento $requerimento)
     {
         $this->user = $user;
         $this->requerimento = $requerimento;
-        $this->historico = $historicoRequerimento;
     }
 
 
@@ -37,12 +35,13 @@ class MovimentoRequerimento extends Notification
         $appName = config('app.name');
         $appRoute = route('login');
         return (new MailMessage)
-                    ->subject("Movimentacão de requerimento no {$appName}!")
-                    ->greeting("Olá {$this->user->name}!")
-                    ->line("O requerimento de protocolo {$this->requerimento->protocolo} movimentou!")
-                    ->line("Movimento: {$this->historico->movimentacao}")
-                    ->action('Acesse o Sisgera', url($appRoute))
-                    ->line('Obrigado por usar o Sisgera!');
+            ->subject("Novo Requerimento no {$appName}!")
+            ->greeting("Olá {$this->user->name}!")
+            ->line("Seu Requerimento foi registrado no Sisgera!")
+            ->line("Protocolo: {$this->requerimento->protocolo}")
+            ->action('Acesse o Sisgera', url($appRoute))
+            ->line('Em breve seu requerimento será recebido e tomada as providências')
+            ->line('Obrigado por usar o Sisgera!');
     }
 
 
