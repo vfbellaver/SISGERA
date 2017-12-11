@@ -51,7 +51,7 @@
                 this.novasNotificacoes();
                 EventBus.$on('novaNotificacao', (e) => {
                     console.log("Nova notificacao",e);
-                    this.notificacoes = e;
+                    this.novasNotificacoes();
                 });
             },
             methods: {

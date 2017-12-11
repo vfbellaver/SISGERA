@@ -278,6 +278,7 @@
                     turma: requerimento.turma,
                     periodo: requerimento.periodo,
                     conta: requerimento.conta,
+                    usuario: requerimento.usuario,
                     justificativa: requerimento.justificativa,
                     situacao: requerimento.situacao,
                     resposta: requerimento.resposta ? requerimento.resposta : '',

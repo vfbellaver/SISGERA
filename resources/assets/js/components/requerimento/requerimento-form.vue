@@ -123,6 +123,14 @@
                                                     class="fa fa-fw fa-lg fa-send"></i>Enviar Requerimento
                                             </button>
                                         </div>
+                                        <div class="overlay" v-if="formRequerimento.busy">
+                                            <div class="m-loader mr-20">
+                                                <svg class="m-circular" viewBox="25 25 50 50">
+                                                    <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="4" stroke-miterlimit="10"></circle>
+                                                </svg>
+                                            </div>
+                                            <h5 class="l-text">Enviando Requerimento</h5>
+                                        </div>
                                     </div>
                                 </column>
                             </row>
