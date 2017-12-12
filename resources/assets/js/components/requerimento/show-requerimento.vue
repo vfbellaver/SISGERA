@@ -165,8 +165,8 @@
                                 <column size="12">
                                     <div class="card-footer">
                                         <div class="form-group">
-                                            <a class="btn btn-success icon-btn" @click="imprimirRequerimento">
-                                                <i class="fa fa-fw fa-lg fa-save"></i>Imprimir Requerimento
+                                            <a class="btn btn-success icon-btn" :href="pdfrequerimento">
+                                                <i class="fa fa-fw fa-lg fa-print"></i>Imprimir Requerimento
                                             </a>
                                         </div>
                                     </div>
@@ -215,7 +215,7 @@
             return {
                 formRequerimento: {},
                 contas: [],
-
+                pdfrequerimento: null,
                 user: null,
                 regraUsuarioLogado: null,
                 naofinalizado: null,
@@ -247,6 +247,7 @@
             this.regraUsuarioLogado = Sisgera.user.role.name;
             this.getRequerimento();
             this.getContas();
+            this.pdfrequerimento = laroute.route('imprime-requerimento',{requerimento: this.id});
         },
 
         methods: {
@@ -321,10 +322,6 @@
                     EventBus.$emit('novaNotificacao', response.data);
                 });
             },
-
-            imprimirRequerimento(){
-                console.log('imprimindo!!');
-            }
         }
     }
 </script>

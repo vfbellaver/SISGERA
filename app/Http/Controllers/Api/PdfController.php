@@ -2,6 +2,8 @@
 
 namespace Sisgera\Http\Controllers\Api;
 
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use Illuminate\Http\Request;
 use Mpdf\Config\ConfigVariables;
 use Mpdf\Config\FontVariables;
@@ -37,19 +39,19 @@ class PdfController extends Controller
             'default_font'  => 'Roboto',
             'mode'          => 'c',
             'format'        => 'Letter',
-            'margin_left'   => 12,
-            'margin_right'  => 12,
-            'margin_top'    => 20,
-            'margin_bottom' => 20,
+            'margin_left'   => 10,
+            'margin_right'  => 10,
+            'margin_top'    => 2,
+            'margin_bottom' => 5,
         ]);
 
-        $gen->SetTitle($requerimento->name);
+        $gen->SetTitle('Requerimento '.$requerimento->usuario->name);
 
         $requerente = $requerimento->usuario->toArray();
 
         $content = view('requerimento.pdf', [
-            'requerimento' => $requerimento,
-            'usuario'    => $requerente,
+            'requerimento' => $requerimento->toArray(),
+            'usuario' => $requerente,
 
         ]);
 
@@ -60,5 +62,29 @@ class PdfController extends Controller
             ->header('Content-Type', 'application/pdf')
             ->header('Content-Length', strlen($pdf))
             ->header('Content-Disposition', "attachment; filename=\"requerimento.pdf\"");
+    }
+
+    public function pdfDom(Requerimento $requerimento)
+    {
+        $options = new Options();
+        $options->set('defaultFont', 'Roboto');
+        $pdf = new Dompdf($options);
+        $requerente = $requerimento->usuario->toArray();
+
+        $content = view('requerimento.dompdf', [
+            'requerimento' => $requerimento->toArray(),
+            'usuario' => $requerente,
+
+        ]);
+
+        $pdf->loadHtml($content);
+        $pdf->setPaper('A4', 'Portrait');
+        $pdf->render();
+        $pdf->stream('requerimento');
+//        return view('requerimento.dompdf', [
+//            'requerimento' => $requerimento->toArray(),
+//            'usuario' => $requerente,
+//
+//        ]);
     }
 }
