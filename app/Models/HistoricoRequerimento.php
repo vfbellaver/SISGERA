@@ -35,6 +35,8 @@ class HistoricoRequerimento extends Model
 
             'id' => (int)$this->id,
             'movimentacao' => $this->movimentacao,
+            'requerimento_id' => $this->requerimento_id,
+            'user_id' => $this->user_id,
             'data_movimentacao' => $this->data_movimentacao,
         ];
     }

@@ -41,10 +41,16 @@
         padding-top: 10px;
         font-size: 12pt;
     }
-
+    .localdata{
+        text-align: center;
+    }
     .footer {
-        padding: 10px;
         border-top: 1px solid darkgray;
+        padding-top: 10px;
+    }
+    .footer-image {
+        max-width: 70px;
+        max-height: 70px;
     }
 
 </style>
@@ -68,16 +74,16 @@
     <div class="divider"></div>
     <table style="width: 100%;padding: 15px">
         <tr>
-            <td><strong>Nome do Requerente:</strong> &nbsp; {{$usuario['name']}}</td>
+            <td><strong>Nome do Requerente:</strong> &nbsp; {{$requerente['name']}}</td>
         </tr>
         <tr>
-            <td width="300px"><strong>Rg:</strong> &nbsp; {{$usuario['rg']}} &nbsp; {{$usuario['org_emissor']}}</td>
-            <td><strong>Cpf:</strong> &nbsp; {{$usuario['cpf']}}</td>
+            <td width="300px"><strong>Rg:</strong> &nbsp; {{$requerente['rg']}} &nbsp; {{$requerente['org_emissor']}}</td>
+            <td><strong>Cpf:</strong> &nbsp; {{$requerente['cpf']}}</td>
         </tr>
         <tr>
-            <td><strong>Email:</strong> {{$usuario['email']}}</td>
-            <td><strong>Tel Fixo:</strong>&nbsp; {{$usuario['telefone']}}</td>
-            <td><strong>Celular:</strong>&nbsp; {{$usuario['celular']}}</td>
+            <td><strong>Email:</strong> {{$requerente['email']}}</td>
+            <td><strong>Tel Fixo:</strong>&nbsp; {{$requerente['telefone']}}</td>
+            <td><strong>Celular:</strong>&nbsp; {{$requerente['celular']}}</td>
         </tr>
         <tr>
             <td><strong>Nome do Estudante:</strong> &nbsp; {{$requerimento['nome_estudante']}}</td>
@@ -105,9 +111,19 @@
     <div class="justificativa">{{$requerimento['resposta']}}</div>
 </page>
 
-<htmlpagefooter name="pageFooter">
-   <div class="footer">
 
+<htmlpagefooter name="pageFooter">
+    <div class="localdata"><strong>Local e Data:</strong> Coxim - Mato Grosso do Sul,
+        {{date_format(date_create($requerimento['data_fechamento']),'d/m/Y')}}</div>
+    <div class="localdata">{{$parecer->name}} - {{$parecer->conta->funcao}}</div>
+   <div class="footer">
+       <table style="width: 100%">
+           <tr>
+               <td style="width: 70px; text-align: center">
+                   <img class="footer-image" src="{{asset('cabecalho/ifms_footer.png')}}"/>
+               </td>
+           </tr>
+       </table>
    </div>
 </htmlpagefooter>
 <setpagefooter name="pageFooter" value="on" page="ODD" show-this-page="0"></setpagefooter>

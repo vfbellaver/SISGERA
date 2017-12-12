@@ -36,7 +36,7 @@ class UsersTableSeeder extends Seeder
     {
         $role = Defender::findRole('coordenador');
         $user = factory(User::class)->create([
-            'name' => 'Coordenador Curso',
+            'name' => 'Fulano da Silva ',
             'rg' => 1111111111,
             'org_emissor' => 'SSP-IFMS',
             'cpf' => 111111111,
@@ -47,18 +47,13 @@ class UsersTableSeeder extends Seeder
             'conta_id' => 1,
         ]);
          $user->attachRole($role);
-//        factory(User::class, 7)
-//            ->create()
-//            ->each(function (User $user) use ($role) {
-//                $user->attachRole($role);
-//            });
     }
 
     public function createUserCerel()
     {
         $role = Defender::findRole('cerel');
         $user = factory(User::class)->create([
-            'name' => 'Cerel Sisgera',
+            'name' => 'Fulano Ciclano',
             'rg' => 534543534,
             'org_emissor' => 'SSP-IFMS',
             'cpf' => 5345345345,
@@ -70,18 +65,13 @@ class UsersTableSeeder extends Seeder
         ]);
         $user->attachRole($role);
 
-//        factory(User::class, 5)
-//            ->create()
-//            ->each(function (User $user) use ($role) {
-//                $user->attachRole($role);
-//            });
     }
 
     public function createUserAlunos()
     {
         $role = Defender::findRole('aluno');
         $user = factory(User::class)->create([
-            'name' => 'Aluno Fulano',
+            'name' => 'Fulano Sofredor',
             'rg' => 44444444,
             'org_emissor' => 'SSP-IFMS',
             'cpf' => 555555555,
@@ -92,18 +82,13 @@ class UsersTableSeeder extends Seeder
         ]);
         $user->attachRole($role);
 
-//        factory(User::class, 20)
-//            ->create()
-//            ->each(function (User $user) use ($role) {
-//                $user->attachRole($role);
-//            });
     }
 
     public function createUserCivil()
     {
         $role = Defender::findRole('externo');
         $user = factory(User::class)->create([
-            'name' => 'Civil Sisgera',
+            'name' => 'Fulano Externo',
             'rg' => 534543543,
             'org_emissor' => 'SSP-IFMS',
             'cpf' => 34534543,
@@ -114,10 +99,5 @@ class UsersTableSeeder extends Seeder
         ]);
         $user->attachRole($role);
 
-//        factory(User::class, 10)
-//            ->create()
-//            ->each(function (User $user) use ($role) {
-//                $user->attachRole($role);
-//            });
     }
 }

@@ -10,6 +10,7 @@ use Mpdf\Config\FontVariables;
 use Mpdf\Mpdf;
 use Sisgera\Http\Controllers\Controller;
 use Sisgera\Models\Requerimento;
+use Sisgera\Models\User;
 
 class PdfController extends Controller
 {
@@ -42,17 +43,20 @@ class PdfController extends Controller
             'margin_left'   => 10,
             'margin_right'  => 10,
             'margin_top'    => 2,
-            'margin_bottom' => 5,
+            'margin_bottom' => 2,
         ]);
 
         $gen->SetTitle('Requerimento '.$requerimento->usuario->name);
 
         $requerente = $requerimento->usuario->toArray();
+        $historicos = $requerimento->historicos->toArray();
 
+        $hist = $historicos[count($historicos)-1];
+        $parecer = User::query()->findOrFail($hist['user_id']);
         $content = view('requerimento.pdf', [
             'requerimento' => $requerimento->toArray(),
-            'usuario' => $requerente,
-
+            'requerente' => $requerente,
+            'parecer' => $parecer
         ]);
 
         $gen->WriteHTML($content);
