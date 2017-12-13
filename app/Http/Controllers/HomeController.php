@@ -17,7 +17,9 @@ class HomeController extends Controller
 
     public function index()
     {
-
+        if(\auth()->user()->role->name == 'admin'){
+            return view('requerimento.listas.todos');
+        }
         return view('dashboard.index');
 
     }
