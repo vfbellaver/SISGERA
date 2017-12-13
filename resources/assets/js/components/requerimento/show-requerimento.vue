@@ -94,9 +94,18 @@
                                                 </div>
                                             </column>
                                         </row>
+                                        <row>
+                                            <div class="overlay" v-if="formRequerimento.busy">
+                                                <div class="m-loader mr-20">
+                                                    <svg class="m-circular" viewBox="25 25 50 50">
+                                                        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="4" stroke-miterlimit="10"></circle>
+                                                    </svg>
+                                                </div>
+                                                <h5 class="l-text">{{this.acao}}</h5>
+                                            </div>
+                                        </row>
                                     </column>
                                 </row>
-                                <br>
                                 <row>
                                     <column size="12">
                                         <div class="card-footer">
@@ -218,6 +227,7 @@
             return {
                 formRequerimento: {},
                 contas: [],
+                acao: null,
                 pdfrequerimento: null,
                 user: null,
                 regraUsuarioLogado: null,
@@ -298,20 +308,21 @@
 
             save(){
                 this.formRequerimento.situacao = 'Deferido';
+                this.acao = 'Deferindo Requerimento';
                 const uri = laroute.route('requerimento.update', {requerimento: this.id});
                 Sg.put(uri, this.formRequerimento).then((response) => {
-                    console.log('Requerimento atualizado', response.message);
-                    this.formRequerimento = new Form(response.data);
+                    this.loadForm(response.data);
                     swal('Pronto', response.message, 'success');
                 });
             },
 
             indeferirRequerimento(){
                 this.formRequerimento.situacao = 'Indeferido';
+                this.acao = 'Indeferindo Requerimento';
                 const uri = laroute.route('requerimento.update', {requerimento: this.id});
                 Sg.put(uri, this.formRequerimento).then((response) => {
-                    console.log('Requerimento atualizado', response.message);
-                    this.formRequerimento = new Form([response.data]);
+                    console.log(response.message);
+                    this.loadForm(response.data);
                     swal('Pronto', response.message, 'success');
 
                 });
@@ -319,8 +330,6 @@
             despacharRequerimento(){
                 const uri = laroute.route('despachar-requerimento', {requerimento: this.id});
                 Sg.post(uri, this.formRequerimento).then((response) => {
-                    console.log('Requerimento despachado', response);
-                    debugger;
                     this.loadForm(response.data);
                     swal('Pronto', response.message, 'success');
                     EventBus.$emit('novaNotificacao', response.data);

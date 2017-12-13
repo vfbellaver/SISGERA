@@ -49,9 +49,11 @@
         <div class="secao">2) Requerimento:</div>
         <div class="divider"></div>
         <div class="solicitacoes">
+            <div class="row">
             @foreach($requerimento['solicitacoes'] as $index => $solicitacao)
-                <span class="col-xs-3">{{$solicitacao['name']}}</span>
+                <span class="col-xs-12">{{$solicitacao['name']}}</span>
             @endforeach
+            </div>
         </div>
         <div class="detalhamento">Detalhamento pedido:</div>
         <div class="justificativa">{!!$requerimento['justificativa']!!}</div>
