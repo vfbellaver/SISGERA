@@ -60,9 +60,13 @@
 
                         <row>
                             <column size="12">
-                                <form-group :form="formRequerimento" field="justificativa">
                                     <fieldset class="col-md-12">
-                                        <legend class="row">3) Justificativa</legend>
+                                        <legend class="row">3) Justificativa
+                                            <small class="pull-right" v-show="formRequerimento.anexo_url">
+                                                <a :href="formRequerimento.anexo_url" target="_blank">Visualizar anexos
+                                                <i class="fa fa-paperclip"></i></a></small>
+                                        </legend>
+
                                     </fieldset>
                                     <row>
                                         <column size="12">
@@ -70,7 +74,6 @@
                                             </div>
                                         </column>
                                     </row>
-                                </form-group>
                             </column>
                         </row>
                         <div v-if="naofinalizado && contaDestino">
@@ -281,6 +284,7 @@
                     conta: requerimento.conta,
                     usuario: requerimento.usuario,
                     justificativa: requerimento.justificativa,
+                    anexo_url: requerimento.anexo_url,
                     situacao: requerimento.situacao,
                     resposta: requerimento.resposta ? requerimento.resposta : '',
                 });

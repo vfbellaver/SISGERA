@@ -43,6 +43,7 @@
     }
     .localdata{
         text-align: center;
+
     }
     .footer {
         border-top: 1px solid darkgray;

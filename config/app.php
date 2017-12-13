@@ -179,6 +179,7 @@ return [
         Sisgera\Providers\RouteServiceProvider::class,
         Artesaos\Defender\Providers\DefenderServiceProvider::class,
         Lord\Laroute\LarouteServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
     ],
 
@@ -229,6 +230,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Defender' => \Artesaos\Defender\Facades\Defender::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
 

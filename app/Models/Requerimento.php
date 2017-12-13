@@ -29,6 +29,7 @@ class Requerimento extends Model
         'turno',
         'tipo_solicitacao',
         'justificativa',
+        'anexo_url',
         'resposta',
         'situacao',
         'visualizado',
@@ -79,6 +80,7 @@ class Requerimento extends Model
             'situacao' => $this->situacao,
             'conta' => $this->conta->toArray(),
             'visualizado' => $this->visualizado,
+            'anexo_url' => $this->anexo_url,
             'usuario' => $this->usuario->toArray(),
             'historico' => $this->historicos->toArray(),
             ];

@@ -42,7 +42,6 @@ class RequerimentoController extends Controller
         $requerimento->save();
 
 
-
         foreach ($data['tipos_solicitacao'] as $solicitacao )
         {
             $tp = TiposSolicitacao::query()->findOrFail($solicitacao['id']);

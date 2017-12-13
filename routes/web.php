@@ -118,4 +118,4 @@ Route::post('despachar/requerimento/{requerimento}','Api\RequerimentosContaContr
 Route::post('anexo/upload', 'FileUploadController@fileUpload')->name('file.upload');
 
 //PDF
-Route::get('requerimento/imprime/{requerimento}','Api\PdfController@pdf')->name('imprime-requerimento');
+Route::get('requerimento/imprime/{requerimento}','Api\PdfController@pdfDom')->name('imprime-requerimento');

@@ -2,9 +2,8 @@
 
 namespace Sisgera\Http\Controllers\Api;
 
-use Dompdf\Dompdf;
-use Dompdf\Options;
-use Illuminate\Http\Request;
+
+use PDF;
 use Mpdf\Config\ConfigVariables;
 use Mpdf\Config\FontVariables;
 use Mpdf\Mpdf;
@@ -70,24 +69,23 @@ class PdfController extends Controller
 
     public function pdfDom(Requerimento $requerimento)
     {
-        $options = new Options();
-        $options->set('defaultFont', 'Roboto');
-        $pdf = new Dompdf($options);
         $requerente = $requerimento->usuario->toArray();
+        $historicos = $requerimento->historicos->toArray();
 
-        $content = view('requerimento.dompdf', [
-            'requerimento' => $requerimento->toArray(),
-            'usuario' => $requerente,
+        $hist = $historicos[count($historicos)-1];
+        $parecer = User::query()->findOrFail($hist['user_id']);
 
-        ]);
+            $pdf = PDF::loadView('requerimento.dompdf',
+            [
+                'requerimento' => $requerimento->toArray(),
+                'requerente' => $requerente,
+                'parecer' => $parecer,
+            ]);
 
-        $pdf->loadHtml($content);
-        $pdf->setPaper('A4', 'Portrait');
-        $pdf->render();
-        $pdf->stream('requerimento');
+        return $pdf->stream('requerimento.pdf');
 //        return view('requerimento.dompdf', [
 //            'requerimento' => $requerimento->toArray(),
-//            'usuario' => $requerente,
+//            'requerente' => $requerente,
 //
 //        ]);
     }

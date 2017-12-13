@@ -1,0 +1,68 @@
+
+*{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.secao {
+    font-size: 12pt;
+    margin-top: 5px;
+    background-color: #e6e6e6;
+}
+
+.divider {
+    padding-right: 10px;
+    padding-left: 10px;
+    border-bottom: 1px solid #b6b6b6;
+}
+
+.secao {
+    font-size: 12pt;
+    margin-top: 5px;
+    background-color: #e6e6e6;
+}
+
+.justificativa {
+    font-size: 12pt;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    text-align: justify;
+}
+
+.solicitacoes {
+    font-size: 12pt !important;
+    text-align: justify;
+    margin-top: 5px;
+    padding-left: 20px;
+    padding-right: 10px;
+}
+.detalhamento {
+    margin-top: 10px;
+}
+
+.situacao {
+    padding-left: 20px;
+    padding-top: 10px;
+    font-size: 12pt;
+}
+.localdata{
+    text-align: center;
+
+}
+.footer {
+    text-align: center;
+    bottom: 0;
+    width:100%;
+    position: absolute;
+
+}
+.footer-image {
+    max-width: 70px;
+    max-height: 70px;
+}
+
+.localdata{
+    text-align: center;
+
+}
