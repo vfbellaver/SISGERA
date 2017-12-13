@@ -177,7 +177,7 @@
                                 <column size="12">
                                     <div class="card-footer">
                                         <div class="form-group">
-                                            <a class="btn btn-success icon-btn" :href="pdfrequerimento">
+                                            <a class="btn btn-success icon-btn" :href="pdfrequerimento" target="_blank">
                                                 <i class="fa fa-fw fa-lg fa-print"></i>Imprimir Requerimento
                                             </a>
                                         </div>

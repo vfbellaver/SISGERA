@@ -50,7 +50,7 @@
                                     class="label-text">Lembrar senha</span>
                         </label>
                     </div>
-                    <p class="semibold-text mb-0"><a data-toggle="flip">Forgot Password ?</a></p>
+                    <p class="semibold-text mb-0"><a data-toggle="flip">Esqueci a senha ?</a></p>
                 </div>
             </div>
             <div class="form-group btn-container">
@@ -84,12 +84,12 @@
                     </div>
                 </div>
                 <div class="form-group btn-container">
-                    <button class="btn btn-primary btn-block"><i class="fa fa-unlock fa-lg fa-fw"></i>RESET</button>
+                    <button class="btn btn-primary btn-block"><i class="fa fa-unlock fa-lg fa-fw"></i>RESETAR</button>
                 </div>
                 <div class="form-group mt-20">
                     <p class="semibold-text mb-0">
                         <a data-toggle="flip"><i class="fa fa-angle-left fa-fw"></i>
-                            Back to Login
+                            Voltar para tela de Login
                         </a>
                     </p>
                 </div>
