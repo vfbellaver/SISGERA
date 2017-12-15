@@ -64,5 +64,21 @@
 
 .localdata{
     text-align: center;
+}
 
+.dadosusuario {
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+.dadosestudante{
+    padding-left: 10px;
+    margin-top: -7px;
+    padding-top: 0;
+}
+
+.dadoscurso{
+    padding-left: 10px;
+    margin-top: -7px;
+    padding-top: 0;
 }

@@ -8,7 +8,6 @@
                             <fieldset class="col-md-12">
                                 <legend class="row">Informacões do Usuario</legend>
                             </fieldset>
-
                             <row>
                                 <column size="6">
                                     <form-group :form="form" field="name">

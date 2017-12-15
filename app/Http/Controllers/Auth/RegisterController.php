@@ -72,10 +72,12 @@ class RegisterController extends Controller
             'rg' => $data['rg'],
             'org_emissor' => $data['org_emissor'],
             'cpf' => $data['cpf'],
+            'telefone' => $data['telefone'],
+            'celular' => $data['celular'],
             'password' => bcrypt($data['password']),
         ]);
         $user->save();
-        $role = Defender::findRole('aluno');
+        $role = Defender::findRole('externo');
         $user->attachRole($role);
 
         return $user;

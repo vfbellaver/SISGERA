@@ -3,10 +3,10 @@
         <aside class="main-sidebar hidden-print">
             <section class="sidebar">
                 <ul class="sidebar-menu">
-                    <menu-admin v-show="regra.name === 'admin'"></menu-admin>
-                    <menu-cerel v-show="regra.name === 'cerel'"></menu-cerel>
-                    <menu-coordenador v-show="regra.name === 'coordenador'"></menu-coordenador>
-                    <meus-requerimentos v-show="regra.name === 'aluno' || regra.name == 'civil'"></meus-requerimentos>
+                    <menu-admin v-if="regra.name === 'admin'"></menu-admin>
+                    <menu-cerel v-else-if="regra.name === 'cerel'"></menu-cerel>
+                    <menu-coordenador v-else-if="regra.name === 'coordenador'"></menu-coordenador>
+                    <meus-requerimentos v-else-if="regra.name === 'aluno' || regra.name == 'externo'"></meus-requerimentos>
                 </ul>
             </section>
         </aside>

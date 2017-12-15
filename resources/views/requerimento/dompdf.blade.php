@@ -13,7 +13,9 @@
             <tr>
                 <td style="font-size: 15pt">REQUERIMENTO</td>
                 <td style="text-align: right">
-                    <strong style="padding-right: 42px">Protocolo:</strong> {{$requerimento['protocolo']}}<br>
+                    <div style="padding-right: 6px">
+                        <strong>Protocolo:</strong>  {{$requerimento['protocolo']}}<br>
+                    </div>
                     <strong>Data:</strong> &nbsp; {{date_format(date_create($requerimento['data_criacao']),'d/m/Y')}}
                     &nbsp;
                     <strong>Hora:</strong> &nbsp; {{date_format(date_create($requerimento['data_criacao']),'H:m')}}
@@ -22,7 +24,7 @@
         </table>
         <div class="secao">1) Dados Requerente:</div>
         <div class="divider"></div>
-        <table style="width: 100%;padding: 10px">
+        <table class="dadosusuario">
             <tr>
                 <td><strong>Nome do Requerente:</strong> &nbsp; {{$requerente['name']}}</td>
             </tr>
@@ -33,16 +35,20 @@
             </tr>
             <tr>
                 <td><strong>Email:</strong> {{$requerente['email']}}</td>
-                <td><strong>Tel Fixo:</strong>&nbsp; {{$requerente['telefone']}}</td>
+                <td width="220px"><strong>Tel Fixo:</strong>&nbsp; {{$requerente['telefone']}}</td>
                 <td><strong>Celular:</strong>&nbsp; {{$requerente['celular']}}</td>
             </tr>
+        </table>
+        <table class="dadosestudante">
             <tr>
-                <td><strong>Nome do Estudante:</strong> &nbsp; {{$requerimento['nome_estudante']}}</td>
-                <td><strong>Curso:</strong> &nbsp; {{$requerimento['curso']}}</td>
+                <td width="300px"><strong>Nome do Estudante:</strong> &nbsp; {{$requerimento['nome_estudante']}}</td>
+                <td width="400px"><strong>Curso:</strong> &nbsp; {{$requerimento['curso']}}</td>
             </tr>
+        </table>
+        <table class="dadoscurso">
             <tr>
-                <td><strong>Periodo:</strong> &nbsp; {{$requerimento['periodo']}}</td>
-                <td><strong>Turno:</strong>&nbsp; {{$requerimento['turno']}}</td>
+                <td width="300px"><strong>Periodo:</strong> &nbsp; {{$requerimento['periodo']}}</td>
+                <td width="220px"><strong>Turno:</strong>&nbsp; {{$requerimento['turno']}}</td>
                 <td><strong>Turma:</strong>&nbsp; {{$requerimento['turma']}}</td>
             </tr>
         </table>
