@@ -23,7 +23,9 @@
                 <ul class="top-nav">
                     <li style="color: white">@{{user.name}}</li>
                     <!--Notificacao Menu-->
+                    @if(auth()->user()->conta)
                     <notificacao></notificacao>
+                    @endif
                     <!-- User Menu-->
                     <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button"
                                             aria-haspopup="true" aria-expanded="false"><i
