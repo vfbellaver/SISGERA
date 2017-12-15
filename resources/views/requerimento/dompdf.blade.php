@@ -51,7 +51,7 @@
         <div class="solicitacoes">
             <div class="row">
             @foreach($requerimento['solicitacoes'] as $index => $solicitacao)
-                <span class="col-xs-12">{{$solicitacao['name']}}</span>
+                    <span>{{$index + 1}} - {{$solicitacao['name']}} &nbsp;&nbsp;&nbsp;&nbsp;</span>
             @endforeach
             </div>
         </div>
@@ -66,7 +66,14 @@
         <footer class="footer">
             <div class="localdata"><strong>Local e Data:</strong> Coxim - Mato Grosso do Sul,
                 {{date_format(date_create($requerimento['data_fechamento']),'d/m/Y')}}</div>
-            <div class="localdata">{{$parecer->name}} - {{$parecer->conta->funcao}}</div>
+
+            <div class="localdata">
+                @if($parecer->conta)
+                    {{$parecer->name}} - {{$parecer->conta->funcao}}
+                @else
+                    Cerel - Central de Relacionamentos IFMS - Campus Coxim
+                @endif
+                </div>
             <div class="divider"></div>
             <div>
                 <img class="footer-image" src="{{asset('cabecalho/ifms_footer.png')}}"/>

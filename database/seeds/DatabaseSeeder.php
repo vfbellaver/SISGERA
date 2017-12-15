@@ -11,7 +11,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RolesTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(TiposSolicitacaoSeeder::class);
-        $this->call(RequerimentoSeeder::class);
-        $this->call(HistoricoRequerimentoSeeder::class);
+//        $this->call(RequerimentoSeeder::class);
+//        $this->call(HistoricoRequerimentoSeeder::class);
     }
 }
